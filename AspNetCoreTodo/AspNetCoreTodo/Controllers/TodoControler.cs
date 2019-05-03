@@ -8,6 +8,15 @@ namespace AspNetCoreTodo.Controllers
 {
     public class TodoController : Controller
     {
+        public IActionResult Index() 
+        {
+            // Get to-do items from database
 
+            // Put items into a model
+
+            // Rend view using the model
+
+            return null;
+        }
     }
 }
