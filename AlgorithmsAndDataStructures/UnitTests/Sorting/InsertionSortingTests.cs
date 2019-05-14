@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Algorithms.Sorting;
@@ -15,6 +17,27 @@ namespace Tests.Sorting
             numbers = numbers.InsertionSort();
 
             Assert.That(numbers, Is.EqualTo(new List<int>{1,2,3,4}));
+        }
+
+        [Test]
+        public void InsertionSort_Should_Sort_Hard()
+        {
+            var random = new System.Random();
+
+            IList<int> randomNumbers = new List<int>();;   
+
+            const int LIMIT = 100;
+
+            for(int i = 0; i < LIMIT; i++)
+            {
+                randomNumbers.Add(random.Next(0, 100));
+            }
+
+            randomNumbers = randomNumbers.OrderByDescending(i => i).ToList();
+
+            var test = randomNumbers.InsertionSort();
+
+            Assert.That(test, Is.EqualTo(randomNumbers));
         }
     } 
 }
