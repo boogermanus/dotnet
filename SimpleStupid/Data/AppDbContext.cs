@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using SimpleStupid.Model;
 
 namespace SimpleStupid.Data
 {
     public partial class AppDbContext : DbContext
     {
+        public DbSet<Category> Catagories {get;set;}
         public AppDbContext()
         {
         }
