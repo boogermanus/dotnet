@@ -2,8 +2,12 @@ using System;
 using System.Collections.Generic;
 public static class MergeSorting
 {
+    #region Constants
     private const int ONE = 1;
     private const int HALF = 2;
+    #endregion
+
+    #region Methods
     public static IList<T> MergeSort<T>(this IList<T> pList, int pFirst, int pLast) where T : IComparable
     {
         // if the element indexs are 0, return a new list
@@ -60,4 +64,5 @@ public static class MergeSorting
         return newList;
         
     }
+    #endregion
 }
