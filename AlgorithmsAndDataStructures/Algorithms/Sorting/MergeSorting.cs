@@ -20,7 +20,7 @@ public static class MergeSorting
         return pList.MergeSort(0, pList.Count - 1);
     }
 
-    public static IList<T> Merge<T>(IList<T> pLeft, IList<T> pRight) where T : IComparable
+    private static IList<T> Merge<T>(IList<T> pLeft, IList<T> pRight) where T : IComparable
     {
         var newList = new List<T>();
 
