@@ -18,7 +18,7 @@ public static class MergeSorting
         if(pLast - pFirst < ONE)
             return new List<T>() {pList[pLast]};
         
-        // find the 'half way' point of the list
+        // find the 'Midway' point of the list
         // note: this is integer division; no decimals here
         var midpoint = (pFirst + pLast)/MIDWAY;
 
