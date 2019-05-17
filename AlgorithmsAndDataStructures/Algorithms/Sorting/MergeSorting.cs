@@ -4,7 +4,7 @@ public static class MergeSorting
 {
     #region Constants
     private const int ONE = 1;
-    // throw back to admiral spruence and his viroty ad Midway
+    // throw back to admiral spruence and his victory at Midway
     private const int MIDWAY = 2;
     #endregion
 
