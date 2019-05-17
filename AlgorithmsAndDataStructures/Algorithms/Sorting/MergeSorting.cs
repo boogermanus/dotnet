@@ -4,7 +4,8 @@ public static class MergeSorting
 {
     #region Constants
     private const int ONE = 1;
-    private const int HALF = 2;
+    // throw back to admiral spruence and his viroty ad Midway
+    private const int MIDWAY = 2;
     #endregion
 
     // making methods 'where T : IComparable makes using the Comparer.Default unnecessary
@@ -19,7 +20,7 @@ public static class MergeSorting
         
         // find the 'half way' point of the list
         // note: this is integer division; no decimals here
-        var midpoint = (pFirst + pLast)/HALF;
+        var midpoint = (pFirst + pLast)/MIDWAY;
 
         // recursive calls to sort
         var left = pList.MergeSort(pFirst, midpoint);
