@@ -19,7 +19,7 @@ namespace Tests.Sorting
             Assert.That(numbers, Is.EqualTo(new List<int>{1,2,3,4}));
         }
 
-                [Test]
+        [Test]
         public void MergeSort_Should_Sort_Hard()
         {
             var random = new System.Random();
