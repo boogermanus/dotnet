@@ -3,17 +3,22 @@ using System.Collections.Generic;
 public static class MergeSorting
 {
     private const int ONE = 1;
-    private const int MIDDLE = 2;
+    private const int HALF = 2;
     public static IList<T> MergeSort<T>(this IList<T> pList, int pFirst, int pLast) where T : IComparable
     {
+        // if the element indexs are 0, return a new list
         if(pLast - pFirst < ONE)
             return new List<T>() {pList[pLast]};
         
-        var midpoint = (pFirst + pLast)/MIDDLE;
+        // find the 'half way' point of the list
+        // note: this is integer division; no decimals here
+        var midpoint = (pFirst + pLast)/HALF;
 
+        // recursive calls to sort
         var left = pList.MergeSort(pFirst, midpoint);
         var right = pList.MergeSort(midpoint+1, pLast);
 
+        // merage the result
         return Merge(left, right);
     }
 
