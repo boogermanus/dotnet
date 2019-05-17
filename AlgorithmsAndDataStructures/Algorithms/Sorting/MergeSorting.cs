@@ -15,10 +15,16 @@ public static class MergeSorting
         return Merge(left, right);
     }
 
+    public static IList<T> MergeSort<T>(this IList<T> pList) where T : IComparable
+    {
+        return pList.MergeSort(0, pList.Count - 1);
+    }
+
     public static IList<T> Merge<T>(IList<T> pLeft, IList<T> pRight) where T : IComparable
     {
         var newList = new List<T>();
 
+        // 
         while(pLeft.Count != 0 && pRight.Count != 0)
         {
             var leftMin = pLeft[0];
@@ -26,11 +32,13 @@ public static class MergeSorting
 
             if(leftMin.CompareTo(rightMin) < 0)
             {
+                // leftMin < rightMin
                 pLeft.RemoveAt(0);
                 newList.Add(leftMin);
             }
             else
             {
+                // leftMin > rightMin
                 pRight.RemoveAt(0);
                 newList.Add(rightMin);
             }
