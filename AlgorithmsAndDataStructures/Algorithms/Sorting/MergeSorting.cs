@@ -10,7 +10,6 @@ public static class MergeSorting
     
     #region Methods
 
-    // making methods 'where T : IComparable makes using the Comparer.Default unnecessary
     #region MergeSort
     public static IList<T> MergeSort<T>(this IList<T> pList, int pFirst, int pLast) where T : IComparable
     {

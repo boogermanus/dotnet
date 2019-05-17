@@ -4,6 +4,7 @@ namespace Algorithms.Sorting
 {
     public static class InsertionSorting
     {
+        // making methods 'where T : IComparable makes using the Comparer.Default unnecessary
         public static IList<T> InsertionSort<T>(this IList<T> pList) where T : IComparable
         {
             int i, j;
