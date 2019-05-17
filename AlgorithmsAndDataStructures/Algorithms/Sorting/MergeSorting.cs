@@ -7,6 +7,7 @@ public static class MergeSorting
     private const int HALF = 2;
     #endregion
 
+    // making methods 'where T : IComparable makes using the Comparer.Default unnecessary
     #region Methods
 
     #region MergeSort
@@ -30,6 +31,7 @@ public static class MergeSorting
 
     public static IList<T> MergeSort<T>(this IList<T> pList) where T : IComparable
     {
+        // just do the same thing as above
         return pList.MergeSort(0, pList.Count - ONE);
     }
 
@@ -41,7 +43,7 @@ public static class MergeSorting
         var newList = new List<T>();
 
         // because we are removing elements from the list
-        // we are still saving memeory
+        // we are still saving memory
         while(pLeft.Count != 0 && pRight.Count != 0)
         {
             // take the first element from each list
@@ -61,7 +63,9 @@ public static class MergeSorting
                 newList.Add(rightMin);
             }
         }
-        // add what is left
+
+        // add what is left to our return list
+        // TODO argue with Ari about memory
         newList.AddRange(pLeft);
         newList.AddRange(pRight);
 
