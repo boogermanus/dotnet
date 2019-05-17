@@ -47,6 +47,7 @@ public static class MergeSorting
         // we are still saving memory
         while(pLeft.Count != 0 && pRight.Count != 0)
         {
+            // this is all ari, he's genius
             // take the first element from each list
             var leftMin = pLeft[0];
             var rightMin = pRight[0];
