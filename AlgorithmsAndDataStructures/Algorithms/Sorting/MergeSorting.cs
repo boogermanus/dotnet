@@ -8,6 +8,8 @@ public static class MergeSorting
     #endregion
 
     #region Methods
+
+    #region MergeSort
     public static IList<T> MergeSort<T>(this IList<T> pList, int pFirst, int pLast) where T : IComparable
     {
         // if the element indexs are 0, return a new list
@@ -31,6 +33,9 @@ public static class MergeSorting
         return pList.MergeSort(0, pList.Count - ONE);
     }
 
+    #endregion
+
+    #region Merge
     private static IList<T> Merge<T>(IList<T> pLeft, IList<T> pRight) where T : IComparable
     {
         var newList = new List<T>();
@@ -56,7 +61,6 @@ public static class MergeSorting
                 newList.Add(rightMin);
             }
         }
-        
         // add what is left
         newList.AddRange(pLeft);
         newList.AddRange(pRight);
@@ -65,4 +69,6 @@ public static class MergeSorting
         
     }
     #endregion
+
+    #endregion // methods
 }
