@@ -7,10 +7,10 @@ public static class MergeSorting
     // throw back to admiral spruence and his victory at Midway
     private const int MIDWAY = 2;
     #endregion
-
-    // making methods 'where T : IComparable makes using the Comparer.Default unnecessary
+    
     #region Methods
 
+    // making methods 'where T : IComparable makes using the Comparer.Default unnecessary
     #region MergeSort
     public static IList<T> MergeSort<T>(this IList<T> pList, int pFirst, int pLast) where T : IComparable
     {
