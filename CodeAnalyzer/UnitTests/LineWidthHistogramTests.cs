@@ -18,13 +18,14 @@ namespace UnitTests
         }
 
         [Test]
-        public void AddLine_Should_Increase_LineCount()
+        public void AddLine_Should_AddTo_Dict_And_Increase_LineCount()
         {
             var histo = new LineWidthHistogram();
 
-            histo.AddLine("testing");
+            histo.AddLine(TEST_STRING_1);
 
             Assert.That(histo.LineCount, Is.EqualTo(1));
+            Assert.That(histo.LineWidths.Count, Is.EqualTo(1));
         }
 
         [Test]

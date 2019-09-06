@@ -9,7 +9,11 @@ namespace Analyzer
 
         public void AddLine(string pLine)
         {
-            LineWidths[pLine.Length]++;
+            if(LineWidths.ContainsKey(pLine.Length))
+                LineWidths[pLine.Length]++;
+            else
+                LineWidths.Add(pLine.Length, 1);
+                
             LineCount++;
         }
     }
