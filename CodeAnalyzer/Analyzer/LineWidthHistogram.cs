@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -21,6 +22,15 @@ namespace Analyzer
                 LineWidths.Add(pLine.Length, 1);
                 
             LineCount++;
+        }
+
+        public int GetLinesForWidth(int pWidth)
+        {
+            if (!LineWidths.ContainsKey(pWidth))
+                throw new Exception($"No lines for width {pWidth}");
+            else
+                return LineWidths[pWidth];
+
         }
         #endregion
     }

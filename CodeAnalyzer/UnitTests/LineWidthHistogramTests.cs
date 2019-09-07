@@ -62,5 +62,19 @@ namespace UnitTests
 
             Assert.That(Histogram.WidestLine, Is.EqualTo(TEST_STRING_2.Length));
         }
+
+        [Test]
+        public void GetLinesForWidth_Should_Throw()
+        {
+            Assert.That(() => Histogram.GetLinesForWidth(0), Throws.Exception);
+        }
+
+        [Test]
+        public void GetLinesForWidth_Should_Return()
+        {
+            Histogram.AddLine(TEST_STRING_1);
+
+            Assert.That(() => Histogram.GetLinesForWidth(TEST_STRING_1.Length), Is.EqualTo(1));
+        }
     }
 }
