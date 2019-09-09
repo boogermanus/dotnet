@@ -19,6 +19,9 @@ namespace UnitTests
         }
         public const string TEST_STRING_1 = "testing";
         public const string TEST_STRING_2 = "testing again";
+        public const string TEST_STRING_3 = "blah";
+        public const string TEST_STRING_4 = "and here we go again";
+        public const string TEST_STRING_5 = "five it";
 
         private LineWidthHistogram Histogram;
 
@@ -43,8 +46,9 @@ namespace UnitTests
         [Test]
         public void AddLine_Should_CreateHistogram()
         {
-            Histogram.AddLine(TEST_STRING_1);
-            Histogram.AddLine(TEST_STRING_2);
+            Histogram
+                .AddLine(TEST_STRING_1)
+                .AddLine(TEST_STRING_2);
 
             Assert.That(Histogram.LineWidths[TEST_STRING_1.Length], Is.EqualTo(1));
             Assert.That(Histogram.LineWidths[TEST_STRING_2.Length], Is.EqualTo(1));
@@ -57,8 +61,9 @@ namespace UnitTests
         [Test]
         public void WidestLine_Should_Return_The_WidestLine()
         {
-            Histogram.AddLine(TEST_STRING_1);
-            Histogram.AddLine(TEST_STRING_2);
+            Histogram
+            .AddLine(TEST_STRING_1)
+            .AddLine(TEST_STRING_2);
 
             Assert.That(Histogram.WidestLine, Is.EqualTo(TEST_STRING_2.Length));
         }
@@ -66,7 +71,7 @@ namespace UnitTests
         [Test]
         public void GetLinesForWidth_Should_Throw()
         {
-            Assert.That(() => Histogram.GetLinesForWidth(0), Throws.Exception);
+            Assert.That(() => Histogram.GetLineCountForWidth(0), Throws.Exception);
         }
 
         [Test]
@@ -74,7 +79,20 @@ namespace UnitTests
         {
             Histogram.AddLine(TEST_STRING_1);
 
-            Assert.That(() => Histogram.GetLinesForWidth(TEST_STRING_1.Length), Is.EqualTo(1));
+            Assert.That(() => Histogram.GetLineCountForWidth(TEST_STRING_1.Length), Is.EqualTo(1));
+        }
+
+        [Test]
+        public void GetMedianLineWidth_Should_Return_Seven()
+        {
+            Histogram
+                .AddLine(TEST_STRING_1)
+                .AddLine(TEST_STRING_2)
+                .AddLine(TEST_STRING_3)
+                .AddLine(TEST_STRING_4)
+                .AddLine(TEST_STRING_5);
+
+            Assert.That(() => Histogram.GetMedianLineWidth(), Is.EqualTo(7));
         }
     }
 }
