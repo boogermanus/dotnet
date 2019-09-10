@@ -13,6 +13,7 @@ namespace Analyzer
 
         public List<int> OrderedWidths => LineWidths.Keys.OrderBy(i => i).ToList();
         #endregion
+        
         #region Methods
         public LineWidthHistogram AddLine(string pLine)
         {
@@ -47,6 +48,19 @@ namespace Analyzer
             }
 
             return 0;
+        }
+
+        public LineWidthHistogram Combine(LineWidthHistogram pHistogram)
+        {
+            foreach(var key in pHistogram.LineWidths.Keys)
+            {
+                if(LineWidths.ContainsKey(key))
+                    LineWidths[key] += pHistogram.LineWidths[key];
+                else
+                    LineWidths.Add(key, pHistogram.LineWidths[key]);
+            }
+
+            return this;
         }
         #endregion
     }

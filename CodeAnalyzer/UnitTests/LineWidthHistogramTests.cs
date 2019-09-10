@@ -94,5 +94,17 @@ namespace UnitTests
 
             Assert.That(() => Histogram.GetMedianLineWidth(), Is.EqualTo(7));
         }
+
+        [Test]
+        public void Combine_Should_Combine_Histograms()
+        {
+            Histogram
+                .AddLine(TEST_STRING_2)
+                .Combine(new LineWidthHistogram().AddLine(TEST_STRING_1));
+
+            Assert.That(Histogram.LineWidths.Count, Is.EqualTo(2));
+            Assert.That(Histogram.LineWidths[TEST_STRING_1.Length], Is.EqualTo(1));
+            Assert.That(Histogram.LineWidths[TEST_STRING_2.Length], Is.EqualTo(1));
+        }
     }
 }
