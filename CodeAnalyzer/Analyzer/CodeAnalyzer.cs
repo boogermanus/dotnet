@@ -6,7 +6,7 @@ namespace Analyzer
     public class CodeAnalyzer
     {
         private string _rootDirectoryPath;
-        private string _fileFilter = "*.cs";
+        private string _fileFilter = "*.cs"; // default to C# files
 
         public CodeAnalyzer(string pRootDirectoryPath, string pFileFilter = null)
         {
