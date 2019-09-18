@@ -10,17 +10,20 @@ namespace Analyzer
 
         public CodeAnalyzer(string pRootDirectoryPath, string pFileFilter = null)
         {
-            CheckDirectoryPath(pRootDirectoryPath);
-            _rootDirectoryPath = pRootDirectoryPath;
+            _rootDirectoryPath = GetDirectoryPath(pRootDirectoryPath);
             _fileFilter = pFileFilter ?? _fileFilter;
         }
 
-        private void CheckDirectoryPath(string pRootDirectoryPath)
+        private string GetDirectoryPath(string pRootDirectoryPath)
         {
             if(string.IsNullOrWhiteSpace(pRootDirectoryPath))
                 throw new ArgumentException($"{pRootDirectoryPath} is not a valid path", nameof(pRootDirectoryPath));
             if(!Directory.Exists(pRootDirectoryPath))
                 throw new ArgumentException($"{pRootDirectoryPath} not found");
+
+            // return the full path name of the specified directory even if
+            // the path was relative.
+            return new DirectoryInfo(pRootDirectoryPath).FullName;
         }
     }
 }
