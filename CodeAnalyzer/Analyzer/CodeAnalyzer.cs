@@ -35,6 +35,9 @@ namespace Analyzer
 
             var histograms = filesToAnalyze
                 .Select(file => GetHistogramForFile(file));
+
+            foreach(var histogram in histograms)
+                _histogram.Combine(histogram);
         }
 
         private List<string> GetFilesToAnalyze()
