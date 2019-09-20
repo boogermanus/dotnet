@@ -40,5 +40,28 @@ namespace Orca
                     .ToArray()))
                 .ToArray()));
         }
+
+        public List<T> GetStuff<T>(List<T> pList, int pLength, int pIndex = 0)
+        {
+            var results = new List<T>();
+
+            if(pList.Count > pLength)
+                throw new ArgumentException($"{nameof(pList)}.Count is grater than {pIndex}");
+
+            // base case, one item
+            if(pList.Count == pLength && pIndex == 0)
+                return pList;
+            if(pList.Count == pLength && pIndex == 1)
+            {
+                // hard
+            }
+            
+            if(pList.Count == pLength)
+            {
+                results.AddRange(GetStuff(pList, pLength, pIndex++));
+            }
+
+            return results;
+        }
     }
 }
