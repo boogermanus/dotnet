@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -12,8 +13,9 @@ namespace Analyzer
 
         public List<int> OrderedWidths => LineWidths.Keys.OrderBy(i => i).ToList();
         #endregion
+        
         #region Methods
-        public void AddLine(string pLine)
+        public LineWidthHistogram AddLine(string pLine)
         {
             if(LineWidths.ContainsKey(pLine.Length))
                 LineWidths[pLine.Length]++;
@@ -21,6 +23,44 @@ namespace Analyzer
                 LineWidths.Add(pLine.Length, 1);
                 
             LineCount++;
+            return this;
+        }
+
+        public int GetLineCountForWidth(int pWidth)
+        {
+            if (!LineWidths.ContainsKey(pWidth))
+                throw new Exception($"No lines for width {pWidth}");
+            else
+                return LineWidths[pWidth];
+
+        }
+
+        public int GetMedianLineWidth()
+        {
+            int cumulativeLineCount = 0;
+
+            foreach(var width in OrderedWidths)
+            {
+                cumulativeLineCount += GetLineCountForWidth(width);
+
+                if(cumulativeLineCount > LineCount/2)
+                    return width;
+            }
+
+            return 0;
+        }
+
+        public LineWidthHistogram Combine(LineWidthHistogram pHistogram)
+        {
+            foreach(var key in pHistogram.LineWidths.Keys)
+            {
+                if(LineWidths.ContainsKey(key))
+                    LineWidths[key] += pHistogram.LineWidths[key];
+                else
+                    LineWidths.Add(key, pHistogram.LineWidths[key]);
+            }
+
+            return this;
         }
         #endregion
     }
