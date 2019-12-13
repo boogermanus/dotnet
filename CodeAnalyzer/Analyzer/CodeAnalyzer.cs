@@ -31,9 +31,9 @@ namespace Analyzer
 
         public void Analyze()
         {
-            var filesToAnalyze = GetFilesToAnalyze();
+            List<string> filesToAnalyze = GetFilesToAnalyze();
 
-            var histograms = filesToAnalyze
+            IEnumerable<LineWidthHistogram> histograms = filesToAnalyze
                 .Select(file => GetHistogramForFile(file));
 
             foreach(var histogram in histograms)
