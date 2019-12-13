@@ -49,18 +49,19 @@ namespace UnitTests
             Histogram.AddLine(TEST_STRING_1);
             Assert.That(Histogram.LineCount, Is.EqualTo(1));
         }
-        [Test]
-        public void AddLienShouldAddLineWithValueTEST_STRING_1()
-        {
-            Histogram.AddLine(TEST_STRING_1);
-            Assert.That(Histogram.LineWidths[TEST_STRING_1.Length], Is.EqualTo(1));
-        }
-
+        
         [Test]
         public void AddLineShouldIncreaseLineWidthsCount()
         {
             Histogram.AddLine(TEST_STRING_1);
             Assert.That(Histogram.LineWidths.Count, Is.EqualTo(1));
+        }
+        
+        [Test]
+        public void AddLienShouldAddLineWithValueTEST_STRING_1()
+        {
+            Histogram.AddLine(TEST_STRING_1);
+            Assert.That(Histogram.LineWidths[TEST_STRING_1.Length], Is.EqualTo(1));
         }
 
         [Test]
