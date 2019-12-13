@@ -56,7 +56,7 @@ namespace UnitTests
             Histogram.AddLine(TEST_STRING_1);
             Assert.That(Histogram.LineWidths.Count, Is.EqualTo(1));
         }
-        
+
         [Test]
         public void AddLienShouldAddLineWithValueTEST_STRING_1()
         {
@@ -71,7 +71,6 @@ namespace UnitTests
                 .AddLine(TEST_STRING_1)
                 .AddLine(TEST_STRING_2);
 
-            Assert.That(Histogram.LineWidths[TEST_STRING_1.Length], Is.EqualTo(1));
             Assert.That(Histogram.LineWidths[TEST_STRING_2.Length], Is.EqualTo(1));
 
             Histogram.AddLine(TEST_STRING_2);
