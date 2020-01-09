@@ -26,20 +26,40 @@ namespace UnitTests
         private LineWidthHistogram Histogram;
 
         [Test]
-        public void LineWidthHistogram_Should_Init()
+        public void LineWidthHistogramLineCountShouldBeZeroOnInit()
         {
             Assert.That(Histogram.LineCount, Is.Zero);
-            Assert.That(Histogram.LineWidths, Is.Empty);
+        }
 
+        [Test]
+        public void LineWidthHistogramLineWidthsShouldBeEmpty()
+        {
+            Assert.That(Histogram.LineWidths, Is.Empty);
+        }
+
+        [Test]
+        public void LineWidthHistogramWidestLineShouldBeZero()
+        {
             Assert.That(Histogram.WidestLine, Is.Zero);
         }
 
         [Test]
-        public void AddLine_Should_AddTo_Dict_And_Increase_LineCount()
+        public void AddLineShouldIncreaseLineCountByOne()
         {
             Histogram.AddLine(TEST_STRING_1);
-
             Assert.That(Histogram.LineCount, Is.EqualTo(1));
+        }
+        [Test]
+        public void AddLienShouldAddLineWithValueTEST_STRING_1()
+        {
+            Histogram.AddLine(TEST_STRING_1);
+            Assert.That(Histogram.LineWidths[TEST_STRING_1.Length], Is.EqualTo(1));
+        }
+
+        [Test]
+        public void AddLineShouldIncreaseLineWidthsCount()
+        {
+            Histogram.AddLine(TEST_STRING_1);
             Assert.That(Histogram.LineWidths.Count, Is.EqualTo(1));
         }
 
