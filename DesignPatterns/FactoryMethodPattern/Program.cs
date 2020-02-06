@@ -17,7 +17,7 @@ namespace FactoryMethodPattern
             sandwiches.ForEach(s => {
                 Console.WriteLine($"Sandwich: {s.Name}");
                 
-                s.Ingredients.ForEach(i => Console.WriteLine($"Ingredient: {i.Name}") );
+                s.Ingredients.ForEach(i => Console.WriteLine($"\tIngredient: {i.Name}") );
             });
 
             Console.ReadKey();
