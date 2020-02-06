@@ -14,14 +14,11 @@ namespace FactoryMethodPattern
                 new HamSandwich()
             };
 
-            foreach(var sandwich in sandwiches)
-            {
-                Console.WriteLine($"Sandwich: {sandwich.Name}");
-                foreach(var ingredient in sandwich.Ingredients)
-                {
-                    Console.WriteLine($"Ingredient: {ingredient.Name}");
-                }
-            }
+            sandwiches.ForEach(s => {
+                Console.WriteLine($"Sandwich: {s.Name}");
+                
+                s.Ingredients.ForEach(i => Console.WriteLine($"Ingredient: {i.Name}") );
+            });
 
             Console.ReadKey();
         }
