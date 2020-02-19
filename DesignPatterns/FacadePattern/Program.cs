@@ -1,4 +1,5 @@
 ﻿using System;
+using FacadePattern.Facades;
 
 namespace FacadePattern
 {
@@ -6,7 +7,10 @@ namespace FacadePattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var server = new ServerFacade();
+            var order = server.PlaceOrder(server.TakeOrder());
+
+            Console.WriteLine(order);
         }
     }
 }
