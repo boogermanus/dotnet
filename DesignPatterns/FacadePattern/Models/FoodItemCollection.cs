@@ -8,6 +8,13 @@ namespace FacadePattern.Models
 
         public List<FoodItem> FoodItems => _foodItems;
 
+        public static readonly int APPETIZER_START = 0;
+        public static readonly int APPETIZER_END = 3;
+        public static readonly int ENTREE_START = 3;
+        public static readonly int ENTREE_END = 6;
+        public static readonly int DRINK_START = 6;
+        public static readonly int DRINK_END = 9;
+
         public FoodItemCollection()
         {
             _foodItems.AddRange(AddAppetizers());

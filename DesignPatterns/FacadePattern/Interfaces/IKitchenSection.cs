@@ -2,7 +2,7 @@ using FacadePattern.Models;
 
 namespace FacadePattern.Interfaces
 {
-    public interface KitchenSection
+    public interface IKitchenSection
     {
         FoodItem PrepDish(int dishId);
     }
