@@ -13,8 +13,6 @@ namespace ConsolePlayground
             Console.WriteLine(date);
             date = TimeZoneInfo.ConvertTimeFromUtc(date, TimeZoneInfo.Local);
             Console.WriteLine(date);
-            
         }
-
     }
 }
