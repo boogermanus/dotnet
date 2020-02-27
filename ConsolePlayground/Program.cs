@@ -9,12 +9,11 @@ namespace ConsolePlayground
         static void Main(string[] args)
         {
       
-            var studentGrades = new List<int>()
-            { 88, 70, 69, 42, 90, 77, 83, 85, 89, 100 };
-
-            studentGrades.Select((grade, index) => $"Student: {index} is: {grade}")
-                .ToList()
-                .ForEach(Console.WriteLine);
+            var date = DateTime.UtcNow;
+            Console.WriteLine(date);
+            date = TimeZoneInfo.ConvertTimeFromUtc(date, TimeZoneInfo.Local);
+            Console.WriteLine(date);
+            
         }
 
     }
