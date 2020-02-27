@@ -1,6 +1,7 @@
 using Ingredients;
 namespace Sandwiches
 {
+    // This is a Concrete Creator
     public class HamSandwich : Sandwich
     {
         public override string Name => "Ham";

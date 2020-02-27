@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Ingredients;
 namespace Sandwiches
 {
+    // This is the Creator class
     public abstract class Sandwich
     {
         private List<Ingredient> _ingredients = new List<Ingredient>();
