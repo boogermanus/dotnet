@@ -8,6 +8,16 @@ namespace FactoryMethodPattern
     {
         static void Main(string[] args)
         {
+            // old and busted
+            // SandwichFactory();
+
+            // new hotness
+            HeroFactory();
+        }
+
+        private static void SandwichFactory()
+        {
+
             List<Sandwich> sandwiches = new List<Sandwich>
             {
                 new SpicyTurkey(),
@@ -21,6 +31,11 @@ namespace FactoryMethodPattern
             });
 
             Console.ReadKey();
+        }
+
+        private static void HeroFactory()
+        {
+
         }
     }
 }
