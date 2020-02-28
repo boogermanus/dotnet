@@ -4,13 +4,22 @@ using System.Text;
 using System.Collections.Generic;
 using FactoryMethodPattern.Powers;
 
-namespace FactoryMethodPattern
+namespace FactoryMethodPattern.Heroes
 {
     public abstract class Hero
     {
         public abstract string Name { get; }
-        public abstract List<PowerBase> Powers { get; }
-        
+
+        protected List<PowerBase> _powers = new List<PowerBase>();
+        public List<PowerBase> Powers => _powers;
+
+        public Hero()
+        {
+            MakeHero();
+        }
+
+        public abstract void MakeHero();
+
         public override string ToString()
         {
             var powers = Powers.Select(p => p.Power);

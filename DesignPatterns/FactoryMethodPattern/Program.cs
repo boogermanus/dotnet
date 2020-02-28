@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sandwiches;
+using FactoryMethodPattern.Heroes;
 
 namespace FactoryMethodPattern
 {
@@ -35,7 +36,15 @@ namespace FactoryMethodPattern
 
         private static void HeroFactory()
         {
+            var justiceLeague = new List<Hero>
+            {
+                new Superman(),
+                new Batman(),
+                new WonderWomen(),
+                new Flash()
+            };
 
+            justiceLeague.ForEach(jlm => Console.WriteLine(jlm));
         }
     }
 }
