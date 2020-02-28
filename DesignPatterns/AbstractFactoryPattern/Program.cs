@@ -6,6 +6,18 @@ namespace AbstractFactoryPattern
     {
         static void Main(string[] args)
         {
+            HeroFactoryDemo();
+            // CuisineFactoryDemo();
+        }
+
+        private static void HeroFactoryDemo()
+        {
+            var batman = new BatmanFactory();
+
+            Console.WriteLine(batman);
+        }
+        private static void CuisineFactoryDemo()
+        {
             Console.WriteLine("Who are you? (A)dult or (C)hild?");
             char input = Console.ReadKey().KeyChar;
             RecipeFactory factory;
