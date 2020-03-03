@@ -12,7 +12,7 @@ namespace AdapterPattern.Adaptee
                 case TemperatureType.Fahrenheit:
                     return GetFahrenheitTemps(meat);
                 case TemperatureType.Celsius:
-                    return GetFahrenheitTemps(meat);
+                    return GetCelsiusTemps(meat);
                 default:
                     throw new Exception("Unknown TemperatureType");
             }

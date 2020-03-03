@@ -12,6 +12,7 @@ namespace AdapterPattern.Adaptor
 
         public override void LoadData()
         {
+            base.LoadData();
             SafeCookTempFahrenheit = _meatDatabase.GetSafeCookTemp(MeatName, TemperatureType.Fahrenheit);
             SafeCookTempCelsius = _meatDatabase.GetSafeCookTemp(MeatName, TemperatureType.Celsius);
             CaloriesPerOunce = _meatDatabase.GetCaloriesPerOunce(MeatName);
