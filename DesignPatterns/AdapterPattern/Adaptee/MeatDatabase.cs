@@ -1,11 +1,11 @@
 using System;
 using AdapterPattern.Constants;
-namespace AdapterPattern
+namespace AdapterPattern.Adaptee
 {
     // the Adaptee
     public class MeatDatabase
     {
-        public static float GetSafeCookTemp(string meat, TemperatureType temperatureType)
+        public float GetSafeCookTemp(string meat, TemperatureType temperatureType)
         {
             switch (temperatureType)
             {
