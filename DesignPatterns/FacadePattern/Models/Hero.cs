@@ -2,8 +2,8 @@ namespace FacadePattern.Models
 {
     public class Hero
     {
-        int Id { get; set; }
-        string Name { get; set; }
+        private int Id { get; set; }
+        public string Name { get; set; }
 
         public Hero(int id, string name)
         {
