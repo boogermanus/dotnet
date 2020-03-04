@@ -11,6 +11,8 @@ namespace FacadePattern.Facades
             new FirstHeroSelector(),
             new SecondHeroSelector(),
             new ThirdHeroSelector(),
+            // easy to add a new Selector
+            new FirstHeroSelector(),
         };
 
         public string GetHeroTeam(HeroConfig config)
