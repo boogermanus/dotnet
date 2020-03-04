@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FacadePattern.Models;
 namespace FacadePattern.Interfaces
 {
@@ -6,7 +5,8 @@ namespace FacadePattern.Interfaces
     {
         Hero GetHero(int heroId);
 
-        // hard to change, will break HeroSelectorBase
+        // sort of easy change, will break HeroSelectorBase
+        // but just needs an override.
         // string SaySomething();
     }
 }
