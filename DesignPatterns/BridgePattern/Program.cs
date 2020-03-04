@@ -18,7 +18,7 @@ namespace BridgePattern
         {
             Announcer announcer = new Flash()
             {
-               Hero = new CentralCity()
+               City = new CentralCity()
             };
 
             announcer.Announce();

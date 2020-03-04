@@ -8,7 +8,7 @@ namespace BridgePattern.RefinedAbstraction
     {
         public override void Announce()
         {
-            Hero.Introduce("Flash");
+            City.Introduce("Flash");
         }
     }
 }

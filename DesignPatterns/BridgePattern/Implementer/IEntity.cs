@@ -1,6 +1,6 @@
 namespace BridgePattern.Implementer
 {
-    public interface IHero
+    public interface IEntity
     {
         void Introduce(string name);
     }

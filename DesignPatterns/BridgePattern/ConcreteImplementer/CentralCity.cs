@@ -3,7 +3,7 @@ using BridgePattern.Implementer;
 
 namespace BridgePattern.ConcreteImplementer
 {
-    public class CentralCity : IHero
+    public class CentralCity : IEntity
     {
         public void Introduce(string name)
         {

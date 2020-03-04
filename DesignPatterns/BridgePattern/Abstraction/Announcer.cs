@@ -4,7 +4,7 @@ namespace BridgePattern.Abstraction
 {
     public abstract class Announcer
     {
-        public IHero Hero;
+        public IEntity City;
 
         public abstract void Announce();
     }
