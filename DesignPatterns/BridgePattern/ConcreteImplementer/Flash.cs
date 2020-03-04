@@ -4,11 +4,11 @@ using BridgePattern.Implementer;
 
 namespace BridgePattern.RefinedAbstraction
 {
-    public class Flash : Announcer
+    public class Flash : IEntity
     {
-        public override void Announce()
+        public void Introduce(string cityText)
         {
-            City.Introduce("Flash");
+            Console.WriteLine($"{cityText} Flash");
         }
     }
 }
