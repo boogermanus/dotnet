@@ -19,6 +19,15 @@ namespace BridgePattern
             Announcer announcer = new CentralCity()
             {
                Hero = new Flash()
+               // no side kick, no problem
+            };
+
+            announcer.Announce();
+
+            announcer = new GothamCity()
+            {
+                Hero = new Batman(),
+                SideKick = new Robin(),
             };
 
             announcer.Announce();
