@@ -9,6 +9,23 @@ namespace BridgePattern
     {
         static void Main(string[] args)
         {
+            // Food();
+
+            Hero();
+        }
+
+        static void Hero()
+        {
+            Announcer announcer = new Flash()
+            {
+               Hero = new CentralCity()
+            };
+
+            announcer.Announce();
+        }
+
+        static void Food()
+        {
             SendOrder order = new SendDairyFreeOrder()
             {
                 Restaurant = new DinerOrders()
