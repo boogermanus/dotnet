@@ -8,6 +8,9 @@ namespace AdapterPattern.Target
         public string Name;
         public string City;
         public int Age;
+        // can easily add a field
+        // without breaking anything
+        public string[] Powers;
 
         public HeroBase(string hero)
         {
