@@ -1,7 +1,10 @@
-using System.Linq;
 using System.Collections.Generic;
-using IteratorPattern.Interfaces;
-namespace IteratorPattern.Models
+using IteratorPattern.Aggragates;
+using IteratorPattern.Iterators;
+using IteratorPattern.ConcreteIterators;
+using IteratorPattern.Models;
+
+namespace IteratorPattern.ConcreteAggregates
 {
     // the Concrete Aggregate
     public class CandyCollection : ICandyCollection

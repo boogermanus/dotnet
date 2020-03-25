@@ -1,6 +1,6 @@
 using IteratorPattern.Models;
 
-namespace IteratorPattern.Interfaces
+namespace IteratorPattern.Iterators
 {
     // the Iterator
     public interface IJellyBeanIterator

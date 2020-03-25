@@ -1,6 +1,8 @@
-using IteratorPattern.Interfaces;
+using IteratorPattern.Iterators;
+using IteratorPattern.Models;
+using IteratorPattern.ConcreteAggregates;
 
-namespace IteratorPattern.Models
+namespace IteratorPattern.ConcreteIterators
 {
     // the ConcreteIterator
     public class JellyBeanIterator : IJellyBeanIterator

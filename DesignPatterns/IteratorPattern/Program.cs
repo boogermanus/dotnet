@@ -1,6 +1,8 @@
 ﻿using System;
 using IteratorPattern.Models;
-using IteratorPattern.Interfaces;
+using IteratorPattern.Iterators;
+using IteratorPattern.ConcreteAggregates;
+
 namespace IteratorPattern
 {
     class Program
