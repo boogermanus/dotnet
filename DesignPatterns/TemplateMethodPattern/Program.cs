@@ -7,9 +7,16 @@ namespace TemplateMethodPattern
     {
         static void Main(string[] args)
         {
-            MakeBread();
+            // MakeBread();
+            MakeHeroes();
         }
 
+        static void MakeHeroes()
+        {
+            var superman = new Superman();
+            superman.MakeHero();
+            superman.Introduce();
+        }
         static void MakeBread()
         {
             Sourdough sourdough = new Sourdough();
@@ -19,7 +26,6 @@ namespace TemplateMethodPattern
             WholeWheat wholeWheat = new WholeWheat();
             wholeWheat.Make();
             Console.ReadKey();
-
         }
     }
 }
