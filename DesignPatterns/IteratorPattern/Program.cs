@@ -10,6 +10,8 @@ namespace IteratorPattern
         static void Main(string[] args)
         {
             JellyBeans();
+            Console.WriteLine();
+            Entities();
         }
 
         static void JellyBeans()
@@ -34,6 +36,24 @@ namespace IteratorPattern
                 Console.WriteLine(item.Flavor);
             }
             Console.ReadKey();
+        }
+
+        static void Entities()
+        {
+            EntityCollection collection = new EntityCollection();
+            collection.Add(new Person("Lex Luthor"));
+            collection.Add(new Hero("Batman"));
+            collection.Add(new Hero("Superman"));
+            collection.Add(new Hero("Flash"));
+            collection.Add(new Person("Linda Park-West"));
+
+            IEntityIterator iterator = collection.CreateIterator();
+            var entity = iterator.First();
+            while(!iterator.IsDone)
+            {
+                Console.WriteLine(entity.Name);
+                entity = iterator.Next();
+            }
         }
     }
 }
