@@ -22,7 +22,7 @@ namespace ObserverPattern.Subject
             if (!_observers.Contains(observer))
                 _observers.Add(observer);
 
-            return this;
+            return new Unsubscriber(_observers, observer);
         }
 
         public IDisposable Unsubscribe(IObserver<Hero> observer)

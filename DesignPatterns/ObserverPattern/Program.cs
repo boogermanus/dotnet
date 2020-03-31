@@ -42,9 +42,18 @@ namespace ObserverPattern
 
             tracker.AddHero(new Hero("Flash", "ZOOM"));
 
+            // one way to unsubscribe
             tracker.Unsubscribe(jimmyOleson);
 
+            // another subscription example
+            var perryWhite = new HeroBattleViewer("Perry White");
+            perryWhite.Subscribe(tracker);
+
             tracker.AddHero(null);
+
+            perryWhite.Unsubscribe();
+
+            tracker.AddHero(new Hero("Green Lantern", "GREEN"));
 
             tracker.Dispose();
             Console.ReadKey();

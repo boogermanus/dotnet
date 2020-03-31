@@ -6,7 +6,7 @@ namespace ObserverPattern.ConcreteObserver
     public class HeroBattleViewer : IObserver<Hero>
     {
         private string _name;
-
+        private IDisposable _unsubscriber;
         public HeroBattleViewer(string name)
         {
             _name = name;
@@ -25,6 +25,17 @@ namespace ObserverPattern.ConcreteObserver
         public void OnNext(Hero value)
         {
             Console.WriteLine($"{_name}: {value}");
+        }
+
+        public void Subscribe(IObservable<Hero> provider)
+        {
+            if(provider != null)
+                _unsubscriber = provider.Subscribe(this);
+        }
+
+        public void Unsubscribe()
+        {
+            _unsubscriber.Dispose();
         }
     }
 }
