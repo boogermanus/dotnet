@@ -6,7 +6,7 @@ namespace ObserverPattern.Subject
     public abstract class Veggies
     {
         private double _pricePerPound;
-        public double pricePerPound
+        public double PricePerPound
         {
             get => _pricePerPound;
             set
@@ -18,8 +18,8 @@ namespace ObserverPattern.Subject
                 }
             }
         }
-        
-        private List<IRestaurant> _restaurants;
+
+        private List<IRestaurant> _restaurants = new List<IRestaurant>();
 
         public Veggies(double pricePerPound)
         {
