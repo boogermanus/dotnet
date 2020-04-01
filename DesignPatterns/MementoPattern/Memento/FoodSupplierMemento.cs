@@ -4,15 +4,15 @@ namespace MementoPattern.Memento
 {
     public class FoodSupplierMemento
     {
-        private FoodSupplier _foodSupplier;
-        
-        public string Name => _foodSupplier.Name;
-        public string Phone => _foodSupplier.Phone;
-        public string Address => _foodSupplier.Address;
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
 
         public FoodSupplierMemento(FoodSupplier supplier)
         {
-            _foodSupplier = supplier;
+            Name = supplier.Name;
+            Phone = supplier.Phone;
+            Address = supplier.Address;
         }
     }
 }

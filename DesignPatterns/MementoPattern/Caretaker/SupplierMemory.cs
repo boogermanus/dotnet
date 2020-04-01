@@ -4,6 +4,11 @@ namespace MementoPattern.Caretaker
 {
     public class SupplierMemory
     {
-        private FoodSupplierMemento FoodSupplierMemento { get; set; }
+        public FoodSupplierMemento FoodSupplierMemento { get; set; }
+
+        public SupplierMemory(FoodSupplierMemento memento)
+        {
+            FoodSupplierMemento = memento;
+        }
     }
 }
