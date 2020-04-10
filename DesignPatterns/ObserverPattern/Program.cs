@@ -51,11 +51,13 @@ namespace ObserverPattern
 
             tracker.AddHero(null);
 
+            //another way to unsubscribe
             perryWhite.Unsubscribe();
 
             tracker.AddHero(new Hero("Green Lantern", "GREEN"));
 
             tracker.Dispose();
+            
             Console.ReadKey();
         }
     }
