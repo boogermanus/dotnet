@@ -13,7 +13,7 @@ namespace MementoPattern.Originator
             set
             {
                 _name = value;
-                Console.WriteLine($"Name: {_name}");
+                Console.WriteLine($"Set {nameof(Name)}: {_name}");
             }
         }
 
@@ -23,7 +23,7 @@ namespace MementoPattern.Originator
             set
             {
                 _phone = value;
-                Console.WriteLine($"Phone: {_phone}");
+                Console.WriteLine($"Set {nameof(Phone)}: {_phone}");
             }
         }
 
@@ -34,7 +34,7 @@ namespace MementoPattern.Originator
             set 
             {
                 _address = value;
-                Console.WriteLine($"Address: {_address}");
+                Console.WriteLine($"Set {nameof(Address)}: {_address}");
             }
         }
 
@@ -51,6 +51,7 @@ namespace MementoPattern.Originator
 
         public void RestoreMemento(FoodSupplierMemento memento)
         {
+            Console.WriteLine($"Resotring state for: {memento.Name}");
             this.Name = memento.Name;
             this.Address = memento.Address;
             this.Phone = memento.Phone;
