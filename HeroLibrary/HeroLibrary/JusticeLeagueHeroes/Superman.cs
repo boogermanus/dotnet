@@ -6,7 +6,7 @@ namespace HeroLibrary.JusticeLeagueHeros
     {
         public override void ImagineHero()
         {
-            Name = "Superman";
+            Name = nameof(Superman);
             City = JusticeLeagueConstants.CITY_METROPOLIS;
             Alias = JusticeLeagueConstants.ALIAS_SUPERMAN;
         }
