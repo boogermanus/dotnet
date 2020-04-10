@@ -13,5 +13,21 @@ namespace HeroLibrary.Tests.JusticeLeagueHeroesTest
 
             Assert.That(superman.Name, Is.EqualTo(nameof(Superman)));
         }
+
+        [Test]
+        public void SupermanHasCityMetropolis()
+        {
+            var superman = new Superman();
+
+            Assert.That(superman.City, Is.EqualTo(JusticeLeagueConstants.CITY_METROPOLIS));
+        }
+
+        [Test]
+        public void SupermanHasAliasClarkKent()
+        {
+            var superman = new Superman();
+
+            Assert.That(superman.Alias, Is.EqualTo(JusticeLeagueConstants.ALIAS_SUPERMAN));
+        }
     }
 }
