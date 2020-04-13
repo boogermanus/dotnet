@@ -8,7 +8,8 @@ namespace MementoPattern
     {
         static void Main(string[] args)
         {
-           Food();
+           // Food();
+           Hero();
         }
 
         static void Food()
@@ -26,6 +27,28 @@ namespace MementoPattern
             supplier.RestoreMemento(memory.FoodSupplierMemento);
 
             Console.ReadKey();
+        }
+
+        static void Hero()
+        {
+            var hero = new Hero
+            {
+                Name = "Batman",
+                Location = "Gotham City",
+                Mission = "Catch the Joker"
+            };
+
+            Console.WriteLine(hero);
+
+            HeroMemory memory = new HeroMemory(hero.SaveHero());
+
+            hero.Mission = "Investigate a Robbery";
+
+            Console.WriteLine(hero);
+
+            hero = hero.RestoreHero(memory.HeroMemento);
+
+            Console.WriteLine(hero);
         }
     }
 }
