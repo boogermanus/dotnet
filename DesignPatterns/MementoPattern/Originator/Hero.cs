@@ -8,14 +8,14 @@ namespace MementoPattern.Originator
     {
         private Dictionary<string, object> _data = new Dictionary<string, object>
         {
-            {"Name", null},
-            {"Mission", null},
-            {"Location", null}
+            {nameof(Name), null},
+            {nameof(Mission), null},
+            {nameof(Location), null}
         };
 
         public Dictionary<string, object> Data => _data;
 
-        public object this[string key]
+        private object this[string key]
         {
             get => _data[key];
             set => _data[key] = value;
