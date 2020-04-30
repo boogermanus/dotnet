@@ -9,6 +9,7 @@ namespace PrototypePattern
         static void Main(string[] args)
         {
             Sandwhiches();
+            Heroes();
         }
 
         static void Sandwhiches()
@@ -26,8 +27,19 @@ namespace PrototypePattern
             {
                 Console.WriteLine(e);
             }
-            Console.ReadLine();
+            Console.ReadKey();
 
+        }
+
+        static void Heroes()
+        {
+            var justiceLeague = new JusticeLeague();
+
+            var batman = justiceLeague["batman"].Clone();
+            var flash = justiceLeague["FLash"].Clone();
+            var superman = justiceLeague["SUPERMAN"].Clone();
+
+            Console.ReadKey();
         }
     }
 }
