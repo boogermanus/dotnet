@@ -18,6 +18,14 @@ namespace PrototypePattern
             Sandwich sandwich2 = sandwichMenu["ThreeMeatCombo"].Clone() as Sandwich;
             Sandwich sandwich3 = sandwichMenu["Vegetarian"].Clone() as Sandwich;
 
+            try
+            {
+                var noSandwich = sandwichMenu["TEST"].Clone() as Sandwich;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
             Console.ReadLine();
 
         }
