@@ -35,9 +35,9 @@ namespace PrototypePattern
         {
             var justiceLeague = new JusticeLeague();
 
-            var batman = justiceLeague["batman"].Clone();
-            var flash = justiceLeague["FLash"].Clone();
-            var superman = justiceLeague["SUPERMAN"].Clone();
+            var batman = justiceLeague["batman"].Clone() as Hero;
+            var flash = justiceLeague["FLash"].Clone() as Hero;
+            var superman = justiceLeague["SUPERMAN"].Clone() as Hero;
 
             Console.ReadKey();
         }
