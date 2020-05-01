@@ -6,7 +6,8 @@ namespace SingletonPattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            TheBell.Instance.Ring();
+            TheBell.Instance.Ring();
         }
     }
 }
