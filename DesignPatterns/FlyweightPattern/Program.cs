@@ -20,13 +20,11 @@ namespace FlyweightPattern
             var order = Console.ReadLine();
             char[] chars = order.ToCharArray();
             SliderFactory factory = new SliderFactory();
-            int orderTotal = 0;
             //Get the slider from the factory
             foreach (char c in chars)
             {
-                orderTotal++;
                 Slider character = factory.GetSlider(c);
-                character.Display(orderTotal);
+                Console.WriteLine(character);
             }
             Console.ReadKey();
         }

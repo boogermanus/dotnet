@@ -14,16 +14,12 @@ namespace FlyweightPattern.Flyweight
         protected string Cheese;
         protected string Toppings;
         protected decimal Price;
+        public int OrderId;
 
-        public void Display(int orderTotal)
+        public override string ToString()
         {
-            Console.WriteLine(GetDisplayString(orderTotal));
-        }
-
-        private string GetDisplayString(int total) 
-        {
-            return new StringBuilder()
-                .AppendLine($"{SLIDER_NUMBER}{total}: ")
+                return new StringBuilder()
+                .AppendLine($"{SLIDER_NUMBER}{OrderId}: ")
                 .AppendLine($"{Name}${TOPPED_WITH}")
                 .AppendLine($"{Cheese}{CHEESE_WITH}")
                 .AppendLine($"{Toppings}! ${Price}")

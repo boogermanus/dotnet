@@ -10,7 +10,7 @@ namespace FlyweightPattern.FlyweightFactory
         private const string BACON = "B";
         private const string VEGGIE = "V";
         private const string BBQ = "Q";
-
+        private int orderId;
         private Dictionary<char, Slider> _sliders = new Dictionary<char, Slider>();
 
         public Slider GetSlider(char key)
@@ -26,6 +26,7 @@ namespace FlyweightPattern.FlyweightFactory
                     default: throw new Exception($"key: {key} not found");
                 }
             
+            slider.OrderId = ++orderId;
             return slider;
         }
     }
