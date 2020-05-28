@@ -14,7 +14,7 @@ namespace BuilderPattern.Product
             .AppendLine($"I'm {Name}!")
             .AppendLine($"My real name is: {Alias}")
             .Append("My Powers include: ")
-            .AppendJoin(',', Powers)
+            .AppendJoin(", ", Powers)
             .AppendLine()
             .ToString();
         }

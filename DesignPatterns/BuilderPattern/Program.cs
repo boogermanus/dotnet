@@ -1,4 +1,7 @@
 ﻿using System;
+using BuilderPattern.Builder;
+using BuilderPattern.ConcreteBuilder;
+using BuilderPattern.Director;
 
 namespace BuilderPattern
 {
@@ -6,7 +9,20 @@ namespace BuilderPattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            AvengerBuilder builder;
+            Avengers avengers = new Avengers();
+
+            builder = new CaptainAmerica();
+            avengers.Assemble(builder);
+
+            Console.Write(builder.Avenger.ToString());
+
+            builder = new BlackWidow();
+            avengers.Assemble(builder);
+
+            Console.Write(builder.Avenger.ToString());
+
+            Console.ReadKey();
         }
     }
 }
