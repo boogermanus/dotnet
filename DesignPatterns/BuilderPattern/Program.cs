@@ -22,6 +22,8 @@ namespace BuilderPattern
 
             Console.Write(builder.Avenger.ToString());
 
+            avengers.Assemble(new [] { (AvengerBuilder)new CaptainAmerica(), (AvengerBuilder)new BlackWidow()});
+
             Console.ReadKey();
         }
     }
