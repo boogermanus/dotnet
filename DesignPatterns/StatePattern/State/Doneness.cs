@@ -22,5 +22,19 @@ namespace StatePattern.State
             set => currentTemp = value;
         }
 
+        public void AddTemp(double temp)
+        {
+            currentTemp += temp;
+            DonenessCheck();
+        }
+
+        public void RemoveTemp(double temp)
+        {
+            currentTemp -= temp;
+            DonenessCheck();
+        }
+        
+        public abstract void DonenessCheck();
+
     }
 }

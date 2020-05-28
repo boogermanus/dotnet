@@ -11,5 +11,7 @@ namespace StatePattern.Context
         {
             _beefCut = beefCut;
         }
+
+        public Doneness State { get; set; }
     }
 }
