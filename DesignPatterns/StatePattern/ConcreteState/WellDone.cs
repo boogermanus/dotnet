@@ -2,25 +2,26 @@ using StatePattern.State;
 
 namespace StatePattern.ConcreteState
 {
-    public class Rare : Doneness
+    public class WellDone : Doneness
     {
-        public Rare(Doneness state)
+        public WellDone(Doneness state)
         {
             currentTemp = state.CurrentTemp;
             steak = state.Steak;
-            lowerTemp = 130;
-            upperTemp = 139.9999;
-            canEat = true;
+            lowerTemp = 170;
+            upperTemp = 230;
+            canEat = false;
         }
-
         public override void DonenessCheck()
         {
-            if(currentTemp < lowerTemp)
+            if(currentTemp <= 0)
                 steak.State = new Uncooked(this);
             
+            if(currentTemp < lowerTemp)
+                steak.State = new Medium(this);
+
             if(currentTemp > upperTemp)
-                steak.State = new MediumRare(this);
-            
+                canEat = false;
         }
     }
 }
