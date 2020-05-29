@@ -11,6 +11,8 @@ namespace StatePattern.ConcreteState
         {
             if (HitPoints >= HealthConstants.Excellent)
                 Hero.Health = new Excellent(Hero.Health.HitPoints);
+            if(HitPoints >= HealthConstants.Excellent)
+                ;// Hero.Health = new Good();
 
         }
     }
