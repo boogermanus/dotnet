@@ -25,6 +25,7 @@ namespace StatePattern.Context
                 .AppendLine($"Increased temperature by {amount} degrees")
                 .AppendLine($"Current Temp is {State.CurrentTemp}")
                 .AppendLine($"Status is {State.GetType().Name}")
+                .AppendLine($"Should eat? {ShouldEat(State.CanEat)}")
                 .ToString();
             Console.WriteLine(status);
         }
@@ -36,8 +37,14 @@ namespace StatePattern.Context
                 .AppendLine($"Decreased temperature by {amount} degrees")
                 .AppendLine($"Current Temp is {State.CurrentTemp}")
                 .AppendLine($"Status is {State.GetType().Name}")
+                .AppendLine($"Should eat? {ShouldEat(State.CanEat)}")
                 .ToString();
             Console.WriteLine(status);
+        }
+
+        private string ShouldEat(bool value)
+        {
+            return value ? "Yes!" : "No!";
         }
     }
 }

@@ -8,7 +8,8 @@ namespace StatePattern.State
         protected double currentTemp;
         protected double lowerTemp;
         protected double upperTemp;
-        protected bool canEat;
+
+        public bool CanEat { get; set; }
 
         public Steak Steak
         {
@@ -33,7 +34,7 @@ namespace StatePattern.State
             currentTemp -= temp;
             DonenessCheck();
         }
-        
+
         public abstract void DonenessCheck();
 
     }

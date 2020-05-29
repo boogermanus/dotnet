@@ -11,7 +11,7 @@ namespace StatePattern.ConcreteState
             currentTemp = 0;
             lowerTemp = 0;
             upperTemp = 130;
-            canEat = false;
+            CanEat = false;
         }
 
         public Uncooked(Doneness state)
@@ -20,7 +20,7 @@ namespace StatePattern.ConcreteState
             Steak = state.Steak;
             lowerTemp = 0;
             upperTemp = 130;
-            canEat = false;
+            CanEat = false;
         }
 
         public override void DonenessCheck()

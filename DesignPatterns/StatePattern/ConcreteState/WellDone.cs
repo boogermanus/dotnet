@@ -10,7 +10,7 @@ namespace StatePattern.ConcreteState
             steak = state.Steak;
             lowerTemp = 170;
             upperTemp = 230;
-            canEat = false;
+            CanEat = false;
         }
         public override void DonenessCheck()
         {
@@ -21,7 +21,7 @@ namespace StatePattern.ConcreteState
                 steak.State = new Medium(this);
 
             if(currentTemp > upperTemp)
-                canEat = false;
+                CanEat = false;
         }
     }
 }

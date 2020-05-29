@@ -10,7 +10,7 @@ namespace StatePattern.ConcreteState
             steak = state.Steak;
             lowerTemp = 155;
             upperTemp = 169.9999;
-            canEat = true;
+            CanEat = true;
         }
         public override void DonenessCheck()
         {
