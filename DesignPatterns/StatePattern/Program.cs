@@ -1,5 +1,7 @@
 ﻿using System;
+using StatePattern.AbstractContext;
 using StatePattern.Context;
+using StatePattern.State;
 
 namespace StatePattern
 {
@@ -7,7 +9,8 @@ namespace StatePattern
     {
         static void Main(string[] args)
         {
-            Steak();
+            // Steak();
+            Fight();
         }
 
         static void Steak()
@@ -25,6 +28,14 @@ namespace StatePattern
             account.AddTemp(20);
             Console.ReadKey();
 
+        }
+
+        static void Fight()
+        {
+            Hero superman = new Superman();
+
+            superman.Attack(superman);
+            superman.Attack(superman);
         }
     }
 }

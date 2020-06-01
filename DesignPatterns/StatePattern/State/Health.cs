@@ -1,3 +1,4 @@
+using System.Text;
 using StatePattern.AbstractContext;
 
 namespace StatePattern.State
@@ -20,11 +21,13 @@ namespace StatePattern.State
         public void TakeDamage(int damage)
         {
             HitPoints -= damage;
+            CheckHealth();
         }
 
         public void Heal(int amount)
         {
             HitPoints -= amount;
+            CheckHealth();
         }
 
         public abstract void CheckHealth();
