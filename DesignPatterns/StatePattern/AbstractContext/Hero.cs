@@ -20,9 +20,9 @@ namespace StatePattern.AbstractContext
         {
             hero.Health.TakeDamage(AttackPower);
             var status = new StringBuilder()
-                .AppendLine($"{Name} is attacked by {hero.Name} and takes {AttackPower} damage")
-                .AppendLine($"Current Health is {Health.HitPoints}")
-                .AppendLine($"Health Status is {Health.GetType().Name}")
+                .AppendLine($"{Name} attacks {hero.Name} and deals {AttackPower} damage")
+                .AppendLine($"Current Health is {hero.Health.HitPoints}")
+                .AppendLine($"Health Status is {hero.Health.GetType().Name}")
                 .ToString();
             Console.WriteLine(status);
         }

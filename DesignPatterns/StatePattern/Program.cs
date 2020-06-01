@@ -33,9 +33,17 @@ namespace StatePattern
         static void Fight()
         {
             Hero superman = new Superman();
+            Hero darkseid = new Darkseid();
 
-            superman.Attack(superman);
-            superman.Attack(superman);
+            superman.Attack(darkseid);
+            darkseid.Attack(superman);
+            superman.Attack(darkseid);
+            darkseid.Attack(superman);
+            darkseid.Attack(superman);
+            superman.Heal();
+            superman.Heal();
+            superman.Attack(darkseid);
+            superman.Attack(darkseid);
         }
     }
 }

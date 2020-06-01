@@ -5,11 +5,11 @@ namespace StatePattern.ConcreteState
 {
     public class Dead : Health
     {
-        public Dead(int hitPoints) : base(hitPoints) {}
+        public Dead(Health health) : base(health) {}
 
         public override void CheckHealth()
         {
-           Hero.Health = new Dead(Hero.Health.HitPoints);
+           Hero.Health = new Dead(Hero.Health);
         }
     }
 }

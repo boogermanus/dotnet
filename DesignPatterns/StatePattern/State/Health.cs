@@ -16,6 +16,7 @@ namespace StatePattern.State
         public Health(Health health)
         {
             HitPoints = health.HitPoints;
+            Hero = health.Hero;
         }
 
         public void TakeDamage(int damage)
@@ -26,7 +27,7 @@ namespace StatePattern.State
 
         public void Heal(int amount)
         {
-            HitPoints -= amount;
+            HitPoints += amount;
             CheckHealth();
         }
 
