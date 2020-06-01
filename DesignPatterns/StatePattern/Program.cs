@@ -44,6 +44,7 @@ namespace StatePattern
             superman.Heal();
             superman.Attack(darkseid);
             superman.Attack(darkseid);
+            darkseid.Heal();
         }
     }
 }
