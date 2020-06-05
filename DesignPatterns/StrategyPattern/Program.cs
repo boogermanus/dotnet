@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using StrategyPattern.ConcreteStrategy;
 using StrategyPattern.Context;
 
@@ -8,7 +9,8 @@ namespace StrategyPattern
     {
         static void Main(string[] args)
         {
-            Cook();
+            // Cook();
+            Transform();
         }
 
         static void Cook()
@@ -40,6 +42,20 @@ namespace StrategyPattern
                     break;
             }
             Console.ReadKey();
+        }
+
+        static void Transform()
+        {
+            var list = new List<int> { 1, 2, 3, 4, 5 };
+
+            var method = new TransformMethod();
+            method.SetStrategy(new DoubleTransform());
+            method.SetList(list);
+            Console.WriteLine(string.Join(", ", method.Transform()));
+
+            method.SetStrategy(new PowerTransform(2));
+            method.SetList(list);
+            Console.WriteLine(string.Join(", ", method.Transform()));
         }
     }
 }
