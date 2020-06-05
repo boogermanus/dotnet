@@ -2,7 +2,7 @@ using System;
 using FacadePattern.Interfaces;
 using FacadePattern.Models;
 
-namespace FacadePattern.Services
+namespace FacadePattern.Subsystem
 {
     public abstract class HeroSelectorBase : IHeroSelector
     {

@@ -1,4 +1,4 @@
-namespace FacadePattern.Services
+namespace FacadePattern.Subsystem
 {
     public class FirstHeroSelector: HeroSelectorBase
     {

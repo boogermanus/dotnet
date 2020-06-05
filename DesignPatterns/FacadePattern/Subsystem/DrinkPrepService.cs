@@ -1,6 +1,6 @@
 using FacadePattern.Models;
 
-namespace FacadePattern.Services
+namespace FacadePattern.Subsystem
 {
     public class DrinkPrepService : KitchenServiceBase
     {
