@@ -1,9 +1,9 @@
 namespace ProxyPattern.Subject
 {
-    public interface ISever
+    public interface IServer
     {
         void TakeOrder(string order);
-        string DeliveryOrder();
+        string DeliverOrder();
         void ProcessPayment(string payment);
     }
 }
