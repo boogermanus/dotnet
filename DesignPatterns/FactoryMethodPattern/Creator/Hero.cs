@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
-using FactoryMethodPattern.Powers;
+using FactoryMethodPattern.Product;
 
-namespace FactoryMethodPattern.Heroes
+namespace FactoryMethodPattern.ConcreteCreator
 {
     public abstract class Hero
     {

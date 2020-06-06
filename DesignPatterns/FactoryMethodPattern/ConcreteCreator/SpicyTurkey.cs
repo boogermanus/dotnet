@@ -1,5 +1,8 @@
-using Ingredients;
-namespace Sandwiches
+
+using FactoryMethodPattern.ConcreteProduct;
+using FactoryMethodPattern.Creator;
+
+namespace FactoryMethodPattern.ConcreteCreator
 {
     public class SpicyTurkey : Sandwich
     {

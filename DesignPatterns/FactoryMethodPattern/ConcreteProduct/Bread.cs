@@ -1,4 +1,6 @@
-namespace Ingredients
+using FactoryMethodPattern.Product;
+
+namespace FactoryMethodPattern.ConcreteProduct
 {
     // This is a Concrete Product
     public class Bread : Ingredient

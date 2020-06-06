@@ -1,4 +1,4 @@
-namespace Ingredients
+namespace FactoryMethodPattern.Product
 {
     // This is the Product class. 
     public abstract class Ingredient

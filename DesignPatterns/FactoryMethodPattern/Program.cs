@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sandwiches;
-using FactoryMethodPattern.Heroes;
+using FactoryMethodPattern.ConcreteCreator;
+using FactoryMethodPattern.Creator;
 
 namespace FactoryMethodPattern
 {

@@ -1,4 +1,4 @@
-namespace FactoryMethodPattern.Powers
+namespace FactoryMethodPattern.Product
 {
     public class HeatVision : PowerBase
     {

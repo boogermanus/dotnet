@@ -1,5 +1,5 @@
-using FactoryMethodPattern.Powers;
-namespace FactoryMethodPattern.Heroes
+using FactoryMethodPattern.Product;
+namespace FactoryMethodPattern.ConcreteCreator
 {
     public class Superman : Hero
     {

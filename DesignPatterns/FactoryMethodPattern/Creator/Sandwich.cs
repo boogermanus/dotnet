@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using Ingredients;
-namespace Sandwiches
+using FactoryMethodPattern.Product;
+
+namespace FactoryMethodPattern.Creator
 {
     // This is the Creator class
     public abstract class Sandwich
