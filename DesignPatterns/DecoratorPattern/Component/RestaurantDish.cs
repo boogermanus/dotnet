@@ -10,6 +10,7 @@ namespace DecoratorPattern.Component
 
         private Dictionary<string, string> _ingredients;
 
+        public RestaurantDish() {}
         public RestaurantDish(string name, Dictionary<string, string> ingredients)
         {
             _name = name;
