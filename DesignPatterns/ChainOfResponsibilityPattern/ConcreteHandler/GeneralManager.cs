@@ -6,16 +6,18 @@ namespace ChainOfResponsibilityPattern.ConcreteHandler
 {
     public class GeneralManager : Approver
     {
-        private static readonly decimal MaxPrice = 10000;
+        private static readonly decimal MaxTotal = 10000;
 
-        public GeneralManager(Approver approver) : base(approver) {}
-        
+        public GeneralManager(Approver approver) : base(approver) { }
+
         public override void ProcessRequest(PurchaseOrder purchaseOrder)
         {
-            if(purchaseOrder.Price < MaxPrice)
+            if (purchaseOrder.Total < MaxTotal)
                 purchaseOrder.Approver = this;
-
-            throw new Exception($"Purchase request {purchaseOrder.Id} requires an excutive meeting!");
+            else
+            {
+                throw new Exception($"Purchase request {purchaseOrder.Id} for {purchaseOrder.Name} requires an excutive meeting!");
+            }
         }
     }
 }

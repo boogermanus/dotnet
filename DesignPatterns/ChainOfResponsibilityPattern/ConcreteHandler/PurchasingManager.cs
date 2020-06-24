@@ -5,14 +5,17 @@ namespace ChainOfResponsibilityPattern.ConcreteHandler
 {
     public class PurchasingManager : Approver
     {
-        private static readonly decimal MaxPrice = 2500;
+        private static readonly decimal MaxTotal = 2500;
 
         public PurchasingManager(Approver approver) : base(approver) {}
         
         public override void ProcessRequest(PurchaseOrder purchaseOrder)
         {
-            if(purchaseOrder.Price < MaxPrice)
+            if(purchaseOrder.Total < MaxTotal)
+            {
                 purchaseOrder.Approver = this;
+                return;
+            }
 
             if(Supervisor != null)
                 Supervisor.ProcessRequest(purchaseOrder);

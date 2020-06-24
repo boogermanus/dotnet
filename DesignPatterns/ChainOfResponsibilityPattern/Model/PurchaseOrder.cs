@@ -35,7 +35,7 @@ namespace ChainOfResponsibilityPattern.Model
             return new StringBuilder()
                 .AppendLine($"Purchase request for: {_name}")
                 .AppendLine($" ({_amount} * {_price}) = {_total}")
-                .AppendLine($"has been submitted with {_id}")
+                .AppendLine($"has been submitted with Id {_id}")
                 .AppendLine($"Approved by: {ApprovedBy}")
                 .ToString();
         }
