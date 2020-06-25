@@ -48,24 +48,24 @@ namespace ChainOfResponsibilityPattern
 
         static void Hero()
         {
-            var gothamCity = new GothamCity();
+            var client = new GothamCity();
 
             var poisonIvy = new PoisonIvy();
-            gothamCity.HandleVillain(poisonIvy);
+            client.HandleVillain(poisonIvy);
             Console.WriteLine(poisonIvy);
 
             var clayface = new Clayface();
-            gothamCity.HandleVillain(clayface);
+            client.HandleVillain(clayface);
             Console.WriteLine(clayface);
 
             var joker = new Joker();
-            gothamCity.HandleVillain(joker);
+            client.HandleVillain(joker);
             Console.WriteLine(joker);
 
             try
             {
                 var bane = new Bane();
-                gothamCity.HandleVillain(bane);
+                client.HandleVillain(bane);
             }
             catch (Exception e)
             {
