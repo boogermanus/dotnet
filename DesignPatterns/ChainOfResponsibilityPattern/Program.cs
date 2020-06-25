@@ -1,7 +1,9 @@
 ﻿using System;
+using ChainOfResponsibilityPattern.Client;
 using ChainOfResponsibilityPattern.ConcreteHandler;
 using ChainOfResponsibilityPattern.Handler;
 using ChainOfResponsibilityPattern.Model;
+using ChainOfResponsibilityPattern.Model.Villain;
 
 namespace ChainOfResponsibilityPattern
 {
@@ -9,7 +11,8 @@ namespace ChainOfResponsibilityPattern
     {
         static void Main(string[] args)
         {
-            Client();
+            // Client();
+            Hero();
         }
 
         static void Client()
@@ -36,10 +39,37 @@ namespace ChainOfResponsibilityPattern
             {
                 betsy.ProcessRequest(po4);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.WriteLine(po4);
+            }
+        }
+
+        static void Hero()
+        {
+            var gothamCity = new GothamCity();
+
+            var poisonIvy = new PoisonIvy();
+            gothamCity.HandleVillain(poisonIvy);
+            Console.WriteLine(poisonIvy);
+
+            var clayface = new Clayface();
+            gothamCity.HandleVillain(clayface);
+            Console.WriteLine(clayface);
+
+            var joker = new Joker();
+            gothamCity.HandleVillain(joker);
+            Console.WriteLine(joker);
+
+            try
+            {
+                var bane = new Bane();
+                gothamCity.HandleVillain(bane);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }
