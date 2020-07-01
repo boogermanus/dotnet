@@ -8,7 +8,8 @@ namespace VisitorPattern
     {
         static void Main(string[] args)
         {
-            Employees();
+            // Employees();
+            Earth();
         }
 
         static void Employees()
@@ -24,6 +25,18 @@ namespace VisitorPattern
             employees.Detach(gm);
 
             employees.Accept(new PaidTimeOffVisitor());
+        }
+
+        static void Earth() 
+        {
+            var earth = new Earth();
+
+            earth.Accept(new PopulationControl());
+            earth.Accept(new Virus());
+            earth.Accept(new Aliens());
+            earth.Accept(new Asteroid());
+
+            Console.WriteLine(earth);
         }
     }
 }
