@@ -13,7 +13,7 @@ namespace VisitorPattern.ObjectStructure
             if (visitor is PopulationControl)
             {
                 visitor.Visit(this);
-                _log.Add($"{Name} doesn't accept {visitor.GetType().Name} - Population {Population}");
+                _log.Add($"{Name} doesn't accept {visitor.GetType().Name} - Population {Population:n}");
             }
             else
             {

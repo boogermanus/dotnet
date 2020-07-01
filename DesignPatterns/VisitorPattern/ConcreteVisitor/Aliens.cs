@@ -12,7 +12,7 @@ namespace VisitorPattern.ConcreteVisitor
 
             var planet = element as Planet;
 
-            planet.Population -= (long)(random.Next(100, 1001));
+            planet.Population -= (long)(random.Next(1000, 1000000));
         }
     }
 }
