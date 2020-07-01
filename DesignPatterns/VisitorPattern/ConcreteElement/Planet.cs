@@ -19,7 +19,7 @@ namespace VisitorPattern.ConcreteElement
         public override void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
-            _log.Add($"{Name} accepted {visitor.GetType().Name} - Population: {Population:n}");
+            _log.Add($"{Name} accepted {visitor.GetType().Name} - Population: {Population:n0}");
         }
 
         public override string ToString()
