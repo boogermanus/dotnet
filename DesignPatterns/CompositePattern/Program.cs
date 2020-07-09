@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Composite
+namespace CompositePattern
 {
     class Program
     {
