@@ -2,10 +2,10 @@ using CompositePattern.Components;
 
 namespace CompositePattern.Leaves
 {
-    public class DuffBeer : DisperserDrink
+    public class DuffBeer : DispenserDrink
     {
         public DuffBeer() : base(166) {}
-        public override void Add(DisperserDrink drink)
+        public override void Add(DispenserDrink drink)
         {
             throw new System.NotImplementedException();
         }
@@ -15,7 +15,7 @@ namespace CompositePattern.Leaves
             return base.ToString();
         }
 
-        public override void Remove(DisperserDrink drink)
+        public override void Remove(DispenserDrink drink)
         {
             throw new System.NotImplementedException();
         }
