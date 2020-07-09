@@ -19,9 +19,9 @@ namespace CompositePattern.Composits
         public override string Display(int depth)
         {
             var builder = new StringBuilder();
-            builder.AppendLine($"{new String('-',depth)}{base.ToString()}");
+            builder.AppendLine($"{new String('-',depth)}");
 
-            _flavors.ForEach(f => builder.AppendLine(f.Display(++depth)));
+            _flavors.ForEach(f => builder.AppendLine(f.Display(depth)));
 
             return builder.ToString();
         }

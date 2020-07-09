@@ -1,4 +1,6 @@
 ﻿using System;
+using CompositePattern.Clients;
+using CompositePattern.Leaves;
 
 namespace CompositePattern
 {
@@ -6,7 +8,14 @@ namespace CompositePattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var client = new DrinkDispenser();
+            client.Colas.Add(new NukaCola());
+            client.Colas.Add(new Slurm());
+            client.Beers.Add(new DuffBeer());
+            client.Beers.Add(new AlamoBeer());
+            client.Other.Add(new ButterBeer());
+
+            Console.WriteLine(client.ToString());
         }
     }
 }

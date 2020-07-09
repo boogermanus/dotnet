@@ -1,3 +1,4 @@
+using System;
 using CompositePattern.Components;
 
 namespace CompositePattern.Leaves
@@ -12,7 +13,7 @@ namespace CompositePattern.Leaves
 
         public override string Display(int depth)
         {
-            return base.ToString();
+            return $"{new String('-', depth)}{base.ToString()}";
         }
 
         public override void Remove(DispenserDrink drink)

@@ -15,7 +15,7 @@ namespace CompositePattern.Components
 
         public override string ToString()
         {
-            return $"{GetType().Name} - {(Calories == 0 ? $"Calories {Calories}" : string.Empty)}";
+            return $"{GetType().Name} - {(Calories != 0 ? $"Calories {Calories}" : string.Empty)}";
         }
     }
 }

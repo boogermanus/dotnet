@@ -5,9 +5,9 @@ namespace CompositePattern.Clients
 {
     public class DrinkDispenser
     {
-        public Cola Colas { get; set; }
-        public Beer Beers { get; set; }
-        public Other Other { get; set; }
+        public Cola Colas { get; set; } = new Cola();
+        public Beer Beers { get; set; } = new Beer();
+        public Other Other { get; set; } = new Other();
 
         public override string ToString()
         {
