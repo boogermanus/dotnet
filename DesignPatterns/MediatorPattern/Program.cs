@@ -1,6 +1,7 @@
 ﻿using System;
 using MediatorPattern.Colleagues;
 using MediatorPattern.ConcreteMediators;
+using MediatorPattern.Models;
 
 namespace MediatorPattern
 {
@@ -8,7 +9,8 @@ namespace MediatorPattern
     {
         static void Main(string[] args)
         {
-            Concessions();
+            // Concessions();
+            Heroes();
         }
 
         static void Concessions()
@@ -27,6 +29,21 @@ namespace MediatorPattern
             north.send("Just a couple, we'll send Keey back with them.");
 
             Console.ReadKey();
+        }
+
+        static void Heroes()
+        {
+            var mediator = new TowerOfJustice();
+            var batman = new Batman(mediator);
+            var superman = new Superman(mediator);
+            var robin = new Robin(mediator);
+
+            superman.send(new HeroMessage("Help needed in Metropolis!", batman, robin));
+            batman.send(new HeroMessage("On the way to Metropolis!", superman));
+
+            batman.send(new HeroMessage("Help needed in Gotham City!", superman, robin));
+            superman.send(new HeroMessage("On the way to Gotham City!", batman));
+            robin.send(new HeroMessage("On the way!", batman));
         }
     }
 }
