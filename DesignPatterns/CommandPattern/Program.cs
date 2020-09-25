@@ -14,8 +14,9 @@ namespace CommandPattern
         {
             var patron = new Patron();
 
+            var frenchFries = new MenuItem("French Fries", 2, 1.99);
             patron.SetCommand(CommandTypes.Add);
-            patron.SetMenuItem(new MenuItem("French Fries", 2, 1.99));
+            patron.SetMenuItem(frenchFries);
             patron.ExecuteCommand();
 
             patron.SetMenuItem(new MenuItem("Hamburger", 2, 2.59));
@@ -27,7 +28,7 @@ namespace CommandPattern
             patron.ShowCurrentOrder();
 
             patron.SetCommand(CommandTypes.Remove);
-            patron.SetMenuItem(new MenuItem("French Fries", 2, 1.99));
+            patron.SetMenuItem(frenchFries);
             patron.ExecuteCommand();
 
             patron.ShowCurrentOrder();
