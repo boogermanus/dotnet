@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HeroLibrary.Models;
 
 namespace HeroLibrary.JusticeLeagueHeros
@@ -9,6 +10,10 @@ namespace HeroLibrary.JusticeLeagueHeros
             Name = nameof(Superman);
             City = JusticeLeagueConstants.CITY_METROPOLIS;
             Alias = JusticeLeagueConstants.ALIAS_SUPERMAN;
+            Powers = new List<Power>
+            {
+                new Power(PowerConstants.FLIGHT, 0)
+            };
         }
     }
 }
