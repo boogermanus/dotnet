@@ -12,7 +12,7 @@ namespace HeroLibrary.JusticeLeagueHeros
             Alias = JusticeLeagueConstants.ALIAS_SUPERMAN;
             Powers = new List<Power>
             {
-                new Power(PowerConstants.FLIGHT, 0)
+                new Power(PowerConstants.FLIGHT, 10)
             };
         }
     }

@@ -40,5 +40,14 @@ namespace HeroLibrary.Tests.JusticeLeagueHeroesTest
             var power = superman.Powers.FirstOrDefault(p => p.Name == PowerConstants.FLIGHT);
             Assert.That(power.Name, Contains.Substring(PowerConstants.FLIGHT));
         }
+
+        [Test]
+        public void SupermanHasPowerFlight10()
+        {
+            var superman = new Superman();
+
+            var power = superman.Powers.FirstOrDefault(p => p.Name == PowerConstants.FLIGHT);
+            Assert.That(power.Level, Is.EqualTo(10));
+        }
     }
 }
