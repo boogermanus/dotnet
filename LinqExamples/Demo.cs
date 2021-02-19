@@ -199,6 +199,75 @@ namespace LinqExamples
                 Console.WriteLine(e);
             }
         }
+
+        public void EqualityOperators()
+        {
+            // deep check
+            var otherHeroes = new List<Hero>(Heroes);
+            var assert = Heroes.SequenceEqual(otherHeroes);
+            Console.WriteLine($"{assert}");
+
+            // not the same list
+            var superman = new Hero
+            {
+                Name = "Superman"
+            };
+
+            var real = new List<Hero>();
+            real.Add(superman);
+
+            var bizarro = new Hero
+            {
+                Name = "bizarro"
+            };
+
+            var fake = new List<Hero>();
+            fake.Add(bizarro);
+            
+            assert = real.SequenceEqual(fake);
+            Console.WriteLine($"{assert}");
+
+            var superman2 = new Hero
+            {
+                Name = "Superman"
+            };
+
+            var list1 = new List<Hero>();
+            list1.Add(superman);
+
+            var list2 = new List<Hero>();
+            list2.Add(superman2);
+
+            assert = list1.SequenceEqual(list2);
+            Console.WriteLine($"{assert}");
+        }
+        
+        public void GenerationOperators()
+        {
+            // Empty
+            var empty = Enumerable.Empty<Hero>();
+            Console.WriteLine($"{empty}");
+
+            // Range
+            var range = Enumerable.Range(0, 10);
+            range.ToList().ForEach(Console.WriteLine);
+
+            // Repeat - Neat! - you could randomly generate objets with a factory!
+            var repeat = Enumerable.Repeat(new Hero(), 20);
+            Console.WriteLine($"{repeat.Count()}");
+        }
+
+        public void VeryBadThings()
+        {
+            // dont use select, use where
+            var dumbQuery = Heroes.Select(h => h.PowerLevel > 80);
+            Console.WriteLine($"{dumbQuery.Count()}"); // is equal to six, not 4!
+            
+            // trust rider
+            var wasteful = Heroes.Where(h => h.PowerLevel > 80).FirstOrDefault();
+            var notWasteFul = Heroes.FirstOrDefault(h => h.PowerLevel > 80);
+
+        }
     }
 
 

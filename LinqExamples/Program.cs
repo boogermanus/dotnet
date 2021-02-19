@@ -11,6 +11,9 @@ namespace LinqExamples
             demo.AggregationOperators();
             demo.ConversionOperators();
             demo.ElementOperators();
+            demo.EqualityOperators();
+            demo.GenerationOperators();
+            demo.VeryBadThings();
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class IHero
     {
-        private string Name { get; set; }
+        public string Name { get; set; }
     }
 }
