@@ -6,7 +6,10 @@ namespace LinqExamples
     {
         static void Main(string[] args)
         {
-            new Demo().AggregationOperators();
+            var demo = new Demo();
+
+            demo.AggregationOperators();
+            demo.ConversionOperators();
         }
     }
 }

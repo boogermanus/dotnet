@@ -92,6 +92,35 @@ namespace LinqExamples
         {
             return !hero.IsVillain ? hero.PowerLevel : decimal.Zero;
         }
+
+        public void ConversionOperators()
+        {
+            // cast
+            List<IHero> tempHeroes = new List<IHero>(Heroes);
+
+            var heroObjects = tempHeroes.Cast<Hero>().ToList();
+            heroObjects.ForEach(Console.WriteLine);
+
+            // OfType
+            List<IHero> mixedList = new List<IHero>(Heroes);
+            mixedList.Add(new Villain
+            {
+                Name = "Captain Cold",
+                Hero = "Flash"
+            });
+            mixedList.Add(new Villain
+            {
+                Name = "Doomsday",
+                Hero = "Superman"
+            });
+
+            var villains = mixedList.OfType<Villain>().ToList();
+            Console.WriteLine(villains.Count);
+
+            // ToDictionary
+            var heroDictionary = Heroes.ToDictionary(h => h.Name);
+            Console.WriteLine($"Superman {heroDictionary["Superman"]}");
+        }
     }
 
 
