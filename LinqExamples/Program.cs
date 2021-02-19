@@ -10,6 +10,7 @@ namespace LinqExamples
 
             demo.AggregationOperators();
             demo.ConversionOperators();
+            demo.ElementOperators();
         }
     }
 }

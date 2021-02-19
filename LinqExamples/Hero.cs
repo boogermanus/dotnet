@@ -7,6 +7,10 @@ namespace LinqExamples
         public string[] Powers { get; set; }
         public bool IsVillain { get; set; }
 
+        public Hero()
+        {
+            Name = string.Empty;
+        }
         public override string ToString()
         {
             return $"Hero: {Name} - {PowerLevel}";
