@@ -15,6 +15,7 @@ namespace LinqExamples
             demo.GenerationOperators();
             demo.GroupingOperators();
             demo.JoiningOperators();
+            demo.OrderingOperators();
             demo.VeryBadThings();
         }
     }

@@ -336,6 +336,25 @@ namespace LinqExamples
             }
         }
 
+        public void OrderingOperators()
+        {
+            var byPowerLevel = Heroes.OrderBy(h => h.PowerLevel);
+            byPowerLevel.ToList().ForEach(Console.WriteLine);
+
+            byPowerLevel = Heroes.OrderByDescending(h => h.PowerLevel);
+            byPowerLevel.ToList().ForEach(Console.WriteLine);
+
+            // not recommended
+            var byNameAndPowerLevel = Heroes.OrderByDescending(h => h.PowerLevel)
+                .ThenByDescending(h => h.Name);
+            byNameAndPowerLevel.ToList().ForEach(Console.WriteLine);
+
+            var tempHeroes = new List<Hero>(Heroes);
+            tempHeroes.ForEach(Console.WriteLine);
+            tempHeroes.Reverse();
+            tempHeroes.ForEach(Console.WriteLine);
+        }
+
         public void VeryBadThings()
         {
             // dont use select, use where
