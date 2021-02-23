@@ -13,6 +13,8 @@ namespace LinqExamples
             demo.ElementOperators();
             demo.EqualityOperators();
             demo.GenerationOperators();
+            demo.GroupingOperators();
+            demo.JoiningOperators();
             demo.VeryBadThings();
         }
     }

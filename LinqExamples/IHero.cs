@@ -1,6 +1,6 @@
 ﻿namespace LinqExamples
 {
-    public class IHero
+    public interface IHero
     {
         public string Name { get; set; }
     }

@@ -6,6 +6,7 @@ namespace LinqExamples
         public decimal PowerLevel { get; set; }
         public string[] Powers { get; set; }
         public bool IsVillain { get; set; }
+        public string Team { get; set; }
 
         public Hero()
         {
