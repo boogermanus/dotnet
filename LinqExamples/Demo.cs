@@ -6,7 +6,7 @@ namespace LinqExamples
 {
     public class Demo
     {
-        private List<Classification> Classifications = new()
+        private readonly List<Classification> _classifications = new()
         {
             new Classification
             {
@@ -19,7 +19,7 @@ namespace LinqExamples
                 ClassificationName = "Good"
             }
         };
-        private List<Hero> Heroes = new()
+        private readonly List<Hero> _heroes = new()
         {
             new Hero
             {
@@ -66,7 +66,7 @@ namespace LinqExamples
             }
         };
 
-        private List<HeroSidekick> Sidekicks = new()
+        private readonly List<HeroSidekick> _sidekicks = new()
         {
             new HeroSidekick
             {
@@ -90,45 +90,45 @@ namespace LinqExamples
         public void AggregationOperators()
         {
             // Aggregate
-            var aggregate1 = Heroes.Aggregate(string.Empty, 
+            var aggregate1 = _heroes.Aggregate(string.Empty, 
                 (longest, next) => next.Name.Length > longest.Length ? next.Name : longest, h => h.ToUpper());
             Console.WriteLine($"Aggregate 1: {aggregate1}");
 
             // weird resharper thing here...
-            var aggregate2 = Heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal += next.PowerLevel/2, d => d);
+            var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal += next.PowerLevel/2, d => d);
             Console.WriteLine($"Aggregate 2 {aggregate2}");
 
             // Count
-            var count = Heroes.Count; // Heroes is a list, it has a Count property, use it if available
+            var count = _heroes.Count; // Heroes is a list, it has a Count property, use it if available
             Console.WriteLine($"Heroes {count}");
 
-            count = Heroes.AsEnumerable().Count(); // this is enumerable, we don't know the count unless we call it
+            count = _heroes.AsEnumerable().Count(); // this is enumerable, we don't know the count unless we call it
             // keep in mind that this is a O(n) operation
             Console.WriteLine($"Heroes Enumerable Count {count}");
 
             // use a predicate - no need for where!
-            count = Heroes.Count(h => h.IsVillain);
+            count = _heroes.Count(h => h.IsVillain);
             Console.WriteLine($"Villains {count}");
 
             // Max/Min
-            var max = Heroes.Max(h => h.PowerLevel);
+            var max = _heroes.Max(h => h.PowerLevel);
             Console.WriteLine($"Max PowerLevel {max}");
 
-            max = Heroes.Max(h => h.IsVillain ? h.PowerLevel : decimal.Zero);
+            max = _heroes.Max(h => h.IsVillain ? h.PowerLevel : decimal.Zero);
             Console.WriteLine($"Max Villain PowerLevel {max}");
 
-            var min = Heroes.Min(h => h.PowerLevel);
+            var min = _heroes.Min(h => h.PowerLevel);
             Console.WriteLine($"Max PowerLevel {min}");
 
-            min = Heroes.Min(h => h.PowerLevel > 80 ? h.PowerLevel : decimal.Zero);
+            min = _heroes.Min(h => h.PowerLevel > 80 ? h.PowerLevel : decimal.Zero);
             Console.WriteLine($"Max Villain PowerLevel {min}");
 
             // Sum
-            var sum = Heroes.Sum(h => h.PowerLevel);
+            var sum = _heroes.Sum(h => h.PowerLevel);
             Console.WriteLine($"PowerLevel Sum {sum}");
 
             // a method group, the variable is assumed
-            sum = Heroes.Sum(SumFunction);
+            sum = _heroes.Sum(SumFunction);
 
             Console.WriteLine($"Heroes PowerLevel {sum}");
         }
@@ -142,42 +142,36 @@ namespace LinqExamples
         public void ConversionOperators()
         {
             // Cast
-            var tempHeroes = new List<IHero>(Heroes);
+            var tempHeroes = new List<IHero>(_heroes);
             
             //only good where your sure that everything is the same type of interface
             var heroObjects = tempHeroes.Cast<Hero>().ToList();
             heroObjects.ForEach(Console.WriteLine);
 
             // OfType
-            List<IHero> mixedList = new List<IHero>(Heroes);
-            mixedList.Add(new Villain
+            var mixedList = new List<IHero>(_heroes)
             {
-                Name = "Captain Cold",
-                Hero = "Flash"
-            });
-            mixedList.Add(new Villain
-            {
-                Name = "Doomsday",
-                Hero = "Superman"
-            });
+                new Villain {Name = "Captain Cold", Hero = "Flash"},
+                new Villain {Name = "Doomsday", Hero = "Superman"}
+            };
 
             // neat! does this work with interfaces?
             var villains = mixedList.OfType<Villain>().ToList();
             Console.WriteLine(villains.Count);
 
             // ToDictionary
-            var heroDictionary = Heroes.ToDictionary(h => h.Name);
+            var heroDictionary = _heroes.ToDictionary(h => h.Name);
             Console.WriteLine($"Superman {heroDictionary["Superman"]}");
             heroDictionary.ToList().ForEach(k => Console.WriteLine($"{k.Key}"));
 
             // readability counts!
-            var whereDictionary = Heroes.Where(h => h.PowerLevel > 80)
+            var whereDictionary = _heroes.Where(h => h.PowerLevel > 80)
                 .ToDictionary(h => h.Name);
             Console.WriteLine(whereDictionary.Count);
 
             try
             {
-                var badDictionary = Heroes.ToDictionary(h => h.PowerLevel);
+                var badDictionary = _heroes.ToDictionary(h => h.PowerLevel);
                 Console.WriteLine(badDictionary.Keys.ToList());
             }
             catch (Exception e)
@@ -199,11 +193,11 @@ namespace LinqExamples
             Console.WriteLine($"{defaultIfEmpty.ElementAt(0)}");
             
             // ElementAt
-            var element = Heroes.ElementAt(0);
+            var element = _heroes.ElementAt(0);
             Console.WriteLine($"{element}");
             
             // First
-            var first = Heroes.First();
+            var first = _heroes.First();
             Console.WriteLine($"{first}");
 
             try
@@ -217,20 +211,20 @@ namespace LinqExamples
             }
             
             // FirstOrDefault
-            var firstOrDefault = Heroes.FirstOrDefault();
+            var firstOrDefault = _heroes.FirstOrDefault();
             Console.WriteLine($"{firstOrDefault}");
 
             firstOrDefault = new List<Hero>().FirstOrDefault();
             Console.WriteLine($"{firstOrDefault}");
             
             // Single - dont ever use this
-            var single = Heroes.Single(h => h.Name == "Superman");
+            var single = _heroes.Single(h => h.Name == "Superman");
             Console.WriteLine($"{single}");
 
             try
             {
                 // if you use single or default, you're a bad person.
-                var singleOrDefault = Heroes.SingleOrDefault(h => h.PowerLevel == 99.9m);
+                var singleOrDefault = _heroes.SingleOrDefault(h => h.PowerLevel == 99.9m);
                 Console.WriteLine($"{singleOrDefault}");
             }
             catch (Exception e)
@@ -242,8 +236,8 @@ namespace LinqExamples
         public void EqualityOperators()
         {
             // deep check
-            var otherHeroes = new List<Hero>(Heroes);
-            var assert = Heroes.SequenceEqual(otherHeroes);
+            var otherHeroes = new List<Hero>(_heroes);
+            var assert = _heroes.SequenceEqual(otherHeroes);
             Console.WriteLine($"{assert}");
 
             // not the same list
@@ -252,17 +246,15 @@ namespace LinqExamples
                 Name = "Superman"
             };
 
-            var real = new List<Hero>();
-            real.Add(superman);
+            var real = new List<Hero> {superman};
 
             var bizarro = new Hero
             {
                 Name = "bizarro"
             };
 
-            var fake = new List<Hero>();
-            fake.Add(bizarro);
-            
+            var fake = new List<Hero> {bizarro};
+
             assert = real.SequenceEqual(fake);
             Console.WriteLine($"{assert}");
 
@@ -271,11 +263,9 @@ namespace LinqExamples
                 Name = "Superman"
             };
 
-            var list1 = new List<Hero>();
-            list1.Add(superman);
+            var list1 = new List<Hero> {superman};
 
-            var list2 = new List<Hero>();
-            list2.Add(superman2);
+            var list2 = new List<Hero> {superman2};
 
             assert = list1.SequenceEqual(list2);
             Console.WriteLine($"{assert}");
@@ -298,7 +288,7 @@ namespace LinqExamples
 
         public void GroupingOperators()
         {
-            var byTeam = Heroes.GroupBy(h => h.Team);
+            var byTeam = _heroes.GroupBy(h => h.Team);
             foreach (var team in byTeam)
             {
                 Console.WriteLine(team.Key);
@@ -308,7 +298,7 @@ namespace LinqExamples
 
         public void JoiningOperators()
         {
-            var groupJoin = Classifications.GroupJoin(Sidekicks, std => std.Id, s => s.ClassificationId,
+            var groupJoin = _classifications.GroupJoin(_sidekicks, std => std.Id, s => s.ClassificationId,
                 (std, sidekickGroup) => new
                 {
                     Sidekicks = sidekickGroup,
@@ -321,10 +311,10 @@ namespace LinqExamples
                 item.Sidekicks.ToList().ForEach(Console.WriteLine);
             }
 
-            var heroes = Heroes.Join(Sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => h);
+            var heroes = _heroes.Join(_sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => h);
             heroes.ToList().ForEach(Console.WriteLine);
 
-            var teams = Heroes.Join(Sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => new
+            var teams = _heroes.Join(_sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => new
             {
                 Hero = h.Name,
                 Sidekick = hs.Name
@@ -338,32 +328,93 @@ namespace LinqExamples
 
         public void OrderingOperators()
         {
-            var byPowerLevel = Heroes.OrderBy(h => h.PowerLevel);
+            var byPowerLevel = _heroes.OrderBy(h => h.PowerLevel);
             byPowerLevel.ToList().ForEach(Console.WriteLine);
 
-            byPowerLevel = Heroes.OrderByDescending(h => h.PowerLevel);
+            byPowerLevel = _heroes.OrderByDescending(h => h.PowerLevel);
             byPowerLevel.ToList().ForEach(Console.WriteLine);
 
             // not recommended
-            var byNameAndPowerLevel = Heroes.OrderByDescending(h => h.PowerLevel)
+            var byNameAndPowerLevel = _heroes.OrderByDescending(h => h.PowerLevel)
                 .ThenByDescending(h => h.Name);
             byNameAndPowerLevel.ToList().ForEach(Console.WriteLine);
 
-            var tempHeroes = new List<Hero>(Heroes);
+            var tempHeroes = new List<Hero>(_heroes);
             tempHeroes.ForEach(Console.WriteLine);
             tempHeroes.Reverse();
             tempHeroes.ForEach(Console.WriteLine);
         }
 
+        public void PartitioningOperators()
+        {
+            // Skip
+            _heroes.Skip(2).ToList().ForEach(Console.WriteLine);
+            _heroes.SkipLast(2).ToList().ForEach(Console.WriteLine);
+            _heroes.SkipWhile(h => h.PowerLevel > 80).ToList().ForEach(Console.WriteLine);
+
+            // Take
+            _heroes.Take(2).ToList().ForEach(Console.WriteLine);
+            _heroes.TakeLast(2).ToList().ForEach(Console.WriteLine);
+            _heroes.TakeWhile(h => h.PowerLevel > 80).ToList().ForEach(Console.WriteLine);
+        }
+
+        public void QuantifierOperators()
+        {
+            var havePowerLevelGreaterThan20 = _heroes.All(h => h.PowerLevel > 20);
+            Console.WriteLine(havePowerLevelGreaterThan20);
+
+            var havePowerLevel80 = _heroes.Any(h => h.PowerLevel == 80);
+            Console.WriteLine(havePowerLevel80);
+
+            var superman = _heroes[0];
+            var contains = _heroes.Contains(superman);
+            Console.WriteLine(contains);
+
+            var hulk = new Hero()
+            {
+                Name = "Hulk",
+            };
+
+            contains = _heroes.Contains(hulk);
+            Console.WriteLine(contains);
+        }
+
         public void VeryBadThings()
         {
             // dont use select, use where
-            var dumbQuery = Heroes.Select(h => h.PowerLevel > 80);
+            var dumbQuery = _heroes.Select(h => h.PowerLevel > 80);
             Console.WriteLine($"{dumbQuery.Count()}"); // is equal to six, not 4!
             
             // trust rider
-            var wasteful = Heroes.Where(h => h.PowerLevel > 80).FirstOrDefault();
-            var notWasteFul = Heroes.FirstOrDefault(h => h.PowerLevel > 80);
+            var wasteful = _heroes.Where(h => h.PowerLevel > 80).FirstOrDefault();
+            var notWasteFul = _heroes.FirstOrDefault(h => h.PowerLevel > 80);
+            
+            // using pretty much anything after a where
+            var notWithAny = _heroes.Where(h => h.PowerLevel > 20).Any();
+            
+            // watch out for casting issues!
+            var mixed = new List<IHero>
+            {
+                new Hero()
+                {
+                    Name = "Martian Manhunter"
+                },
+                new Villain()
+                {
+                    Name = "Darkseid"
+                }
+            };
+
+            var badCast = mixed.Cast<Hero>();
+            
+            try
+            {
+                var badList = badCast.ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
         }
     }
