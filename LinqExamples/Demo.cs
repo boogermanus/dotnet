@@ -588,7 +588,8 @@ namespace LinqExamples
             var allPowerLevels = _heroes.Union(newHeroes)
                 .Union(batmanAndSuperMan)
                 .Select(h => h.PowerLevel)
-                .OrderByDescending(h => h);
+                .OrderByDescending(h => h)
+                .Distinct();
             
             allPowerLevels.ToList()
                 .ForEach(Console.WriteLine);
