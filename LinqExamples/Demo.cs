@@ -187,7 +187,7 @@ namespace LinqExamples
             // DefaultIfEmpty
             // never used this. bit it seems a good way to fake things...
             var defaultIfEmpty = new List<Hero>().DefaultIfEmpty();
-
+            
             // if we add ToArray here suddenly rider doesn't care about multiple enumerations
             // var defaultIfEmpty = new List<Hero>().DefaultIfEmpty().ToArray();
             Console.WriteLine($"{defaultIfEmpty.Count()}");
@@ -317,6 +317,10 @@ namespace LinqExamples
             // join is the bomb
             var heroes = _heroes.Join(_sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => h);
             heroes.ToList().ForEach(Console.WriteLine);
+            
+            // discard the parameter
+            var moreHeroes = _heroes.Join(_sidekicks, h => h.Name, hs => hs.Partner, (h, _) => h);
+            moreHeroes.ToList().ForEach(Console.WriteLine);
 
             // still being the bomb
             var teams = _heroes.Join(_sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => new
@@ -430,7 +434,7 @@ namespace LinqExamples
             // drake right
             var supermanAndWonderWomen =
                 _heroes.Where(h => h.Powers.Contains("heat vision") || h.Powers.Contains("lasso of truth"));
-            Console.WriteLine(supermanAndWonderWomen.Count());
+            Console.WriteLine(supermanAndWonderWomen);
             
             // drake right clean
             supermanAndWonderWomen.Where(h => HasHeatVisionOrLassoOfTruth(h.Powers));
