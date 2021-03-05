@@ -379,6 +379,20 @@ namespace LinqExamples
             Console.WriteLine(contains);
         }
 
+        public void RestrictionOperators()
+        {
+            
+        }
+
+        public void SelectionOperators()
+        {
+            
+        }
+
+        public void SetOperators()
+        {
+            
+        }
         public void VeryBadThings()
         {
             // dont use select, use where

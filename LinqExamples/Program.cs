@@ -18,6 +18,9 @@ namespace LinqExamples
             demo.OrderingOperators();
             demo.PartitioningOperators();
             demo.QuantifierOperators();
+            demo.RestrictionOperators();
+            demo.SelectionOperators();
+            demo.SetOperators();
             demo.VeryBadThings();
         }
     }
