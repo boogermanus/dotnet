@@ -146,7 +146,7 @@ namespace LinqExamples
             // Cast
             var tempHeroes = new List<IHero>(_heroes);
 
-            //only good where your sure that everything is the same type of interface
+            // only good where your sure that everything is the same type of interface
             var heroObjects = tempHeroes.Cast<Hero>().ToList();
             heroObjects.ForEach(Console.WriteLine);
 
@@ -299,6 +299,8 @@ namespace LinqExamples
 
         public void JoiningOperators()
         {
+            
+            // don't know when you'd ever use this...
             var groupJoin = _classifications.GroupJoin(_sidekicks, std => std.Id, s => s.ClassificationId,
                 (std, sidekickGroup) => new
                 {
@@ -312,9 +314,11 @@ namespace LinqExamples
                 item.Sidekicks.ToList().ForEach(Console.WriteLine);
             }
 
+            // join is the bomb
             var heroes = _heroes.Join(_sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => h);
             heroes.ToList().ForEach(Console.WriteLine);
 
+            // still being the bomb
             var teams = _heroes.Join(_sidekicks, h => h.Name, hs => hs.Partner, (h, hs) => new
             {
                 Hero = h.Name,
@@ -329,8 +333,11 @@ namespace LinqExamples
 
         public void OrderingOperators()
         {
+            // OrderBy
             var byPowerLevel = _heroes.OrderBy(h => h.PowerLevel);
-            byPowerLevel.ToList().ForEach(Console.WriteLine);
+            byPowerLevel.
+                ToList()
+                .ForEach(Console.WriteLine);
 
             byPowerLevel = _heroes.OrderByDescending(h => h.PowerLevel);
             byPowerLevel.ToList().ForEach(Console.WriteLine);
@@ -340,6 +347,7 @@ namespace LinqExamples
                 .ThenByDescending(h => h.Name);
             byNameAndPowerLevel.ToList().ForEach(Console.WriteLine);
 
+            // meh
             var tempHeroes = new List<Hero>(_heroes);
             tempHeroes.ForEach(Console.WriteLine);
             tempHeroes.Reverse();
@@ -361,29 +369,37 @@ namespace LinqExamples
 
         public void QuantifierOperators()
         {
+            // All
             var havePowerLevelGreaterThan20 = _heroes.All(h => h.PowerLevel > 20);
             Console.WriteLine(havePowerLevelGreaterThan20);
-
+            
+            // Any
             var havePowerLevel80 = _heroes.Any(h => h.PowerLevel == 80);
             Console.WriteLine(havePowerLevel80);
 
+            // seems to work with out IEquatable
             var superman = _heroes[0];
             var contains = _heroes.Contains(superman);
             Console.WriteLine(contains);
 
+            // smash
             var hulk = new Hero()
             {
                 Name = "Hulk",
             };
 
+            // it works, but I still wonder what the default 'deep' equal is
             contains = _heroes.Contains(hulk);
             Console.WriteLine(contains);
         }
 
         public void RestrictionOperators()
         {
+            // basic Where
             var wherePowerLevelGreaterThan80 = _heroes.Where(h => h.PowerLevel > 80);
-            wherePowerLevelGreaterThan80.ToList().ForEach(Console.WriteLine);
+            wherePowerLevelGreaterThan80
+                .ToList()
+                .ForEach(Console.WriteLine);
 
             // for jesse
             var superman = _heroes.Where(h => h.Name.ToLower() == "superman"
@@ -411,9 +427,14 @@ namespace LinqExamples
                 .Where(h => h.Powers.Contains("lasso of truth"));
             Console.WriteLine(notSupermanAndWonderWomen.Count());
 
+            // drake right
             var supermanAndWonderWomen =
                 _heroes.Where(h => h.Powers.Contains("heat vision") || h.Powers.Contains("lasso of truth"));
             Console.WriteLine(supermanAndWonderWomen.Count());
+            
+            // drake right clean
+            supermanAndWonderWomen.Where(h => HasHeatVisionOrLassoOfTruth(h.Powers));
+
         }
 
         private bool IsSuperman(Hero hero)
@@ -428,32 +449,55 @@ namespace LinqExamples
                    HasFlightPower(hero.Powers);
         }
 
-        private bool NameIsSuperman(string name)
+        private static bool NameIsSuperman(string name)
         {
             return name.ToLower().Equals("superman");
         }
 
-        private bool PowerLevelIsMax(decimal powerLevel)
+        private static bool PowerLevelIsMax(decimal powerLevel)
         {
             return powerLevel.Equals(99.9m);
         }
 
-        private bool IsJlaMember(string team)
+        private static bool IsJlaMember(string team)
         {
             return team.ToLower().Equals("jla");
         }
 
-        private bool HasFlightPower(string[] powers)
+        private static bool HasFlightPower(IEnumerable<string> powers)
         {
             return powers.Contains("flight");
         }
 
+        private static bool HasHeatVisionOrLassoOfTruth(IEnumerable<string> powers)
+        {
+            return powers.Contains("heat vision") || powers.Contains("lasso of truth");
+        }
+
         public void SelectionOperators()
         {
+            // basic Select
             _heroes.Select(h => h.PowerLevel)
                 .ToList()
                 .ForEach(Console.WriteLine);
 
+            // new objects!
+            var newObjects = _heroes.Select(h => new {h.Name, h.PowerLevel}).ToList();
+
+            foreach (var newObject in newObjects)
+            {
+                Console.WriteLine($"{newObject.Name} - {newObject.PowerLevel}");
+            }
+
+            _heroes.Select(h => new Hero
+                {
+                    Name = h.Name
+                })
+                .ToList()
+                .ForEach(Console.WriteLine);
+                
+
+            // with where
             _heroes
                 .Where(h => PowerLevelIsMax(h.PowerLevel))
                 .Select(h => h.Name)
@@ -465,6 +509,7 @@ namespace LinqExamples
                 .ToList()
                 .ForEach(Console.WriteLine);
 
+            // good use of where
             _heroes.Where(h => PowerLevelIsMax(h.PowerLevel))
                 .SelectMany(h => h.Powers)
                 .ToList()
@@ -491,10 +536,12 @@ namespace LinqExamples
                 }
             };
 
+            // Concat
             var newJla = _heroes.Concat(newHeroes)
                 .ToList();
             Console.WriteLine(newJla.Count);
 
+            // Distinct
             newJla.SelectMany(h => h.Powers)
                 .Distinct()
                 .ToList()
@@ -514,20 +561,32 @@ namespace LinqExamples
                 }
             };
 
+            // Sets!
+            
+            // Except
             var except = _heroes.Except(batmanAndSuperMan);
             except.ToList()
                 .ForEach(Console.WriteLine);
 
+            // Intersect
             var intersect = _heroes.Intersect(batmanAndSuperMan);
+            
             intersect.ToList()
                 .ForEach(Console.WriteLine);
 
+            // Union - lame
             var union = _heroes.Union(batmanAndSuperMan);
+            
             union.ToList()
                 .ForEach(Console.WriteLine);
 
-            union = _heroes.Union(batmanAndSuperMan).Union(newHeroes);
-            union.ToList()
+            // linq master!
+            var allPowerLevels = _heroes.Union(newHeroes)
+                .Union(batmanAndSuperMan)
+                .Select(h => h.PowerLevel)
+                .OrderByDescending(h => h);
+            
+            allPowerLevels.ToList()
                 .ForEach(Console.WriteLine);
         }
 
