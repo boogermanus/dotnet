@@ -96,7 +96,7 @@ namespace LinqExamples
             Console.WriteLine($"Aggregate 1: {aggregate1}");
 
             // weird resharper thing here...
-            var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal += next.PowerLevel / 2,
+            var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal + next.PowerLevel / 2,
                 d => d);
             Console.WriteLine($"Aggregate 2 {aggregate2}");
 
