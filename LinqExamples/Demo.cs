@@ -560,8 +560,6 @@ namespace LinqExamples
                     PowerLevel = 99.9m
                 }
             };
-
-            // Sets!
             
             // Except
             var except = _heroes.Except(batmanAndSuperMan);
