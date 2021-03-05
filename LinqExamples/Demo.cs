@@ -434,6 +434,7 @@ namespace LinqExamples
             
             // drake right clean
             supermanAndWonderWomen.Where(h => HasHeatVisionOrLassoOfTruth(h.Powers));
+            Console.WriteLine(supermanAndWonderWomen.Count());
 
         }
 
