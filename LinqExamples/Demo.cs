@@ -381,9 +381,72 @@ namespace LinqExamples
 
         public void RestrictionOperators()
         {
+            var wherePowerLevelGreaterThan80 = _heroes.Where(h => h.PowerLevel > 80);
+            wherePowerLevelGreaterThan80.ToList().ForEach(Console.WriteLine);
             
+            // for jesse
+            var superman = _heroes.Where(h => h.Name.ToLower() == "superman"
+                                              && h.PowerLevel == 99.9m && h.Team.ToUpper() == "JLA"
+                                              && h.Powers.Contains("flight"));
+            Console.WriteLine(superman);
+            
+            // prettier
+            superman = _heroes.Where(h => h.Name.ToLower() == "superman")
+                .Where(h => h.PowerLevel == 99.9m)
+                .Where(h => h.Team.ToUpper() == "JLA")
+                .Where(h => h.Powers.Contains("flight"));
+            Console.WriteLine(superman);
+            
+            // preferred 
+            superman = _heroes.Where(IsSuperman);
+            Console.WriteLine(superman);
+            
+            // clean code
+            superman = _heroes.Where(IsSupermanCleanCode);
+            Console.WriteLine(superman);
+
+            // be careful when using multiple wheres!
+            var notSupermanAndWonderWomen = _heroes.Where(h => h.Powers.Contains("heat vision"))
+                .Where(h => h.Powers.Contains("lasso of truth"));
+            Console.WriteLine(notSupermanAndWonderWomen.Count());
+
+            var supermanAndWonderWomen =
+                _heroes.Where(h => h.Powers.Contains("heat vision") || h.Powers.Contains("lasso of truth"));
+            Console.WriteLine(supermanAndWonderWomen.Count());
         }
 
+        private bool IsSuperman(Hero hero)
+        {
+            return hero.Name.ToLower().Equals("superman") && hero.PowerLevel.Equals(99.9m) &&
+                   hero.Team.ToUpper().Equals("JLA") && hero.Powers.Contains("flight");
+        }
+
+        private bool IsSupermanCleanCode(Hero hero)
+        {
+            return NameIsSuperman(hero.Name) && PowerLevelIsMax(hero.PowerLevel) && IsJlaMember(hero.Team) &&
+                   HasFlightPower(hero.Powers);
+        }
+
+        private bool NameIsSuperman(string name)
+        {
+            return name.ToLower().Equals("superman");
+        }
+
+        private bool PowerLevelIsMax(decimal powerLevel)
+        {
+            return powerLevel.Equals(99.9m);
+        }
+
+        private bool IsJlaMember(string team)
+        {
+            return team.ToLower().Equals("jla");
+        }
+
+        private bool HasFlightPower(string[] powers)
+        {
+            return powers.Contains("flight");
+        }
+        
         public void SelectionOperators()
         {
             
