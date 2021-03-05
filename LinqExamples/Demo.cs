@@ -19,6 +19,7 @@ namespace LinqExamples
                 ClassificationName = "Good"
             }
         };
+
         private readonly List<Hero> _heroes = new()
         {
             new Hero
@@ -86,16 +87,17 @@ namespace LinqExamples
                 Partner = "The Joker"
             }
         };
-        
+
         public void AggregationOperators()
         {
             // Aggregate
-            var aggregate1 = _heroes.Aggregate(string.Empty, 
+            var aggregate1 = _heroes.Aggregate(string.Empty,
                 (longest, next) => next.Name.Length > longest.Length ? next.Name : longest, h => h.ToUpper());
             Console.WriteLine($"Aggregate 1: {aggregate1}");
 
             // weird resharper thing here...
-            var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal += next.PowerLevel/2, d => d);
+            var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal += next.PowerLevel / 2,
+                d => d);
             Console.WriteLine($"Aggregate 2 {aggregate2}");
 
             // Count
@@ -143,7 +145,7 @@ namespace LinqExamples
         {
             // Cast
             var tempHeroes = new List<IHero>(_heroes);
-            
+
             //only good where your sure that everything is the same type of interface
             var heroObjects = tempHeroes.Cast<Hero>().ToList();
             heroObjects.ForEach(Console.WriteLine);
@@ -178,7 +180,6 @@ namespace LinqExamples
             {
                 Console.WriteLine(e);
             }
-
         }
 
         public void ElementOperators()
@@ -186,16 +187,16 @@ namespace LinqExamples
             // DefaultIfEmpty
             // never used this. bit it seems a good way to fake things...
             var defaultIfEmpty = new List<Hero>().DefaultIfEmpty();
-            
+
             // if we add ToArray here suddenly rider doesn't care about multiple enumerations
             // var defaultIfEmpty = new List<Hero>().DefaultIfEmpty().ToArray();
             Console.WriteLine($"{defaultIfEmpty.Count()}");
             Console.WriteLine($"{defaultIfEmpty.ElementAt(0)}");
-            
+
             // ElementAt
             var element = _heroes.ElementAt(0);
             Console.WriteLine($"{element}");
-            
+
             // First
             var first = _heroes.First();
             Console.WriteLine($"{first}");
@@ -209,14 +210,14 @@ namespace LinqExamples
             {
                 Console.WriteLine(e);
             }
-            
+
             // FirstOrDefault
             var firstOrDefault = _heroes.FirstOrDefault();
             Console.WriteLine($"{firstOrDefault}");
 
             firstOrDefault = new List<Hero>().FirstOrDefault();
             Console.WriteLine($"{firstOrDefault}");
-            
+
             // Single - dont ever use this
             var single = _heroes.Single(h => h.Name == "Superman");
             Console.WriteLine($"{single}");
@@ -270,7 +271,7 @@ namespace LinqExamples
             assert = list1.SequenceEqual(list2);
             Console.WriteLine($"{assert}");
         }
-        
+
         public void GenerationOperators()
         {
             // Empty
@@ -383,24 +384,24 @@ namespace LinqExamples
         {
             var wherePowerLevelGreaterThan80 = _heroes.Where(h => h.PowerLevel > 80);
             wherePowerLevelGreaterThan80.ToList().ForEach(Console.WriteLine);
-            
+
             // for jesse
             var superman = _heroes.Where(h => h.Name.ToLower() == "superman"
                                               && h.PowerLevel == 99.9m && h.Team.ToUpper() == "JLA"
                                               && h.Powers.Contains("flight"));
             Console.WriteLine(superman);
-            
+
             // prettier
             superman = _heroes.Where(h => h.Name.ToLower() == "superman")
                 .Where(h => h.PowerLevel == 99.9m)
                 .Where(h => h.Team.ToUpper() == "JLA")
                 .Where(h => h.Powers.Contains("flight"));
             Console.WriteLine(superman);
-            
+
             // preferred 
             superman = _heroes.Where(IsSuperman);
             Console.WriteLine(superman);
-            
+
             // clean code
             superman = _heroes.Where(IsSupermanCleanCode);
             Console.WriteLine(superman);
@@ -446,29 +447,103 @@ namespace LinqExamples
         {
             return powers.Contains("flight");
         }
-        
+
         public void SelectionOperators()
         {
-            
+            _heroes.Select(h => h.PowerLevel)
+                .ToList()
+                .ForEach(Console.WriteLine);
+
+            _heroes
+                .Where(h => PowerLevelIsMax(h.PowerLevel))
+                .Select(h => h.Name)
+                .ToList()
+                .ForEach(Console.WriteLine);
+
+            // flatten
+            _heroes.SelectMany(h => h.Powers)
+                .ToList()
+                .ForEach(Console.WriteLine);
+
+            _heroes.Where(h => PowerLevelIsMax(h.PowerLevel))
+                .SelectMany(h => h.Powers)
+                .ToList()
+                .ForEach(Console.WriteLine);
         }
 
         public void SetOperators()
         {
-            
+            var newHeroes = new List<Hero>
+            {
+                new()
+                {
+                    Name = "Green Lantern",
+                    PowerLevel = 67.22m,
+                    Powers = new[] {"ring"},
+                    Team = "JLA"
+                },
+                new()
+                {
+                    Name = "Plastic Man",
+                    PowerLevel = 92.1m,
+                    Powers = new[] {"shape", "invulnerable"},
+                    Team = "JLA"
+                }
+            };
+
+            var newJla = _heroes.Concat(newHeroes)
+                .ToList();
+            Console.WriteLine(newJla.Count);
+
+            newJla.SelectMany(h => h.Powers)
+                .Distinct()
+                .ToList()
+                .ForEach(Console.WriteLine);
+
+            var batmanAndSuperMan = new List<Hero>
+            {
+                new()
+                {
+                    Name = "Batman",
+                    PowerLevel = 99.9m
+                },
+                new()
+                {
+                    Name = "Superman",
+                    PowerLevel = 99.9m
+                }
+            };
+
+            var except = _heroes.Except(batmanAndSuperMan);
+            except.ToList()
+                .ForEach(Console.WriteLine);
+
+            var intersect = _heroes.Intersect(batmanAndSuperMan);
+            intersect.ToList()
+                .ForEach(Console.WriteLine);
+
+            var union = _heroes.Union(batmanAndSuperMan);
+            union.ToList()
+                .ForEach(Console.WriteLine);
+
+            union = _heroes.Union(batmanAndSuperMan).Union(newHeroes);
+            union.ToList()
+                .ForEach(Console.WriteLine);
         }
+
         public void VeryBadThings()
         {
             // dont use select, use where
             var dumbQuery = _heroes.Select(h => h.PowerLevel > 80);
             Console.WriteLine($"{dumbQuery.Count()}"); // is equal to six, not 4!
-            
-            // trust rider
+
+            // using pretty much anything after a where
             var wasteful = _heroes.Where(h => h.PowerLevel > 80).FirstOrDefault();
             var notWasteFul = _heroes.FirstOrDefault(h => h.PowerLevel > 80);
-            
-            // using pretty much anything after a where
+
+
             var notWithAny = _heroes.Where(h => h.PowerLevel > 20).Any();
-            
+
             // watch out for casting issues!
             var mixed = new List<IHero>
             {
@@ -483,7 +558,7 @@ namespace LinqExamples
             };
 
             var badCast = mixed.Cast<Hero>();
-            
+
             try
             {
                 var badList = badCast.ToList();
@@ -492,9 +567,6 @@ namespace LinqExamples
             {
                 Console.WriteLine(e);
             }
-
         }
     }
-
-
 }

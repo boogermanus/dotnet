@@ -1,6 +1,9 @@
+using System;
+
 namespace LinqExamples
 {
-    public class Hero : IHero
+    public class Hero : IHero, IEquatable<Hero>
+    
     {
         public string Name { get; set; }
         public decimal PowerLevel { get; set; }
@@ -12,9 +15,30 @@ namespace LinqExamples
         {
             Name = string.Empty;
         }
+
         public override string ToString()
         {
             return $"Hero: {Name} - {PowerLevel}";
+        }
+
+        public bool Equals(Hero other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Name == other.Name && PowerLevel == other.PowerLevel;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((Hero) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, PowerLevel);
         }
     }
 }
