@@ -438,13 +438,13 @@ namespace LinqExamples
 
         }
 
-        private bool IsSuperman(Hero hero)
+        private static bool IsSuperman(Hero hero)
         {
             return hero.Name.ToLower().Equals("superman") && hero.PowerLevel.Equals(99.9m) &&
                    hero.Team.ToUpper().Equals("JLA") && hero.Powers.Contains("flight");
         }
 
-        private bool IsSupermanCleanCode(Hero hero)
+        private static bool IsSupermanCleanCode(Hero hero)
         {
             return NameIsSuperman(hero.Name) && PowerLevelIsMax(hero.PowerLevel) && IsJlaMember(hero.Team) &&
                    HasFlightPower(hero.Powers);
@@ -472,7 +472,8 @@ namespace LinqExamples
 
         private static bool HasHeatVisionOrLassoOfTruth(IEnumerable<string> powers)
         {
-            return powers.Contains("heat vision") || powers.Contains("lasso of truth");
+            var enumerable = powers as string[] ?? powers.ToArray();
+            return enumerable.Contains("heat vision") || enumerable.Contains("lasso of truth");
         }
 
         public void SelectionOperators()
