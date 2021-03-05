@@ -604,8 +604,7 @@ namespace LinqExamples
             // using pretty much anything after a where
             var wasteful = _heroes.Where(h => h.PowerLevel > 80).FirstOrDefault();
             var notWasteFul = _heroes.FirstOrDefault(h => h.PowerLevel > 80);
-
-
+            
             var notWithAny = _heroes.Where(h => h.PowerLevel > 20).Any();
 
             // watch out for casting issues!
