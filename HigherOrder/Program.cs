@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using HigherOrder.Mapper;
+using HigherOrder.Services;
+
 namespace HigherOrder
 {
     class Program
@@ -9,6 +12,7 @@ namespace HigherOrder
         {
             DoListMapper();
             DoAdd();
+            DoRepository();
         }
 
         static void DoListMapper()
@@ -37,6 +41,29 @@ namespace HigherOrder
 
             var sum2 = add9(2);
             Console.WriteLine(sum2);
+        }
+
+        static void DoRepository() 
+        {
+            var repo = new HigherOrderProductRepository();
+
+            var allProducts = repo.Get();
+            allProducts.ToList().ForEach(Console.WriteLine);
+
+            allProducts = repo.GetLinq();
+            allProducts.ToList().ForEach(Console.WriteLine);
+
+            var productsByCategoryId = repo.Get(p => p.CategoryId == 1);
+            productsByCategoryId.ToList().ForEach(Console.WriteLine);
+
+            productsByCategoryId = repo.GetLinq(p => p.CategoryId == 1);
+            productsByCategoryId.ToList().ForEach(Console.WriteLine);
+
+            var activeProducts = repo.Get(p => p.Active);
+            activeProducts.ToList().ForEach(Console.WriteLine);
+
+            var inactiveProducts = repo.GetLinq(p => !p.Active);
+            inactiveProducts.ToList().ForEach(Console.WriteLine);
         }
     }
 }

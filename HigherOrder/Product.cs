@@ -33,5 +33,10 @@ namespace HigherOrder.Models
             };
         }
 
+        public override string ToString()
+        {
+            return $"{{{Name} - {CategoryId} - {Active}}}";
+        }
+
     }
 }

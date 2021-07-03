@@ -29,7 +29,7 @@ namespace HigherOrder.Services
             if(filter == null)
                 return _products;
 
-            return _products.Where(p => filter(p));
+            return _products.Where(filter);
         }
     }
 }
