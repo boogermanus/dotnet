@@ -13,6 +13,7 @@ namespace HigherOrder
             DoListMapper();
             DoAdd();
             DoRepository();
+            DoUtilities();
         }
 
         static void DoListMapper()
@@ -64,6 +65,23 @@ namespace HigherOrder
 
             var inactiveProducts = repo.GetLinq(p => !p.Active);
             inactiveProducts.ToList().ForEach(Console.WriteLine);
+        }
+
+        static void DoUtilities()
+        {
+            Action work = () => Console.WriteLine("Hello World");
+
+            Utilities.WithLogging(work);
+
+            work = () =>
+            {
+                if (new Random().Next(10) % 3 != 0)
+                    throw new Exception("You were unlucky!");
+                Console.WriteLine("You got lucky!");
+            };
+
+            Utilities.Retry(work, 3);
+
         }
     }
 }
