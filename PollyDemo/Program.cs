@@ -1,4 +1,5 @@
 ﻿using System;
+using PollyDemo.Demos;
 
 namespace PollyDemo
 {
@@ -6,7 +7,7 @@ namespace PollyDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new RetryDemo().Demo();
         }
     }
 }
