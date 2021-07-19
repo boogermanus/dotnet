@@ -19,9 +19,21 @@ namespace PollyDemo.Demos
                     .Retry(RetryHandler);
                 retryPolicy.Execute(Worker.DoWork);
             }
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine("Final exception");
+                Console.WriteLine($"One try and we're done {e.Message}");
+            }
+            
+            // retry three times
+            try
+            {
+                var retryThreeTimes = Policy.Handle<Exception>()
+                    .Retry(3, RetryHandler);
+                retryThreeTimes.Execute(Worker.DoWork);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Three tries and we're done {e.Message}");
             }
 
         }
