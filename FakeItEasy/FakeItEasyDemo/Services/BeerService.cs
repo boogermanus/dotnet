@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using FakeItEasy.Models;
+using FakeItEasyDemo.Models;
 using Newtonsoft.Json;
 
-namespace FakeItEasy.Services
+namespace FakeItEasyDemo.Services
 {
     public class BeerService : IBeerService
     {

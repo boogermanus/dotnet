@@ -1,17 +1,17 @@
-﻿using FakeItEasy.Interfaces;
+﻿using FakeItEasyDemo.Interfaces;
 
-namespace FakeItEasy.Services
+namespace FakeItEasyDemo.Services
 {
     public class FakeItEasyService : IFakeItEasyService
     {
         private int _count = 0;
-        
+
         public void IncrementCount()
         {
             _count++;
         }
 
-        public void IncrementBy(int count)
+        public void IncrementCountBy(int count)
         {
             _count += count;
         }

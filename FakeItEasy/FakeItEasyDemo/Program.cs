@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using FakeItEasy.Services;
+using FakeItEasyDemo.Services;
 
-namespace FakeItEasy
+namespace FakeItEasyDemo
 {
     class Program
     {

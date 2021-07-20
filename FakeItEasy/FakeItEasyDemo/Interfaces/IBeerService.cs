@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using FakeItEasy.Models;
+using FakeItEasyDemo.Models;
 
-namespace FakeItEasy
+namespace FakeItEasyDemo
 {
     public interface IBeerService
     {

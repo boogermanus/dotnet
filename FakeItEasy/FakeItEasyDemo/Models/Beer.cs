@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace FakeItEasy.Models
+namespace FakeItEasyDemo.Models
 {
     public class Beer
     {
@@ -15,7 +15,7 @@ namespace FakeItEasy.Models
         {
             var builder = new StringBuilder();
             builder.AppendLine($"Id: {Id}\tName: {Name}");
-            builder.AppendLine($"ABV {Abv}");
+            builder.AppendLine($"ABV: {Abv}");
             builder.AppendLine($"Description: {Description}");
             builder.AppendLine($"Tagline: {Tagline}");
             builder.AppendLine("-------------");

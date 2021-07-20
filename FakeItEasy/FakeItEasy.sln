@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeItEasy", "FakeItEasy\FakeItEasy.csproj", "{1F3585C6-98E8-4B3B-A06C-6AEB29C303E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeItEasyDemo", "FakeItEasyDemo\FakeItEasyDemo.csproj", "{1F3585C6-98E8-4B3B-A06C-6AEB29C303E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeItEasyTests", "FakeItEasyTests\FakeItEasyTests.csproj", "{20DF3605-0C9D-4E91-835E-6D7F6A2FE7B2}"
 EndProject

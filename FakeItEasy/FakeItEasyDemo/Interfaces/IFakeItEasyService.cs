@@ -1,9 +1,9 @@
-﻿namespace FakeItEasy.Interfaces
+﻿namespace FakeItEasyDemo.Interfaces
 {
     public interface IFakeItEasyService
     {
         void IncrementCount();
-        void IncrementBy(int count);
+        void IncrementCountBy(int count);
         int GetCount();
         int GetCount(string option);
     }
