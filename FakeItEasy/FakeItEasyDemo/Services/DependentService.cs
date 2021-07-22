@@ -18,5 +18,12 @@ namespace FakeItEasyDemo.Services
 
             return beers.Sum(b => b.Abv);
         }
+
+        public decimal GetBeerAbv(int id)
+        {
+            var beer = _beerService.GetBeer(id);
+
+            return beer?.Abv ?? decimal.Zero;
+        }
     }
 }
