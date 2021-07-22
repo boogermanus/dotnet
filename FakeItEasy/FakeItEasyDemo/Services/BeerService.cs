@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using FakeItEasyDemo.Interfaces;
 using FakeItEasyDemo.Models;
 using Newtonsoft.Json;
 

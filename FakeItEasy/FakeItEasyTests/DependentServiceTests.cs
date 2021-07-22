@@ -142,7 +142,14 @@ namespace FakeItEasyTests
             Assert.That(() => _dependentService.GetBeerAbv(-1), Throws.Exception);
         }
 
-
-        
+        [Test]
+        public void YetAnotherExampleOfHowToThrowConditionally()
+        {
+            A.CallTo(() => _fakeBeerService.GetBeer(A<int>.Ignored)).WhenArgumentsMatch((int i) => i.Equals(-1))
+                .Throws<Exception>();
+            
+            Assert.That(() => _dependentService.GetBeerAbv(1), Throws.Nothing);
+            Assert.That(() => _dependentService.GetBeerAbv(-1), Throws.Exception);
+        }
     }
 }
