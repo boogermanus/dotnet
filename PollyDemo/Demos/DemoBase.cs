@@ -1,5 +1,6 @@
 using System;
 using FakeItEasy;
+using Polly;
 using PollyDemo.Interfaces;
 
 namespace PollyDemo.Demos
@@ -16,6 +17,11 @@ namespace PollyDemo.Demos
         public void RetryHandler(Exception e, int count)
         {
             Console.WriteLine($"Attempt {count} - Exception: {e.Message}");
+        }
+
+        public void RetryResultHandler(DelegateResult<int> result, int count)
+        {
+            Console.WriteLine($"Attempt {count} - Result: {result.Result}");
         }
     }
 }

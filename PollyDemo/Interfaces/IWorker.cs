@@ -4,5 +4,6 @@ namespace PollyDemo.Interfaces
     {
         public void DoWork();
         public void DoWorkWithParams(params string[] args);
+        public int DoWorkWithResult();
     }
 }
