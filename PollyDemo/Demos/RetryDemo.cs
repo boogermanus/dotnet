@@ -13,7 +13,6 @@ namespace PollyDemo.Demos
             RetryOnce();
             RetryThreeTimes();
             RetryWithResult();
-            RetryAsync();
         }
         
         private void RetryOnce()
@@ -66,17 +65,6 @@ namespace PollyDemo.Demos
                 .Execute(Worker.DoWorkWithResult);
 
             Console.WriteLine("Made it!");
-        }
-
-        private void RetryAsync()
-        {
-            A.CallTo(() => Worker.DoWork()).Throws(() => new Exception("No work from me"));
-            Policy.Handle<Exception>()
-                .RetryAsync(RetryHandler)
-                .ExecuteAsync(async () =>
-                {
-                    await Task.Run(Worker.DoWork);
-                });
         }
     }
 }
