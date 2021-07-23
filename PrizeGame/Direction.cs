@@ -1,6 +1,6 @@
 ﻿namespace PrizeGame
 {
-    public class Direction
+    public struct Direction
     {
         
         // Decrease in Y
