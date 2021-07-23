@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using FakeItEasy;
 using Polly;
 using PollyDemo.Interfaces;
@@ -9,19 +10,20 @@ namespace PollyDemo.Demos
     {
         protected IWorker Worker { get; set; }
 
-        public DemoBase()
+        protected DemoBase()
         {
             Worker = A.Fake<IWorker>();
         }
 
-        public void RetryHandler(Exception e, int count)
+        protected void RetryHandler(Exception e, int count)
         {
             Console.WriteLine($"Attempt {count} - Exception: {e.Message}");
         }
 
-        public void RetryResultHandler(DelegateResult<int> result, int count)
+        protected void RetryResultHandler(DelegateResult<int> result, int count)
         {
             Console.WriteLine($"Attempt {count} - Result: {result.Result}");
         }
+        
     }
 }

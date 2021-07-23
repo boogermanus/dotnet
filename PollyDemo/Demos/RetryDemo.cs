@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using FakeItEasy;
 using Polly;
 using PollyDemo.Interfaces;
@@ -9,8 +10,15 @@ namespace PollyDemo.Demos
     {
         public void Demo()
         {
+            RetryOnce();
+            RetryThreeTimes();
+            RetryWithResult();
+            RetryAsync();
+        }
+        
+        private void RetryOnce()
+        {
             A.CallTo(() => Worker.DoWork()).Throws(() => new Exception("No work from me"));
-
             // retry once
             try
             {
@@ -22,7 +30,11 @@ namespace PollyDemo.Demos
             {
                 Console.WriteLine($"One try and we're done {e.Message}");
             }
-
+        }
+        
+        private void RetryThreeTimes()
+        {
+            A.CallTo(() => Worker.DoWork()).Throws(() => new Exception("No work from me"));
             // retry three times
             try
             {
@@ -34,14 +46,16 @@ namespace PollyDemo.Demos
             {
                 Console.WriteLine($"Three tries and we're done {e.Message}");
             }
-
+        }
+        
+        private void RetryWithResult()
+        {
             var count = 0;
             A.CallTo(() => Worker.DoWorkWithResult()).ReturnsLazily(() =>
             {
-
                 if (count == 2)
                     return 1;
-                
+
                 count++;
 
                 return 0;
@@ -52,7 +66,17 @@ namespace PollyDemo.Demos
                 .Execute(Worker.DoWorkWithResult);
 
             Console.WriteLine("Made it!");
+        }
 
+        private void RetryAsync()
+        {
+            A.CallTo(() => Worker.DoWork()).Throws(() => new Exception("No work from me"));
+            Policy.Handle<Exception>()
+                .RetryAsync(RetryHandler)
+                .ExecuteAsync(async () =>
+                {
+                    await Task.Run(Worker.DoWork);
+                });
         }
     }
 }
