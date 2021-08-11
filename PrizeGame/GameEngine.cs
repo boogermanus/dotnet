@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PrizeGame.Players;
 
 namespace PrizeGame
 {
@@ -19,16 +20,16 @@ namespace PrizeGame
             int rows = 10; //  Integer.parseInt(args[1]);
             int maxRounds = 100;
             Board board = new Board(cols, rows);
-            // Player playerA = new MinDistancePlayer();
-            // playerLetters[playerA] = 'A';
-            // Player playerB = new MyPlayer();
-            // playerLetters[playerB] = 'B';
-            // Player playerC = new MinDistancePlayer();
-            // playerLetters[playerC] = 'C';
-            // Player playerD = new HighestPrizePlayer();
-            // playerLetters[playerD] = 'D';
-            // board.PositionPlayers(playerA, playerB, playerC, playerD);
-            // board.PlacePrizesRandomly(0.1, 1, 9);
+            Player playerA = new MinDistancePlayer();
+            playerLetters[playerA] = 'A';
+            Player playerB = new MyPlayer();
+            playerLetters[playerB] = 'B';
+            Player playerC = new MinDistancePlayer();
+            playerLetters[playerC] = 'C';
+            Player playerD = new HighestPrizePlayer();
+            playerLetters[playerD] = 'D';
+            board.PositionPlayers(playerA, playerB, playerC, playerD);
+            board.PlacePrizesRandomly(0.1, 1, 9);
             
             Console.Out.WriteLine("\nBeginning of the game, nobody has any points: ");
             PrintScore(board);
