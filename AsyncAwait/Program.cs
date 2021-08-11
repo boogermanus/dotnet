@@ -6,7 +6,17 @@ namespace AsyncAwait
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ThreadHelper.PrintWithThreadId("Starting Program", true);
+            FullySynchronous();
+        }
+
+        static void FullySynchronous()
+        {
+            IFileHierarchyReader reader = new FileHierarchyReader();
+            var content = reader.ReadFileHierarchy("file1a.txt");
+
+            Console.WriteLine($"Result: {content}");
+            Console.WriteLine();
         }
     }
 }
