@@ -40,6 +40,7 @@ namespace AsyncAwait
 
             ThreadHelper.PrintWithThreadId($"Got third file name async: {file3Name}");
 
+            path = Path.Combine(BASE_DATA_PATH, file3Name);
             var file3Contents = await File.ReadAllTextAsync(path);
 
             return file3Contents;
