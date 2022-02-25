@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AssertYourself;
 using NUnit.Framework;
@@ -52,9 +53,9 @@ namespace AssertYourselfTests
             var result = processor.ProcessDraftOnDueDate().FirstOrDefault();
             Assert.Multiple(() =>
             {
-                Assert.That(result, Is.Not.Null);
-                Assert.That(result.Id, Is.EqualTo(autoPay.Id));
-                Assert.That(result.Type == autoPay.Type);
+                Assert.That(result, Is.Not.Null, "result is null");
+                Assert.That(result.Id, Is.EqualTo(autoPay.Id),"result.Id is not equal to autoPay.Id");
+                Assert.That(result.Type == autoPay.Type, "result.Type is not equal to autoPay.Type");
             });
         }
         
@@ -93,6 +94,16 @@ namespace AssertYourselfTests
 
             Assert.That(() => processor.ProcessDraftOnDueDate().FirstOrDefault(),
                 Is.Not.Null.And.Property(nameof(AutoPayProcessingResult.Ok)).True);
+        }
+        
+        // catching exceptions
+        [Test]
+        public void ProcessDraftOnDueDateThrowsSomethingWillThrow()
+        {
+            Assert.That(() => new AutoPayProcessorThingy(new[]
+            {
+                new AutoPay(AutoPayType.DraftOnDay, false, 0)
+            }).ProcessDraftOnDueDateThrowsSomething(), Throws.Exception);
         }
     }
 }
