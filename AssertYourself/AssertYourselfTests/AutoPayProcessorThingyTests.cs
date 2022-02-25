@@ -35,7 +35,7 @@ namespace AssertYourselfTests
 
             var result = processor.ProcessDraftOnDueDate().FirstOrDefault();
 
-            Assert.IsNotNull(result, "result was null");
+            Assert.IsNotNull(result, "result is null");
             Assert.IsInstanceOf<Guid>(result.Id, "Id wasn't a guid!");
             Assert.AreEqual(result.Type, AutoPayType.DraftOnDueDate, "Type is not DraftOnDueDate");
             Assert.AreEqual(result.Ok, true, "Ok is not true!");
@@ -54,7 +54,25 @@ namespace AssertYourselfTests
             Assert.Multiple(() =>
             {
                 Assert.That(result, Is.Not.Null, "result is null");
-                Assert.That(result.Id, Is.EqualTo(autoPay.Id),"result.Id is not equal to autoPay.Id");
+                Assert.That(result.Id, Is.EqualTo(autoPay.Id),$"{result.Id} is not equal to {autoPay.Id}");
+                Assert.That(result.Type == autoPay.Type, "result.Type is not equal to autoPay.Type");
+            });
+        }
+        
+        [Test]
+        public void ProcessDraftOnDueDateBadIdeaShouldMapPropertiesMultipleCoolMessage()
+        {
+            var autoPay = new AutoPay(AutoPayType.DraftOnDueDate, true, 1);
+            var processor = new AutoPayProcessorThingy(new[]
+            {
+                autoPay
+            });
+
+            var result = processor.ProcessDraftOnDueDateBadIdea().FirstOrDefault();
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.Not.Null, "result is null");
+                Assert.That(result.Id, Is.EqualTo(autoPay.Id),$"{result.Id} is not equal to {autoPay.Id}");
                 Assert.That(result.Type == autoPay.Type, "result.Type is not equal to autoPay.Type");
             });
         }
@@ -96,6 +114,19 @@ namespace AssertYourselfTests
                 Is.Not.Null.And.Property(nameof(AutoPayProcessingResult.Ok)).True);
         }
         
+        [Test]
+        public void ProcessDraftOnDateShouldNotBeNullAndReturnOkayv2()
+        {
+            var autoPay = new AutoPay(AutoPayType.DraftOnDueDate, true, 1);
+            var processor = new AutoPayProcessorThingy(new[]
+            {
+                autoPay
+            });
+
+            Assert.That(() => processor.ProcessDraftOnDueDate().FirstOrDefault(),
+                Is.Not.Null.And.Property(nameof(AutoPayProcessingResult.Ok)).True);
+        }
+        
         // catching exceptions
         [Test]
         public void ProcessDraftOnDueDateThrowsSomethingWillThrow()
@@ -104,6 +135,16 @@ namespace AssertYourselfTests
             {
                 new AutoPay(AutoPayType.DraftOnDay, false, 0)
             }).ProcessDraftOnDueDateThrowsSomething(), Throws.Exception);
+        }
+        
+        [Test]
+        public void ProcessDraftOnDueDateThrowsSomethingWillThrowWithBurn()
+        {
+            Assert.That(() => new AutoPayProcessorThingy(new[]
+                {
+                    new AutoPay(AutoPayType.DraftOnDay, false, 0)
+                }).ProcessDraftOnDueDateThrowsSomethingWithBurn(),
+                Throws.InstanceOf<NotSupportedException>().With.Message.Contains("burn"));
         }
     }
 }

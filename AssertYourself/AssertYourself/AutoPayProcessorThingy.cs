@@ -34,11 +34,32 @@ namespace AssertYourself
             return list;
         }
 
+        public IEnumerable<AutoPayProcessingResult> ProcessDraftOnDueDateBadIdea()
+        {
+            return new[]
+            {
+                new AutoPayProcessingResult(false, string.Empty)
+                {
+                    Id = Guid.Empty
+                }
+            };
+        }
+
         public IEnumerable<AutoPayProcessingResult> ProcessDraftOnDueDateThrowsSomething()
         {
             foreach (var autoPay in _autoPays)
             {
                 autoPay.DoSomeAutoPayStuffThatThrows();
+            }
+
+            return new List<AutoPayProcessingResult>();
+        }
+        
+        public IEnumerable<AutoPayProcessingResult> ProcessDraftOnDueDateThrowsSomethingWithBurn()
+        {
+            foreach (var autoPay in _autoPays)
+            {
+                autoPay.DoSomeAutoPayStuffThatThrowsWithMessage();
             }
 
             return new List<AutoPayProcessingResult>();
