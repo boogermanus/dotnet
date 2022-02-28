@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AssertYourself;
 using NUnit.Framework;
 
@@ -114,19 +114,6 @@ namespace AssertYourselfTests
                 Is.Not.Null.And.Property(nameof(AutoPayProcessingResult.Ok)).True);
         }
         
-        [Test]
-        public void ProcessDraftOnDateShouldNotBeNullAndReturnOkayv2()
-        {
-            var autoPay = new AutoPay(AutoPayType.DraftOnDueDate, true, 1);
-            var processor = new AutoPayProcessorThingy(new[]
-            {
-                autoPay
-            });
-
-            Assert.That(() => processor.ProcessDraftOnDueDate().FirstOrDefault(),
-                Is.Not.Null.And.Property(nameof(AutoPayProcessingResult.Ok)).True);
-        }
-        
         // catching exceptions
         [Test]
         public void ProcessDraftOnDueDateThrowsSomethingWillThrow()
@@ -145,6 +132,20 @@ namespace AssertYourselfTests
                     new AutoPay(AutoPayType.DraftOnDay, false, 0)
                 }).ProcessDraftOnDueDateThrowsSomethingWithBurn(),
                 Throws.InstanceOf<NotSupportedException>().With.Message.Contains("burn"));
+        }
+
+        // running async tests
+        [Test]
+        public async Task ProcessDraftOnDueDateRunsAsync()
+        {
+            var processor = new AutoPayProcessorThingy(new[]
+            {
+                new AutoPay(AutoPayType.DraftOnDay, true, 10)
+            });
+
+            var result = await processor.ProcessDraftOnDueDateAsync();
+
+            Assert.That(result, Is.Not.Empty.And.All.Not.Null);
         }
     }
 }

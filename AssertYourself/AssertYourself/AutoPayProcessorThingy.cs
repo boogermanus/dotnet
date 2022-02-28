@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AssertYourself
 {
@@ -63,6 +65,14 @@ namespace AssertYourself
             }
 
             return new List<AutoPayProcessingResult>();
+        }
+
+        public async Task<IEnumerable<AutoPayProcessingResult>> ProcessDraftOnDueDateAsync()
+        {
+            return await Task.FromResult(_autoPays.Select(a => new AutoPayProcessingResult(true, string.Empty)
+            {
+                Id = a.Id,
+            }));
         }
     }
 }
