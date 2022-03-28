@@ -10,6 +10,7 @@ namespace FakeItEasyTests
     {
         private IFakeItEasyService _service;
         private IFakeItEasyService _fakeService;
+        
         [SetUp]
         public void SetUp()
         {

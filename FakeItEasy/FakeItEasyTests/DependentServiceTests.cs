@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using FakeItEasy;
-using FakeItEasyDemo;
 using FakeItEasyDemo.Interfaces;
 using FakeItEasyDemo.Models;
 using FakeItEasyDemo.Services;
@@ -145,7 +144,8 @@ namespace FakeItEasyTests
         [Test]
         public void YetAnotherExampleOfHowToThrowConditionally()
         {
-            A.CallTo(() => _fakeBeerService.GetBeer(A<int>.Ignored)).WhenArgumentsMatch((int i) => i.Equals(-1))
+            A.CallTo(() => _fakeBeerService.GetBeer(A<int>.Ignored))
+                .WhenArgumentsMatch((int i) => i.Equals(-1))
                 .Throws<Exception>();
             
             Assert.That(() => _dependentService.GetBeerAbv(1), Throws.Nothing);
