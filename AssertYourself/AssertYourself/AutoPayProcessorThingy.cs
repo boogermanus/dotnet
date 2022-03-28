@@ -74,5 +74,18 @@ namespace AssertYourself
                 Id = a.Id,
             }));
         }
+
+        public async Task<IEnumerable<AutoPayProcessingResult>> ProcessDraftOnDueDateAsyncThrows()
+        {
+            return await Task.Run(() =>
+            {
+                if (!_autoPays.Any())
+                {
+                    throw new Exception();
+                }
+
+                return new List<AutoPayProcessingResult>();
+            });
+        }
     }
 }

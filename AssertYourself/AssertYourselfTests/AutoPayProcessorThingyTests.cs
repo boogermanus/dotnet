@@ -53,10 +53,14 @@ namespace AssertYourselfTests
             var result = processor.ProcessDraftOnDueDate().FirstOrDefault();
             Assert.Multiple(() =>
             {
-                Assert.That(result, Is.Not.Null, "result is null");
+                Assert.That(result, Is.Null, "result is null");
                 Assert.That(result.Id, Is.EqualTo(autoPay.Id),$"{result.Id} is not equal to {autoPay.Id}");
                 Assert.That(result.Type == autoPay.Type, "result.Type is not equal to autoPay.Type");
             });
+            
+            // Assert.That(result, Is.Null, "result is null");
+            // Assert.That(result.Id, Is.EqualTo(autoPay.Id),$"{result.Id} is not equal to {autoPay.Id}");
+            // Assert.That(result.Type == autoPay.Type, "result.Type is not equal to autoPay.Type");
         }
         
         [Test]
@@ -146,6 +150,14 @@ namespace AssertYourselfTests
             var result = await processor.ProcessDraftOnDueDateAsync();
 
             Assert.That(result, Is.Not.Empty.And.All.Not.Null);
+        }
+
+        [Test]
+        public void ProcessDraftOnDueDateRunsAsyncThrow()
+        {
+            var processor = new AutoPayProcessorThingy(new AutoPay[0]);
+
+            Assert.That(() => processor.ProcessDraftOnDueDateAsyncThrows(), Throws.Exception);
         }
     }
 }
