@@ -186,7 +186,7 @@ namespace LinqExamples
         {
             // DefaultIfEmpty
             // never used this. bit it seems a good way to fake things...
-            var defaultIfEmpty = new List<Hero>().DefaultIfEmpty();
+            var defaultIfEmpty = new List<Hero>().DefaultIfEmpty().ToList();
             
             // if we add ToArray here suddenly rider doesn't care about multiple enumerations
             // var defaultIfEmpty = new List<Hero>().DefaultIfEmpty().ToArray();
@@ -251,7 +251,7 @@ namespace LinqExamples
 
             var bizarro = new Hero
             {
-                Name = "bizarro"
+                Name = "Bizarro"
             };
 
             var fake = new List<Hero> {bizarro};
@@ -433,12 +433,12 @@ namespace LinqExamples
 
             // drake right
             var supermanAndWonderWomen =
-                _heroes.Where(h => h.Powers.Contains("heat vision") || h.Powers.Contains("lasso of truth"));
+                _heroes.Where(h => h.Powers.Contains("heat vision") || h.Powers.Contains("lasso of truth")).ToList();
             Console.WriteLine(supermanAndWonderWomen);
             
             // drake right clean
-            supermanAndWonderWomen.Where(h => HasHeatVisionOrLassoOfTruth(h.Powers));
-            Console.WriteLine(supermanAndWonderWomen.Count());
+            var enumerable = supermanAndWonderWomen.Where(h => HasHeatVisionOrLassoOfTruth(h.Powers));
+            Console.WriteLine(enumerable.Count());
 
         }
 
