@@ -19,4 +19,9 @@ public class MailMessage
     {
         Console.WriteLine($"To: {_to} From: {_from} Subject: {_subject} Body: {_body}");
     }
+
+    public override string ToString()
+    {
+        return $"To: {_to} From: {_from} Subject: {_subject} Body: {_body}";
+    }
 }

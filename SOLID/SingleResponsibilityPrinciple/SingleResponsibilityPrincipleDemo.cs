@@ -7,5 +7,9 @@ public class SingleResponsibilityPrincipleDemo : IDemo
         var badInvoiceManager = new BadInvoiceManager();
         badInvoiceManager.AddInvoice(12);
         badInvoiceManager.RemoveInvoice(0);
+
+        var goodInvoiceManager = new GoodInvoiceManager();
+        goodInvoiceManager.AddInvoice(12);
+        goodInvoiceManager.RemoveInvoice(0);
     }
 }
