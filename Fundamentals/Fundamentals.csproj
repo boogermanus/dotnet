@@ -42,6 +42,7 @@
     <ItemGroup>
         <Compile Include="EnumerableTest.cs" />
         <Compile Include="EqualTests.cs" />
+        <Compile Include="IDemo.cs" />
         <Compile Include="LambdaTest.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

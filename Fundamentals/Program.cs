@@ -14,7 +14,7 @@ namespace Fundamentals
             //EqualTests.TestHash();
             //RefInOut.Test();
             
-            EnumerableTest.DoEnumerable();
+            // EnumerableTest.DoEnumerable();
             
             //LambdaTest.DoLambda();
         }
