@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Fundamentals
 {
-    public class LambdaTest
+    public class LambdaTest : IDemo
     {
-        internal static void DoLambda()
+        private static void DoLambda()
         {
             var numbers = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
@@ -42,6 +42,11 @@ namespace Fundamentals
             }
             
             Console.WriteLine(string.Join(", ", numbers));
+        }
+
+        public void Run()
+        {
+            DoLambda();
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Fundamentals
 {
-    public class EqualTests
+    public class EqualTests : IDemo
     {
-        internal static void Test()
+        private static void Test()
         {
             var decimalNumber = 10m;
             var doubleNumber = 10d;
@@ -22,7 +22,7 @@ namespace Fundamentals
 
         }
 
-        internal static void TestHash()
+        private static void TestHash()
         {
             var c1 = new EqualClass("TestName");
             var c2 = new EqualClass("TestName");
@@ -38,27 +38,12 @@ namespace Fundamentals
             Console.WriteLine($"{dictionary.Count}");
         }
 
-        class EqualClass
+
+
+        public void Run()
         {
-            public EqualClass(string name)
-            {
-                Name = name;
-            }
-            public string Name { get; }
-
-            public override bool Equals(object obj)
-            {
-                if (!(obj is EqualClass target))
-                    return false;
-            
-                return Equals(Name, target.Name);
-            }
-            
-            public override int GetHashCode()
-            {
-                return Name?.GetHashCode() ?? 0;
-            }
-
+            Test();
+            TestHash();
         }
     }
 }

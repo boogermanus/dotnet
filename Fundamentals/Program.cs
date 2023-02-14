@@ -11,12 +11,18 @@ namespace Fundamentals
     {
         public static void Main(string[] args)
         {
-            //EqualTests.TestHash();
-            //RefInOut.Test();
-            
-            // EnumerableTest.DoEnumerable();
-            
-            //LambdaTest.DoLambda();
+            var demos = new IDemo[]
+            {
+                new EnumerableTest(),
+                new EqualTests(),
+                new LambdaTest(),
+                new StringConcatenation()
+            };
+
+            foreach (var demo in demos)
+            {
+                demo.Run();
+            }
         }
 
     }
