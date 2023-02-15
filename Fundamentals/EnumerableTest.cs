@@ -19,6 +19,9 @@ namespace Fundamentals
             stopwatch.Start();
             // Multiple iterations.
             var allItems = GetNumbersEnumerableFor().ToList();
+            // allItems = GetNumbersEnumerableWhile().ToList();
+            // allItems = GetNumbersList().ToList();
+            
             LogTime(stopwatch, nameof(allItems));
             
             var largerThan5 = allItems.Where(i => i > 5);
