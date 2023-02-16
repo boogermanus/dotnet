@@ -16,7 +16,8 @@ namespace Fundamentals
                 new EnumerableTest(),
                 new EqualTests(),
                 new LambdaTest(),
-                new StringConcatenation()
+                new StringConcatenation(),
+                new RefInOut()
             };
 
             foreach (var demo in demos)
