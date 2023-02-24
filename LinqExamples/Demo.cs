@@ -33,7 +33,7 @@ namespace LinqExamples
             {
                 Name = "Batman",
                 PowerLevel = 99.9m,
-                Powers = new string[0],
+                Powers = Array.Empty<string>(),
                 Team = "JLA"
             },
             new Hero
@@ -62,7 +62,7 @@ namespace LinqExamples
             {
                 Name = "The Joker",
                 PowerLevel = 71.2m,
-                Powers = new string[0],
+                Powers = Array.Empty<string>(),
                 IsVillain = true
             }
         };
@@ -94,6 +94,10 @@ namespace LinqExamples
             var aggregate1 = _heroes.Aggregate(string.Empty,
                 (longest, next) => next.Name.Length > longest.Length ? next.Name : longest, h => h.ToUpper());
             Console.WriteLine($"Aggregate 1: {aggregate1}");
+            
+            // Aggregate join
+            var aggregateJoin = _heroes.Aggregate(",", (current, next) => $"{current},{next}");
+            Console.WriteLine(aggregateJoin);
 
             // weird resharper thing here...
             var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal + next.PowerLevel / 2,
@@ -361,13 +365,24 @@ namespace LinqExamples
         public void PartitioningOperators()
         {
             // Skip
-            _heroes.Skip(2).ToList().ForEach(Console.WriteLine);
-            _heroes.SkipLast(2).ToList().ForEach(Console.WriteLine);
-            _heroes.SkipWhile(h => h.PowerLevel > 80).ToList().ForEach(Console.WriteLine);
+            _heroes.Skip(2)
+                .ToList()
+                .ForEach(Console.WriteLine);
+            _heroes.SkipLast(2)
+                .ToList()
+                .ForEach(Console.WriteLine);
+            _heroes.SkipWhile(h => h.PowerLevel > 80)
+                .ToList()
+                .ForEach(Console.WriteLine);
 
             // Take
-            _heroes.Take(2).ToList().ForEach(Console.WriteLine);
-            _heroes.TakeLast(2).ToList().ForEach(Console.WriteLine);
+            _heroes
+                .Take(2)
+                .ToList()
+                .ForEach(Console.WriteLine);
+            _heroes.TakeLast(2)
+                .ToList()
+                .ForEach(Console.WriteLine);
             _heroes.TakeWhile(h => h.PowerLevel > 80).ToList().ForEach(Console.WriteLine);
         }
 
@@ -488,13 +503,16 @@ namespace LinqExamples
                 .ForEach(Console.WriteLine);
 
             // new objects!
-            var newObjects = _heroes.Select(h => new {h.Name, h.PowerLevel}).ToList();
+            var newObjects = _heroes.Select(h => new {h.Name, h.PowerLevel})
+                .ToList();
 
+            // we can't use foreach on the object
             foreach (var newObject in newObjects)
             {
                 Console.WriteLine($"{newObject.Name} - {newObject.PowerLevel}");
             }
 
+            // professional level
             _heroes.Select(h => new Hero
                 {
                     Name = h.Name
