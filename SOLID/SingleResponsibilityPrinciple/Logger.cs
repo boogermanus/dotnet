@@ -6,4 +6,5 @@ public class Logger : ILogger
     {
         Console.WriteLine($"{DateTime.Now}: {message}");
     }
+    
 }

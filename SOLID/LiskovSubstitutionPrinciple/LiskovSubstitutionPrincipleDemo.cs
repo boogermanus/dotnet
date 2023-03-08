@@ -15,5 +15,9 @@ public class LiskovSubstitutionPrincipleDemo : IDemo
 
         var orange = new Orange();
         Console.WriteLine(orange.GetColor());
+
+        Fruit fruit;
+        fruit = apple;
+        fruit = orange;
     }
 }

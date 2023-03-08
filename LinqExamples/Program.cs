@@ -21,6 +21,7 @@ namespace LinqExamples
             demo.RestrictionOperators();
             demo.SelectionOperators();
             demo.SetOperators();
+            demo.UsingLet();
             demo.VeryBadThings();
         }
     }

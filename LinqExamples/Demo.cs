@@ -613,6 +613,15 @@ namespace LinqExamples
                 .ForEach(Console.WriteLine);
         }
 
+        public void UsingLet()
+        {
+            // find everyone who's first power isn't flight
+            var stuff = _heroes.Select(h => new { hero = h, firstPower = h.Powers.FirstOrDefault() })
+                .Where(h => h.firstPower != "flight")
+                .Select(h => h.hero);
+            stuff.ToList().ForEach(Console.WriteLine);
+        }
+
         public void VeryBadThings()
         {
             // dont use select, use where

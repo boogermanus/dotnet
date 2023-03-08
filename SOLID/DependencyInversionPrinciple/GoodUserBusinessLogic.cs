@@ -9,7 +9,7 @@ public class GoodUserBusinessLogic
         _dataAccess = GoodUserDataAccessFactory.GetUserDataAccess();
     }
 
-    public User GeUser(int id)
+    public User GetUser(int id)
     {
         return _dataAccess.GetUser(id);
     }
