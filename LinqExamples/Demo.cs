@@ -96,8 +96,13 @@ namespace LinqExamples
             Console.WriteLine($"Aggregate 1: {aggregate1}");
             
             // Aggregate join
-            var aggregateJoin = _heroes.Aggregate(",", (current, next) => $"{current},{next}");
+            var aggregateJoin = _heroes.Aggregate(string.Empty, (current, next) => current + (current.Length == 0 ? string.Empty : ",") + next);
             Console.WriteLine(aggregateJoin);
+            
+            // aggregate join again, but split
+            var aggregateJoinWithSplit =
+                _heroes.Aggregate(string.Empty, (current, next) => current + (current.Length == 0 ? string.Empty : "," ) + next.Name, d => d.Split(",")).ToList();
+            aggregateJoinWithSplit.ForEach(Console.WriteLine);
 
             // weird resharper thing here...
             var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal + next.PowerLevel / 2,
@@ -150,7 +155,7 @@ namespace LinqExamples
             // Cast
             var tempHeroes = new List<IHero>(_heroes);
 
-            // only good where your sure that everything is the same type of interface
+            // only good when you're sure that everything is the same type of interface
             var heroObjects = tempHeroes.Cast<Hero>().ToList();
             heroObjects.ForEach(Console.WriteLine);
 
