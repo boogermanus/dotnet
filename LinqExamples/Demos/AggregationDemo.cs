@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using LinqExamples.Models;
-
 namespace LinqExamples.Demos
 {
     public class AggregationDemo : DemoBase

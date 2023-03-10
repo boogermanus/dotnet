@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using LinqExamples.Demos;
 using LinqExamples.Interfaces;
 using LinqExamples.Models;
@@ -27,7 +28,7 @@ namespace LinqExamples
             // demo.UsingLet();
             // demo.VeryBadThings();
 
-            var demos = new[] { new AggregationDemo() };
+            var demos = new List<IDemo> { new AggregationDemo(), new AggregationDemoWithInts() };
 
             foreach (var demo in demos)
             {
