@@ -90,38 +90,44 @@ namespace LinqExamples
 
         public void AggregationOperators()
         {
-            // Aggregate
+            // Aggregate - get the longest name.
             var aggregate1 = _heroes.Aggregate(string.Empty,
                 (longest, next) => next.Name.Length > longest.Length ? next.Name : longest, h => h.ToUpper());
             Console.WriteLine($"Aggregate 1: {aggregate1}");
             
-            // Aggregate join
-            var aggregateJoin = _heroes.Aggregate(string.Empty, (current, next) => current + (current.Length == 0 ? string.Empty : ",") + next);
+            // Aggregate join - join all the heroes by ','
+            var aggregateJoin = _heroes.Aggregate(string.Empty,
+                (current, next) => current + (current.Length == 0 ? string.Empty : ",") + next);
             Console.WriteLine(aggregateJoin);
             
-            // aggregate join again, but split
+            // aggregate join again - join all the heroes names by ',', but split by ','
+            // basically string.join...
             var aggregateJoinWithSplit =
-                _heroes.Aggregate(string.Empty, (current, next) => current + (current.Length == 0 ? string.Empty : "," ) + next.Name, d => d.Split(",")).ToList();
+                _heroes.Aggregate(string.Empty,
+                    (current, next) => current + (current.Length == 0 ? string.Empty : ",") + next.Name,
+                    d => d.Split(",")).ToList();
             aggregateJoinWithSplit.ForEach(Console.WriteLine);
 
-            // weird resharper thing here...
+            // take half of the power of everyone, and then divide it by two.
             var aggregate2 = _heroes.Aggregate(decimal.Zero, (halfTotal, next) => halfTotal + next.PowerLevel / 2,
-                d => d);
+                d => d/2);
             Console.WriteLine($"Aggregate 2 {aggregate2}");
 
             // Count
-            var count = _heroes.Count; // Heroes is a list, it has a Count property, use it if available
+            // Heroes is a list, it has a Count property, use it if available
+            var count = _heroes.Count; 
             Console.WriteLine($"Heroes {count}");
 
-            count = _heroes.AsEnumerable().Count(); // this is enumerable, we don't know the count unless we call it
+            // this is enumerable, we don't know the count unless we call it
             // keep in mind that this is a O(n) operation
+            count = _heroes.AsEnumerable().Count();
             Console.WriteLine($"Heroes Enumerable Count {count}");
 
             // use a predicate - no need for where!
             count = _heroes.Count(h => h.IsVillain);
             Console.WriteLine($"Villains {count}");
 
-            // Max/Min
+            // Max/Min - can only be used on numbers. 
             var max = _heroes.Max(h => h.PowerLevel);
             Console.WriteLine($"Max PowerLevel {max}");
 
