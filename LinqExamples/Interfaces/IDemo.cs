@@ -1,4 +1,4 @@
-﻿namespace LinqExamples
+﻿namespace LinqExamples.Interfaces
 {
     public interface IDemo
     {

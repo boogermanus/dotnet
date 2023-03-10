@@ -1,6 +1,6 @@
 using System;
 
-namespace LinqExamples
+namespace LinqExamples.Models
 {
     public class Hero : IHero, IEquatable<Hero>
     

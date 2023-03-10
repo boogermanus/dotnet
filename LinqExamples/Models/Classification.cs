@@ -1,4 +1,4 @@
-﻿namespace LinqExamples
+﻿namespace LinqExamples.Models
 {
     public class Classification
     {

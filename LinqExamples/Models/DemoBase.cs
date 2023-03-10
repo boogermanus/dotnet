@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqExamples.Interfaces;
 
-namespace LinqExamples
+namespace LinqExamples.Models
 {
     public abstract class DemoBase : IDemo
     {
@@ -87,9 +88,6 @@ namespace LinqExamples
             }
         };
 
-        public void Run()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Run();
     }
 }
