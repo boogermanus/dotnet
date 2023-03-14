@@ -25,6 +25,9 @@ namespace LinqExamples.Demos
                 new HeroInt("superman", 1),
                 new HeroInt("batman", 0),
                 new HeroInt("joker", 0)
-            }; }
+            };
+
+            var max = heroInts.Max(h => h.Power);
+        }
     }
 }
