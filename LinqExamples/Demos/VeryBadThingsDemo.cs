@@ -9,15 +9,16 @@ namespace LinqExamples.Demos
     {
         public override void Run()
         {
-            // dont use select, use where
+            // don't use select, use where
             var dumbQuery = Heroes.Select(h => h.PowerLevel > 80);
             Console.WriteLine($"{dumbQuery.Count()}"); // is equal to six, not 4!
 
             // using pretty much anything after a where
             var wasteful = Heroes.Where(h => h.PowerLevel > 80).FirstOrDefault();
-            var notWasteFul = Heroes.FirstOrDefault(h => h.PowerLevel > 80);
+            var notWasteful = Heroes.FirstOrDefault(h => h.PowerLevel > 80);
 
-            var notWithAny = Heroes.Where(h => h.PowerLevel > 20).Any();
+            var wastefulAny = Heroes.Where(h => h.PowerLevel > 20).Any();
+            var notWastefulAny = Heroes.Any(h => h.PowerLevel > 20);
 
             // watch out for casting issues!
             var mixed = new List<IHero>
