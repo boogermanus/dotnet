@@ -17,7 +17,7 @@ namespace LinqExamples.Demos
             badStuff.ToList().ForEach(Console.WriteLine);
 
             // find everyone who's first power isn't flight
-            var stuff = Heroes.Select(h => new { hero = h, firstPower = h.Powers.FirstOrDefault() })
+            var stuff = Heroes.Select(hero => new { hero, firstPower = hero.Powers.FirstOrDefault() })
                 .Where(h => h.firstPower != "flight")
                 .Select(h => h.hero);
             stuff.ToList().ForEach(Console.WriteLine);
