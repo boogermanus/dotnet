@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LinqExamples.Demos;
 using LinqExamples.Interfaces;
-using LinqExamples.Models;
 
 namespace LinqExamples
 {
