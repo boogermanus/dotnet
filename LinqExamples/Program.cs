@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LinqExamples.Demos;
 using LinqExamples.Interfaces;
 
@@ -29,6 +30,7 @@ namespace LinqExamples
 
             foreach (var demo in demos)
             {
+                Console.WriteLine($"Running: {demo.GetType().Name}");
                 demo.Run();
             }
         }

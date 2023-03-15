@@ -8,7 +8,8 @@ namespace LinqExamples.Demos
     {
         public HeroInt(string name, int power)
         {
-            
+            Name = name;
+            Power = power;
         }
         public string Name;
         public int Power;

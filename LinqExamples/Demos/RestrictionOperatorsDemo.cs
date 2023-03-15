@@ -19,32 +19,37 @@ namespace LinqExamples.Demos
             var superman = Heroes.Where(h => h.Name.ToLower() == "superman"
                                               && h.PowerLevel == 99.9m && h.Team.ToUpper() == "JLA"
                                               && h.Powers.Contains("flight"));
-            Console.WriteLine(superman);
+            
+            superman.ToList().ForEach(Console.WriteLine);
+
 
             // prettier
             superman = Heroes.Where(h => h.Name.ToLower() == "superman")
                 .Where(h => h.PowerLevel == 99.9m)
                 .Where(h => h.Team.ToUpper() == "JLA")
                 .Where(h => h.Powers.Contains("flight"));
-            Console.WriteLine(superman);
+
+            superman.ToList().ForEach(Console.WriteLine);
 
             // preferred 
             superman = Heroes.Where(IsSuperman);
-            Console.WriteLine(superman);
+            superman.ToList().ForEach(Console.WriteLine);
 
             // clean code
             superman = Heroes.Where(IsSupermanCleanCode);
-            Console.WriteLine(superman);
+            superman.ToList().ForEach(Console.WriteLine);
 
             // be careful when using multiple wheres!
             var notSupermanAndWonderWomen = Heroes.Where(h => h.Powers.Contains("heat vision"))
                 .Where(h => h.Powers.Contains("lasso of truth"));
-            Console.WriteLine(notSupermanAndWonderWomen.Count());
+            var list = notSupermanAndWonderWomen.ToList();
+            Console.WriteLine(list.Count());
+            list.ForEach(Console.WriteLine);
 
             // drake right
             var supermanAndWonderWomen =
                 Heroes.Where(h => h.Powers.Contains("heat vision") || h.Powers.Contains("lasso of truth")).ToList();
-            Console.WriteLine(supermanAndWonderWomen);
+            supermanAndWonderWomen.ToList().ForEach(Console.WriteLine);
 
             // drake right clean
             var enumerable = supermanAndWonderWomen.Where(h => HasHeatVisionOrLassoOfTruth(h.Powers));
