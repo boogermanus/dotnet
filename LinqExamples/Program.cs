@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using LinqExamples.Demos;
+using LinqExamples.Interfaces;
 
 namespace LinqExamples
 {
@@ -6,23 +9,30 @@ namespace LinqExamples
     {
         static void Main(string[] args)
         {
-            var demo = new Demo();
+            var demos = new List<IDemo>
+            {
+                new AggregationDemo(),
+                new AggregationDemoWithInts(),
+                new ConversionOperatorsDemo(),
+                new ElementOperatorsDemo(),
+                new EqualityOperatorsDemo(),
+                new GenerationOperatorsDemo(),
+                new GroupingOperatorsDemo(),
+                new JoiningOperatorsDemo(),
+                new OrderingOperatorsDemo(),
+                new PartitioningOperatorsDemo(),
+                new RestrictionOperatorsDemo(),
+                new SelectionOperatorsDemo(),
+                new SetOperatorsDemo(),
+                new LetDemo(),
+                new VeryBadThingsDemo()
+            };
 
-            demo.AggregationOperators();
-            demo.ConversionOperators();
-            demo.ElementOperators();
-            demo.EqualityOperators();
-            demo.GenerationOperators();
-            demo.GroupingOperators();
-            demo.JoiningOperators();
-            demo.OrderingOperators();
-            demo.PartitioningOperators();
-            demo.QuantifierOperators();
-            demo.RestrictionOperators();
-            demo.SelectionOperators();
-            demo.SetOperators();
-            demo.UsingLet();
-            demo.VeryBadThings();
+            foreach (var demo in demos)
+            {
+                Console.WriteLine($"Running: {demo.GetType().Name}");
+                demo.Run();
+            }
         }
     }
 }
