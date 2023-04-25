@@ -1,4 +1,5 @@
-using FactoryMethodPattern.Product;
+using FactoryMethodPattern.ConcreteProduct;
+
 namespace FactoryMethodPattern.ConcreteCreator
 {
     public class Flash : Hero

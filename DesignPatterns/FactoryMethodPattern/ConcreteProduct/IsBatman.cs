@@ -1,4 +1,6 @@
-namespace FactoryMethodPattern.Product
+using FactoryMethodPattern.Product;
+
+namespace FactoryMethodPattern.ConcreteProduct
 {
     public class IsBatman : PowerBase
     {

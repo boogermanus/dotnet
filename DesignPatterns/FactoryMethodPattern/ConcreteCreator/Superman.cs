@@ -1,4 +1,6 @@
-using FactoryMethodPattern.Product;
+using FactoryMethodPattern.ConcreteProduct;
+using FactoryMethodPattern.ConcreteProductProduct;
+
 namespace FactoryMethodPattern.ConcreteCreator
 {
     public class Superman : Hero
