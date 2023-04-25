@@ -10,7 +10,7 @@ namespace FactoryMethodPattern
         static void Main(string[] args)
         {
             // old and busted
-            // SandwichFactory();
+            SandwichFactory();
 
             // new hotness
             HeroFactory();

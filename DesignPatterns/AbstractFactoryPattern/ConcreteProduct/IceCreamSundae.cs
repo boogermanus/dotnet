@@ -1,4 +1,6 @@
-namespace AbstractFactoryPattern
+using AbstractFactoryPattern.AbstractProduct;
+
+namespace AbstractFactoryPattern.ConcreteProduct
 {
     public class IceCreamSundae: Dessert
     {

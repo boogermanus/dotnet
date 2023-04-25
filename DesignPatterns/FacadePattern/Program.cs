@@ -9,7 +9,7 @@ namespace FacadePattern
         static void Main(string[] args)
         {
             // old and busted
-            // PlaceOrder();
+            PlaceOrder();
 
             GetHeroTeam();
         }

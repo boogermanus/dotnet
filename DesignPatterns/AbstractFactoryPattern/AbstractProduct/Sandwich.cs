@@ -1,4 +1,4 @@
-namespace AbstractFactoryPattern
+namespace AbstractFactoryPattern.AbstractProduct
 {
     public abstract class Sandwich
     {

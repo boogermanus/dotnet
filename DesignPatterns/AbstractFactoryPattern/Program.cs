@@ -1,4 +1,6 @@
 ﻿using System;
+using AbstractFactoryPattern.AbstractFactory;
+using AbstractFactoryPattern.ConcreteFactory;
 
 namespace AbstractFactoryPattern
 {
@@ -7,7 +9,7 @@ namespace AbstractFactoryPattern
         static void Main(string[] args)
         {
             HeroFactoryDemo();
-            // CuisineFactoryDemo();
+            CuisineFactoryDemo();
         }
 
         private static void HeroFactoryDemo()

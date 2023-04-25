@@ -11,12 +11,13 @@ namespace FacadePattern.Facades
 
         public Order PlaceOrder(Patron patron)
         {
-            var order = new Order();
-
-            order.Patron = patron;
-            order.Appetizer = _coldPrep.PrepDish(patron.ColdPrepId);
-            order.Entree = _hotPrep.PrepDish(patron.HotPrepId);
-            order.Drink = _bar.PrepDish(patron.BarPrepId);
+            var order = new Order
+            {
+                Patron = patron,
+                Appetizer = _coldPrep.PrepDish(patron.ColdPrepId),
+                Entree = _hotPrep.PrepDish(patron.HotPrepId),
+                Drink = _bar.PrepDish(patron.BarPrepId)
+            };
 
             return order;
         }

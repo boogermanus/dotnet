@@ -1,4 +1,8 @@
-namespace AbstractFactoryPattern
+using AbstractFactoryPattern.AbstractFactory;
+using AbstractFactoryPattern.AbstractProduct;
+using AbstractFactoryPattern.ConcreteProduct;
+
+namespace AbstractFactoryPattern.ConcreteFactory
 {
     public class KidCuisineFactory: RecipeFactory
     {
