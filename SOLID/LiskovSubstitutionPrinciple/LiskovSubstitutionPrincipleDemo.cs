@@ -18,6 +18,11 @@ public class LiskovSubstitutionPrincipleDemo : IDemo
 
         Fruit fruit;
         fruit = apple;
+        Console.WriteLine(fruit.GetColor());
+        
         fruit = orange;
+        Console.WriteLine(fruit.GetColor());
+
+
     }
 }

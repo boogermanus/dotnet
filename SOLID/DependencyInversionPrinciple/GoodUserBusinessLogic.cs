@@ -13,4 +13,9 @@ public class GoodUserBusinessLogic
     {
         return _dataAccess.GetUser(id);
     }
+
+    public User FindUser(int id)
+    {
+        return _dataAccess.FindUser(id);
+    }
 }
