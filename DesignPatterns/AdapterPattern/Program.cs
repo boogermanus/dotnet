@@ -9,14 +9,14 @@ namespace AdapterPattern
     {
         static void Main(string[] args)
         {
-            // Meat();
+            Meat();
 
             Hero();
         }
 
         static void Hero()
         {
-            var unknown = new Hero("Flash");
+            var unknown = new HeroBase("Flash");
             unknown.LoadData();
 
             var batman = new Hero(Heroes.Batman);

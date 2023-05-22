@@ -8,7 +8,7 @@ namespace AdapterPattern.Target
         protected float SafeCookTempCelsius;
         protected double CaloriesPerOunce;
         protected double ProteinPerOunce;
-        protected const string PADDING = " ----- ";
+        private const string PADDING = " ----- ";
 
         public MeatBase(string meat)
         {
