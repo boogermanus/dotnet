@@ -11,7 +11,7 @@ namespace FacadePattern
             // old and busted
             PlaceOrder();
 
-            GetHeroTeam();
+            //GetHeroTeam();
         }
 
         static void PlaceOrder()

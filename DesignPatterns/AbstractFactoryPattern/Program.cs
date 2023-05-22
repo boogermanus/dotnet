@@ -8,7 +8,7 @@ namespace AbstractFactoryPattern
     {
         static void Main(string[] args)
         {
-            HeroFactoryDemo();
+            // HeroFactoryDemo();
             CuisineFactoryDemo();
         }
 

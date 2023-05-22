@@ -4,7 +4,7 @@ namespace FactoryMethodPattern.ConcreteCreator
 {
     public class Flash : Hero
     {
-        public override string Name => "Wonder Women";
+        public override string Name => "Flash";
 
         public override void MakeHero()
         {
