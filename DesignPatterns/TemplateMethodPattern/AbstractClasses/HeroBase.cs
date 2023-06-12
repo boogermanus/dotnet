@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace TemplateMethodPattern.AbstractClasses
 {
-    public abstract class HeroTemplate
+    public abstract class HeroBase
     {
-        public abstract string Name {get;}
-        public abstract string City {get;}
+        protected abstract string Name {get;}
+        protected abstract string City {get;}
         protected List<string> _powers = new List<string>();
-        public IEnumerable<string> Powers => _powers;
+        private IEnumerable<string> Powers => _powers;
 
         public abstract void MakeHero();
 

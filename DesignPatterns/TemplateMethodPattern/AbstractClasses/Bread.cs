@@ -4,11 +4,11 @@ namespace TemplateMethodPattern.AbstractClasses
 {
     public abstract class Bread
     {
-        public abstract void MixIngredients();
+        protected abstract void MixIngredients();
 
-        public abstract void Bake();
+        protected abstract void Bake();
 
-        public virtual void Slice()
+        private void Slice()
         {
             Console.WriteLine($"Slicing the {GetType().Name} bread!");
         }

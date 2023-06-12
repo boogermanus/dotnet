@@ -9,7 +9,7 @@ namespace BridgePattern
     {
         static void Main(string[] args)
         {
-            // Food();
+            Food();
 
             Hero();
         }

@@ -7,7 +7,7 @@ namespace TemplateMethodPattern
     {
         static void Main(string[] args)
         {
-            // MakeBread();
+            MakeBread();
             MakeHeroes();
         }
 

@@ -6,7 +6,7 @@ namespace BridgePattern.RefinedAbstraction
     {
         public override void Send()
         {
-            Restaurant.PlaceOrder("Dairy-Free Order");
+            Restaurant.PlaceOrder("Dairy-Free");
         }
     }
 }

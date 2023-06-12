@@ -1,8 +1,7 @@
 using System;
-using BridgePattern.Abstraction;
 using BridgePattern.Implementer;
 
-namespace BridgePattern.RefinedAbstraction
+namespace BridgePattern.ConcreteImplementer
 {
     public class Robin : IEntity
     {

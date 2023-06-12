@@ -2,11 +2,11 @@ using TemplateMethodPattern.AbstractClasses;
 
 namespace TemplateMethodPattern.ConcreteClasses
 {
-    public class Superman : HeroTemplate
+    public class Superman : HeroBase
     {
-        public override string Name => nameof(Superman);
+        protected override string Name => nameof(Superman);
 
-        public override string City => "Metropolsis";
+        protected override string City => "Metropolsis";
 
         public override void MakeHero()
         {

@@ -13,10 +13,10 @@ namespace BridgePattern.Abstraction
         public abstract void Announce();
 
         // hard to add again without adding to all
-        // all classes that decend from Announcer
-        // public abstract void AnnouncWithSideKick();
+        // all classes that descend from Announcer
+        // public abstract void AnnounceWithSideKick();
 
-        // can add virutal method without issue
+        // can add virtual method without issue
         public virtual void DoSomething()
         {
 

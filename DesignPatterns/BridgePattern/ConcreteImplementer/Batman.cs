@@ -1,7 +1,7 @@
 using System;
 using BridgePattern.Implementer;
 
-namespace BridgePattern.RefinedAbstraction
+namespace BridgePattern.ConcreteImplementer
 {
     public class Batman : IEntity
     {

@@ -6,7 +6,7 @@ namespace BridgePattern.RefinedAbstraction
     {
         public override void Announce()
         {
-            Hero.Introduce("We're Gotham City and our Dark Night is");
+            Hero.Introduce("We're Gotham City and our Dark Knight is");
             // we can easily do something with our new interface here
             SideKick.Introduce("And the Boy Wonder is");
         }
