@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgePattern", "BridgePatt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethodPattern", "TemplateMethodPattern\TemplateMethodPattern.csproj", "{7966DAC9-6A5A-4E29-AC65-42061BCB71B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IteratorPattern", "IteratorPattern\IteratorPattern.csproj", "{602F4E50-7A32-4432-AE73-505DEBC0A7B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{7966DAC9-6A5A-4E29-AC65-42061BCB71B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7966DAC9-6A5A-4E29-AC65-42061BCB71B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7966DAC9-6A5A-4E29-AC65-42061BCB71B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{602F4E50-7A32-4432-AE73-505DEBC0A7B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602F4E50-7A32-4432-AE73-505DEBC0A7B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602F4E50-7A32-4432-AE73-505DEBC0A7B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602F4E50-7A32-4432-AE73-505DEBC0A7B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

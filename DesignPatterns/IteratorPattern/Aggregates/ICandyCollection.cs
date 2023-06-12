@@ -1,6 +1,6 @@
 using IteratorPattern.Iterators;
 
-namespace IteratorPattern.Aggragates
+namespace IteratorPattern.Aggregates
 {
     // the Aggregate
     public interface ICandyCollection

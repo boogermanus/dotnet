@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using IteratorPattern.Aggragates;
+using IteratorPattern.Aggregates;
 using IteratorPattern.ConcreteIterators;
 using IteratorPattern.Iterators;
 using IteratorPattern.Models;

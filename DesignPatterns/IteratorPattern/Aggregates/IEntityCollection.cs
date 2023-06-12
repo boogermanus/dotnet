@@ -1,7 +1,7 @@
 using IteratorPattern.Iterators;
 using IteratorPattern.Models;
 
-namespace IteratorPattern.Aggragates
+namespace IteratorPattern.Aggregates
 {
     public interface IEntityCollection
     {

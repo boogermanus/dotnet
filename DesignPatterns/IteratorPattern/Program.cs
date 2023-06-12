@@ -14,21 +14,31 @@ namespace IteratorPattern
             Entities();
         }
 
-        static void JellyBeans()
+        private static void JellyBeans()
         {
             // Build a collection of jelly beans
-            CandyCollection collection = new CandyCollection();
-            collection[0] = new JellyBean("Cherry");
-            collection[1] = new JellyBean("Bubble Gum");
-            collection[2] = new JellyBean("Root Beer");
-            collection[3] = new JellyBean("French Vanilla");
-            collection[4] = new JellyBean("Licorice");
-            collection[5] = new JellyBean("Buttered Popcorn");
-            collection[6] = new JellyBean("Juicy Pear");
-            collection[7] = new JellyBean("Cinnamon");
-            collection[8] = new JellyBean("Coconut");
+            var collection = new CandyCollection
+            {
+                [0] = new JellyBean("Cherry"),
+                [1] = new JellyBean("Bubble Gum"),
+                [2] = new JellyBean("Root Beer"),
+                [3] = new JellyBean("French Vanilla"),
+                [4] = new JellyBean("Licorice"),
+                [5] = new JellyBean("Buttered Popcorn"),
+                [6] = new JellyBean("Juicy Pear"),
+                [7] = new JellyBean("Cinnamon"),
+                [8] = new JellyBean("Coconut")
+            };
             // Create iterator
             IJellyBeanIterator iterator = collection.CreateIterator();
+            
+            // give me current
+            Console.WriteLine(iterator.CurrentBean);
+            
+            // give me at an index
+            Console.WriteLine(collection[0]);
+            
+            // all
             Console.WriteLine("Gimme all the jelly beans!");
             for (JellyBean item = iterator.First();
             !iterator.IsDone; item = iterator.Next())
@@ -38,15 +48,23 @@ namespace IteratorPattern
             Console.ReadKey();
         }
 
-        static void Entities()
+        private static void Entities()
         {
-            EntityCollection collection = new EntityCollection();
+            var collection = new EntityCollection();
             collection.Add(new Person("Lex Luthor"));
             collection.Add(new Hero("Batman"));
             collection.Add(new Hero("Superman"));
             collection.Add(new Hero("Flash"));
             collection.Add(new Person("Linda Park-West"));
+            
+            // give me count
+            Console.WriteLine(collection.Count);
+            
+            // give me an index
+            Console.WriteLine(collection[1]);
 
+            Console.WriteLine("All the collection");
+            
             IEntityIterator iterator = collection.CreateIterator();
             var entity = iterator.First();
             while(!iterator.IsDone)

@@ -7,7 +7,7 @@ namespace IteratorPattern.ConcreteIterators
     // the ConcreteIterator
     public class JellyBeanIterator : IJellyBeanIterator
     {
-        private CandyCollection _candyCollection;
+        private readonly CandyCollection _candyCollection;
         private int _current = 0;
         private const int STEP = 1;
 
