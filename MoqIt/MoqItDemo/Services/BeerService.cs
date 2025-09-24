@@ -23,6 +23,7 @@ namespace MoqItDemo.Services
         private async Task<T?> Get<T>(string? path = null)
         {
             var client = new HttpClient();
+            
             var response = await client.GetAsync($"{_baseUrl}/{path}");
 
             return response.StatusCode != HttpStatusCode.OK

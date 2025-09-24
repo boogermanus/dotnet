@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoqItDemo", "MoqItDemo\MoqItDemo.csproj", "{B3FE0BDE-4F27-417A-9382-CD09D65F8557}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoqItTests", "MoqItTests\MoqItTests.csproj", "{0B4189A4-7F25-4D4F-9654-A6A11B57B4B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B3FE0BDE-4F27-417A-9382-CD09D65F8557}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3FE0BDE-4F27-417A-9382-CD09D65F8557}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3FE0BDE-4F27-417A-9382-CD09D65F8557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4189A4-7F25-4D4F-9654-A6A11B57B4B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4189A4-7F25-4D4F-9654-A6A11B57B4B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4189A4-7F25-4D4F-9654-A6A11B57B4B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4189A4-7F25-4D4F-9654-A6A11B57B4B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
