@@ -43,4 +43,30 @@ public class AutoPayProcessorThingyTests
         
         Assert.Contains("burn",  ex?.Message);
     }
+
+    [Fact]
+    public async Task ProcessDraftOnDueDateRunsAsync()
+    {
+        var processor = new AutoPayProcessorThingy(new[]
+        {
+            new AutoPay(AutoPayType.DraftOnDay, true, 10)
+        });
+
+        var result = await processor.ProcessDraftOnDueDateAsync();
+        
+        Assert.Multiple(() =>
+        {
+            Assert.NotEmpty(result);
+            Assert.NotNull(result);
+            
+        });
+    }
+
+    [Fact]
+    public async Task ProcessDraftOnDueDateAsyncThrows()
+    {
+        var processor = new AutoPayProcessorThingy([]);
+
+        await Assert.ThrowsAnyAsync<Exception>(async () => await processor.ProcessDraftOnDueDateAsyncThrows());
+    }
 }
