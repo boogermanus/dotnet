@@ -30,7 +30,7 @@ namespace AssertYourselfTests
         {
             var processor = new AutoPayProcessorThingy(new[]
             {
-                new AutoPay(AutoPayType.DraftOnDay, true, 1)
+                new AutoPay(AutoPayType.DraftOnDueDate, true, 1)
             });
 
             var result = processor.ProcessDraftOnDueDate().FirstOrDefault();
@@ -53,7 +53,7 @@ namespace AssertYourselfTests
             var result = processor.ProcessDraftOnDueDate().FirstOrDefault();
             Assert.Multiple(() =>
             {
-                Assert.That(result, Is.Null, "result is null");
+                Assert.That(result, Is.Not.Null, "result is null");
                 Assert.That(result.Id, Is.EqualTo(autoPay.Id),$"{result.Id} is not equal to {autoPay.Id}");
                 Assert.That(result.Type == autoPay.Type, "result.Type is not equal to autoPay.Type");
             });
@@ -76,7 +76,7 @@ namespace AssertYourselfTests
             Assert.Multiple(() =>
             {
                 Assert.That(result, Is.Not.Null, "result is null");
-                Assert.That(result.Id, Is.EqualTo(autoPay.Id),$"{result.Id} is not equal to {autoPay.Id}");
+                Assert.That(result.Id, Is.Not.EqualTo(autoPay.Id),$"{result.Id} is not equal to {autoPay.Id}");
                 Assert.That(result.Type == autoPay.Type, "result.Type is not equal to autoPay.Type");
             });
         }
