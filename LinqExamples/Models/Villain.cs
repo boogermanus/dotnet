@@ -1,8 +1,12 @@
 ﻿namespace LinqExamples.Models
 {
-    public class Villain : IHero
+    public class Villain : BaseCharacter, IHero
     {
-        public string Name { get; set; }
         public string Hero { get; set; }
+        
+        public override string ToString()
+        {
+            return $"Villain: {Name} - {PowerLevel}";
+        }
     }
 }

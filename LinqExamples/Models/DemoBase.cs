@@ -20,7 +20,7 @@ namespace LinqExamples.Models
             }
         };
         
-        protected readonly List<Hero> Heroes = new()
+        protected readonly List<BaseCharacter> Heroes = new()
         {
             new Hero
             {
@@ -50,7 +50,7 @@ namespace LinqExamples.Models
                 Powers = new[] {"speed", "time travel"},
                 Team = "JLA"
             },
-            new Hero
+            new Villain
             {
                 Name = "Lex Luthor",
                 PowerLevel = 80,
@@ -58,7 +58,7 @@ namespace LinqExamples.Models
                 IsVillain = true,
                 Team = "Injustice League"
             },
-            new Hero
+            new Villain
             {
                 Name = "The Joker",
                 PowerLevel = 71.2m,

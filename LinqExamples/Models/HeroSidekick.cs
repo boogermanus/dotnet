@@ -1,8 +1,7 @@
 ﻿namespace LinqExamples.Models
 {
-    public class HeroSidekick : IHero
+    public class HeroSidekick : BaseCharacter, IHero
     {
-        public string Name { get; set; }
         public string Partner { get; set; }
         public int ClassificationId { get; set; }
 

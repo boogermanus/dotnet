@@ -56,13 +56,13 @@ namespace LinqExamples.Demos
             Console.WriteLine(enumerable.Count());
         }
 
-        private static bool IsSuperman(Hero hero)
+        private static bool IsSuperman(BaseCharacter hero)
         {
             return hero.Name.ToLower().Equals("superman") && hero.PowerLevel.Equals(99.9m) &&
                    hero.Team.ToUpper().Equals("JLA") && hero.Powers.Contains("flight");
         }
 
-        private static bool IsSupermanCleanCode(Hero hero)
+        private static bool IsSupermanCleanCode(BaseCharacter hero)
         {
             return NameIsSuperman(hero.Name) && PowerLevelIsMax(hero.PowerLevel) && IsJlaMember(hero.Team) &&
                    HasFlightPower(hero.Powers);

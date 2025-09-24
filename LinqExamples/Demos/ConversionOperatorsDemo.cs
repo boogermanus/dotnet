@@ -10,22 +10,26 @@ namespace LinqExamples.Demos
         public override void Run()
         {
             // Cast
-            var tempHeroes = new List<IHero>(Heroes);
+            Console.WriteLine("Cast - To Hero");
+            var tempHeroes = new List<BaseCharacter>(Heroes);
 
-            // only good when you're sure that everything is the same type of interface
+            // only good when you're sure that everything is the same type of class
             var heroObjects = tempHeroes.Cast<Hero>().ToList();
             heroObjects.ForEach(Console.WriteLine);
 
             // OfType
-            var mixedList = new List<IHero>(Heroes)
+            var mixedList = new List<BaseCharacter>(Heroes)
             {
-                new Villain { Name = "Captain Cold", Hero = "Flash" },
-                new Villain { Name = "Doomsday", Hero = "Superman" }
+                new Villain { Name = "Groud" },
+                new Hero { Name = "Plastic Man" }
             };
 
             // neat! does this work with interfaces?
             var villains = mixedList.OfType<Villain>().ToList();
             Console.WriteLine(villains.Count);
+
+            var interfaces = mixedList.OfType<IHero>().ToList();
+            Console.WriteLine(interfaces.Count);
 
             // ToDictionary
             var heroDictionary = Heroes.ToDictionary(h => h.Name);

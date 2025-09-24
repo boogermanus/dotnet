@@ -79,7 +79,7 @@ namespace LinqExamples.Demos
             Console.WriteLine($"Heroes PowerLevel {sum}");
         }
 
-        private static decimal SumFunction(Hero hero)
+        private static decimal SumFunction(BaseCharacter hero)
         {
             // we could have just put this in our sum function, but what if the logic if logic was more complicated
             return !hero.IsVillain ? hero.PowerLevel : decimal.Zero;

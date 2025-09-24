@@ -2,15 +2,9 @@ using System;
 
 namespace LinqExamples.Models
 {
-    public class Hero : IHero, IEquatable<Hero>
+    public class Hero : BaseCharacter, IHero, IEquatable<Hero>
     
     {
-        public string Name { get; set; }
-        public decimal PowerLevel { get; set; }
-        public string[] Powers { get; set; }
-        public bool IsVillain { get; set; }
-        public string Team { get; set; }
-
         public Hero()
         {
             Name = string.Empty;

@@ -10,7 +10,7 @@ namespace LinqExamples.Demos
         public override void Run()
         {
             // deep check
-            var otherHeroes = new List<Hero>(Heroes);
+            var otherHeroes = new List<BaseCharacter>(Heroes);
             var assert = Heroes.SequenceEqual(otherHeroes);
             Console.WriteLine($"{assert}");
 

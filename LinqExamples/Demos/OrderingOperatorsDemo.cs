@@ -23,7 +23,7 @@ namespace LinqExamples.Demos
             byNameAndPowerLevel.ToList().ForEach(Console.WriteLine);
 
             // meh
-            var tempHeroes = new List<Hero>(Heroes);
+            var tempHeroes = new List<BaseCharacter>(Heroes);
             tempHeroes.ForEach(Console.WriteLine);
             tempHeroes.Reverse();
             tempHeroes.ForEach(Console.WriteLine);
