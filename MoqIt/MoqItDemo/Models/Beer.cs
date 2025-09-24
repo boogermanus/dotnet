@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace FakeItEasyDemo.Models
+namespace MoqItDemo.Models
 {
     public class Beer
     {

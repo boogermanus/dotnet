@@ -1,6 +1,6 @@
-﻿namespace FakeItEasyDemo.Interfaces
+﻿namespace MoqItDemo.Interfaces
 {
-    public interface IFakeItEasyService
+    public interface IMoqService
     {
         void IncrementCount();
         void IncrementCountBy(int count);

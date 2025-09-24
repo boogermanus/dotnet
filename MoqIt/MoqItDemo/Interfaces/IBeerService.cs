@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using FakeItEasyDemo.Models;
+using MoqItDemo.Models;
 
-namespace FakeItEasyDemo.Interfaces
+namespace MoqItDemo.Interfaces
 {
     public interface IBeerService
     {
-        IEnumerable<Beer> GetBeers();
-        Beer GetBeer(int id);
+        Task<IEnumerable<Beer>?> GetBeers();
+        Task<Beer?> GetBeer(int id);
     }
 }

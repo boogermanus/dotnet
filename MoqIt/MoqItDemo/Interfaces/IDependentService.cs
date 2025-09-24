@@ -1,8 +1,8 @@
-﻿namespace FakeItEasyDemo.Interfaces
+﻿namespace MoqItDemo.Interfaces
 {
     public interface IDependentService
     {
-        public decimal GetTotalAbv();
-        public decimal GetBeerAbv(int id);
+        public Task<decimal> GetTotalAbv();
+        public Task<decimal> GetBeerAbv(int id);
     }
 }
