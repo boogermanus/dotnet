@@ -12,20 +12,20 @@ namespace LinqExamples
             var demos = new List<IDemo>
             {
                 new AggregationDemo(),
-                new AggregationDemoWithInts(),
-                new ConversionOperatorsDemo(),
-                new ElementOperatorsDemo(),
-                new EqualityOperatorsDemo(),
-                new GenerationOperatorsDemo(),
-                new GroupingOperatorsDemo(),
-                new JoiningOperatorsDemo(),
-                new OrderingOperatorsDemo(),
-                new PartitioningOperatorsDemo(),
-                new RestrictionOperatorsDemo(),
-                new SelectionOperatorsDemo(),
-                new SetOperatorsDemo(),
-                new LetDemo(),
-                new VeryBadThingsDemo()
+                // new AggregationDemoWithInts(),
+                // new ConversionOperatorsDemo(),
+                // new ElementOperatorsDemo(),
+                // new EqualityOperatorsDemo(),
+                // new GenerationOperatorsDemo(),
+                // new GroupingOperatorsDemo(),
+                // new JoiningOperatorsDemo(),
+                // new OrderingOperatorsDemo(),
+                // new PartitioningOperatorsDemo(),
+                // new RestrictionOperatorsDemo(),
+                // new SelectionOperatorsDemo(),
+                // new SetOperatorsDemo(),
+                // new LetDemo(),
+                // new VeryBadThingsDemo()
             };
 
             foreach (var demo in demos)
