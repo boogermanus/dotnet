@@ -9,6 +9,7 @@ public class GoodInvoice
         _amount = amount;
     }
 
+    // virtual method can be overriden on inherited classes.
     public virtual decimal GetInvoiceDiscount()
     {
         return _amount;

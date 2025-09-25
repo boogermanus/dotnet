@@ -36,6 +36,7 @@ public class BadInvoiceManager
         }
     }
 
+    // sends email from the manager, bad!
     private void SendInvoiceEmail(MailMessage message)
     {
         try

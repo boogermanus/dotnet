@@ -11,6 +11,10 @@ public class OpenClosePrincipleDemo : IDemo
         // var invoice2 = new BadInvoice(10, InvoiceType.Level2);
         // Console.WriteLine($"Discount amount {invoice2.GetInvoiceDiscount()}");
         //
+
+        var badInvoice = new BadInvoice(10, InvoiceType.Level1);
+        Console.WriteLine($"Bad Discount amount {badInvoice.GetInvoiceDiscount()}");
+        
         var level1Invoice = new Level1Invoice(10);
         Console.WriteLine($"Discount amount {level1Invoice.GetInvoiceDiscount()}");
         

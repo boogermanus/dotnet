@@ -11,4 +11,4 @@ new SingleResponsibilityPrincipleDemo().Run();
 new OpenClosePrincipleDemo().Run();
 new LiskovSubstitutionPrincipleDemo().Run();
 new InterfaceSegregationPrincipleDemo().Run();
-new DependencyInversionPrincipleDemo().Run();
+// new DependencyInversionPrincipleDemo().Run();

@@ -7,6 +7,8 @@ public class GoodInvoiceManager
     private ILogger _log;
     private MailSender _mailSender;
     
+    // sends email and logs by other services, good!
+    // better yet, inject them!
     public GoodInvoiceManager()
     {
         Invoices = new List<Invoice>();

@@ -13,6 +13,7 @@ public class BadInvoice
         _type = type;
     }
 
+    // not open to change easily. Why not have two types of invoice classes?
     public decimal GetInvoiceDiscount()
     {
         switch (_type)
