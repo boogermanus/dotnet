@@ -8,7 +8,7 @@ using SOLID.SingleResponsibilityPrinciple;
 
 // Console.WriteLine("Hello, World!");
 new SingleResponsibilityPrincipleDemo().Run();
-// new OpenClosePrincipleDemo().Run();
-// new LiskovSubstitutionPrincipleDemo().Run();
-// new InterfaceSegregationPrincipleDemo().Run();
-// new DependencyInversionPrincipleDemo().Run();
+new OpenClosePrincipleDemo().Run();
+new LiskovSubstitutionPrincipleDemo().Run();
+new InterfaceSegregationPrincipleDemo().Run();
+new DependencyInversionPrincipleDemo().Run();
