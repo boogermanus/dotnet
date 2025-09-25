@@ -63,7 +63,7 @@ namespace LinqExamples.Models
                 Name = "The Joker",
                 PowerLevel = 71.2m,
                 Powers = Array.Empty<string>(),
-                IsVillain = true
+                IsVillain = true,
             }
         };
         

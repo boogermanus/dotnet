@@ -21,7 +21,7 @@ namespace LinqExamples.Models
             if (ReferenceEquals(this, other)) return true;
             return Name == other.Name && PowerLevel == other.PowerLevel;
         }
-
+        
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -29,10 +29,6 @@ namespace LinqExamples.Models
             if (obj.GetType() != GetType()) return false;
             return Equals((Hero) obj);
         }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Name, PowerLevel);
-        }
+        
     }
 }

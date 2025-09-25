@@ -11,9 +11,9 @@ namespace LinqExamples
         {
             var demos = new List<IDemo>
             {
-                new AggregationDemo(),
+                // new AggregationDemo(),
                 // new AggregationDemoWithInts(),
-                // new ConversionOperatorsDemo(),
+                new ConversionOperatorsDemo(),
                 // new ElementOperatorsDemo(),
                 // new EqualityOperatorsDemo(),
                 // new GenerationOperatorsDemo(),
