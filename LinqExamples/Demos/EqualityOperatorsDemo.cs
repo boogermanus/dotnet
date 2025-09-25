@@ -10,10 +10,12 @@ namespace LinqExamples.Demos
         public override void Run()
         {
             // deep check
+            Console.WriteLine("DeepCheck");
             var otherHeroes = new List<BaseCharacter>(Heroes);
             var assert = Heroes.SequenceEqual(otherHeroes);
             Console.WriteLine($"{assert}");
 
+            Console.WriteLine("Not the same list");
             // not the same list
             var superman = new Hero
             {
@@ -32,6 +34,7 @@ namespace LinqExamples.Demos
             assert = real.SequenceEqual(fake);
             Console.WriteLine($"{assert}");
 
+            Console.WriteLine("Superman equal to Superman?");
             var superman2 = new Hero
             {
                 Name = "Superman"

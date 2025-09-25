@@ -8,6 +8,7 @@ namespace LinqExamples.Demos
     {
         public override void Run()
         {
+            Console.WriteLine("GroupBy");
             var byTeam = Heroes.GroupBy(h => h.Team);
             foreach (var team in byTeam)
             {

@@ -64,6 +64,7 @@ namespace LinqExamples.Models
                 PowerLevel = 71.2m,
                 Powers = Array.Empty<string>(),
                 IsVillain = true,
+                Team = "None"
             }
         };
         
