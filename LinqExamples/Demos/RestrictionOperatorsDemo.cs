@@ -11,15 +11,16 @@ namespace LinqExamples.Demos
         {
             // basic Where
             var wherePowerLevelGreaterThan80 = Heroes.Where(h => h.PowerLevel > 80);
+
             wherePowerLevelGreaterThan80
                 .ToList()
                 .ForEach(Console.WriteLine);
 
             // for jesse
             var superman = Heroes.Where(h => h.Name.ToLower() == "superman"
-                                              && h.PowerLevel == 99.9m && h.Team.ToUpper() == "JLA"
-                                              && h.Powers.Contains("flight"));
-            
+                                             && h.PowerLevel == 99.9m && h.Team.ToUpper() == "JLA"
+                                             && h.Powers.Contains("flight"));
+
             superman.ToList().ForEach(Console.WriteLine);
 
 

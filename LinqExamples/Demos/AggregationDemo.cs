@@ -37,7 +37,7 @@ namespace LinqExamples.Demos
 
             // Count
             // Heroes is a list, it has a Count property, use it if available
-            Console.WriteLine("Count - Demos");
+            Console.WriteLine("Count - Count");
             var count = Heroes.Count;
             Console.WriteLine($"Heroes {count}");
 
@@ -65,11 +65,11 @@ namespace LinqExamples.Demos
             var min = Heroes.Min(h => h.PowerLevel);
             Console.WriteLine($"Max PowerLevel {min}");
 
-            min = Heroes.Min(h => h.PowerLevel > 80 ? h.PowerLevel : decimal.Zero);
+            min = Heroes.Min(h => h.PowerLevel > 80 && h.IsVillain ? h.PowerLevel : decimal.Zero);
             Console.WriteLine($"Max Villain PowerLevel {min}");
 
             // Sum
-            Console.WriteLine("Sum - Demos");
+            Console.WriteLine("Sum - All");
             var sum = Heroes.Sum(h => h.PowerLevel);
             Console.WriteLine($"PowerLevel Sum {sum}");
 
